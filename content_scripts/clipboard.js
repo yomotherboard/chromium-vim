@@ -15,5 +15,14 @@ var Clipboard = {
     RUNTIME(tabbed ? 'openPasteTab' : 'openPaste', {
       engineUrl: engineUrl
     });
+  },
+  get: function() {
+    var t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.focus();
+    document.execCommand('Paste');
+    var text = t.value;
+    document.body.removeChild(t);
+    return text;
   }
 };
