@@ -16,18 +16,6 @@ window.httpRequest = function(request) {
   });
 };
 
-function updateTabIndices() {
-  if (settings.showtabindices) {
-    chrome.tabs.query({currentWindow: true}, function(tabs) {
-      tabs.forEach(function(tab) {
-        chrome.tabs.sendMessage(tab.id, {
-          action: 'displayTabIndices',
-          index: tab.index + 1
-        });
-      });
-    });
-  }
-}
 
 chrome.storage.local.get('sessions', function(e) {
   if (e.sessions === void 0) {
@@ -37,22 +25,16 @@ chrome.storage.local.get('sessions', function(e) {
   }
 });
 
-function getTab(tab, reverse, count, first, last) {
-  chrome.tabs.query({windowId: tab.windowId}, function(tabs) {
-    if (first) {
-      return chrome.tabs.update(tabs[0].id, {active: true});
-    } else if (last) {
-      return chrome.tabs.update(tabs[tabs.length - 1].id, {active: true});
-    } else {
-      var index = (reverse ? -1 : 1) * count + tab.index;
-      if (count !== -1 && count !== 1)
-        index = Math.min(Math.max(0, index), tabs.length - 1);
-      else
-        index = Utils.trueModulo(index, tabs.length);
-      return chrome.tabs.update(tabs[index].id, {active: true});
-    }
-  });
-}
+
+// define listener functions for chrome apis
+//
+// format of Listeners object:
+// <api>: {
+// 		<method> functions(<args>) {
+// 			<function body>
+// 			}
+// 		}
+//
 
 var Listeners = {
 
@@ -205,6 +187,7 @@ var Listeners = {
 
 };
 
+// instantiate listeners from Listeners object
 (function() {
   for (var api in Listeners) {
     for (var method in Listeners[api]) {
@@ -212,3 +195,45 @@ var Listeners = {
     }
   }
 })();
+
+
+
+
+//////////////////////////////
+////   HELPER FUNCTIONS   ////
+//////////////////////////////
+
+
+// shows tab indices 
+function updateTabIndices() {
+  if (settings.showtabindices) {
+    chrome.tabs.query({currentWindow: true}, function(tabs) {
+      tabs.forEach(function(tab) {
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'displayTabIndices',
+          index: tab.index + 1
+        });
+      });
+    });
+  }
+}
+
+
+// activates tab 
+// returns info for activated tab 
+function getTab(tab, reverse, count, first, last) {
+  chrome.tabs.query({windowId: tab.windowId}, function(tabs) {
+    if (first) {
+      return chrome.tabs.update(tabs[0].id, {active: true});
+    } else if (last) {
+      return chrome.tabs.update(tabs[tabs.length - 1].id, {active: true});
+    } else {
+      var index = (reverse ? -1 : 1) * count + tab.index;
+      if (count !== -1 && count !== 1)
+        index = Math.min(Math.max(0, index), tabs.length - 1);
+      else
+        index = Utils.trueModulo(index, tabs.length);
+      return chrome.tabs.update(tabs[index].id, {active: true});
+    }
+  });
+}

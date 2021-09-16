@@ -1,0 +1,213 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/Users/jacobaustinbusby/git/chromium-vim/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/165f7e3/
+0	manifest.json	/^        "content_scripts\/cvimrc_parser.js",$/;"	s	array:content_scripts.0.js
+0	manifest.json	/^      "content_scripts\/utils.js",$/;"	s	array:background.scripts
+0	manifest.json	/^      "css": ["content_scripts\/main.css"],$/;"	s	array:content_scripts.0.css
+0	manifest.json	/^      "matches": ["<all_urls>"],$/;"	s	array:content_scripts.0.matches
+0	manifest.json	/^    "<all_urls>",$/;"	s	array:permissions
+0	manifest.json	/^    {$/;"	o	array:content_scripts
+0	manifest.json	/^  "web_accessible_resources": ["cmdline_frame.html"]$/;"	s	array:web_accessible_resources
+1	manifest.json	/^        "content_scripts\/session.js",$/;"	s	array:content_scripts.0.js
+1	manifest.json	/^      "content_scripts\/select.js",$/;"	s	array:background.scripts
+1	manifest.json	/^    "tabs",$/;"	s	array:permissions
+1.2.43	CHANGELOG.md	/^## 1.2.43$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.44	CHANGELOG.md	/^## 1.2.44$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.45	CHANGELOG.md	/^## 1.2.45$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.46	CHANGELOG.md	/^## 1.2.46$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.47	CHANGELOG.md	/^## 1.2.47$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.48	CHANGELOG.md	/^## 1.2.48$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.49	CHANGELOG.md	/^## 1.2.49$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.50	CHANGELOG.md	/^## 1.2.50$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.51	CHANGELOG.md	/^## 1.2.51$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.52	CHANGELOG.md	/^## 1.2.52$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.53	CHANGELOG.md	/^## 1.2.53$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.54	CHANGELOG.md	/^## 1.2.54$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.55	CHANGELOG.md	/^## 1.2.55$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.56	CHANGELOG.md	/^## 1.2.56$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.57	CHANGELOG.md	/^## 1.2.57$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.58	CHANGELOG.md	/^## 1.2.58$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.59	CHANGELOG.md	/^## 1.2.59$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.60	CHANGELOG.md	/^## 1.2.60$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.61	CHANGELOG.md	/^## 1.2.61$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.62	CHANGELOG.md	/^## 1.2.62$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.63	CHANGELOG.md	/^## 1.2.63$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.64	CHANGELOG.md	/^## 1.2.64$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.65	CHANGELOG.md	/^## 1.2.65$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.66	CHANGELOG.md	/^## 1.2.66$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.67	CHANGELOG.md	/^## 1.2.67$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.68	CHANGELOG.md	/^## 1.2.68$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.69	CHANGELOG.md	/^## 1.2.69$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.70	CHANGELOG.md	/^## 1.2.70$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.71	CHANGELOG.md	/^## 1.2.71$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.72 (2015-02-12)	CHANGELOG.md	/^## 1.2.72 (2015-02-12)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.73 (2015-02-28)	CHANGELOG.md	/^## 1.2.73 (2015-02-28)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.74 (2015-04-07)	CHANGELOG.md	/^## 1.2.74 (2015-04-07)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.75 (2015-04-29)	CHANGELOG.md	/^## 1.2.75 (2015-04-29)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.76 (2015-05-01)	CHANGELOG.md	/^## 1.2.76 (2015-05-01)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.77 (2015-06-09)	CHANGELOG.md	/^## 1.2.77 (2015-06-09)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.78	CHANGELOG.md	/^## 1.2.78$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.79 (2015-07-09)	CHANGELOG.md	/^## 1.2.79 (2015-07-09)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.80 (2015-10-06)	CHANGELOG.md	/^## 1.2.80 (2015-10-06)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.81 (2015-12-20)	CHANGELOG.md	/^## 1.2.81 (2015-12-20)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.82 (2016-04-02)	CHANGELOG.md	/^## 1.2.82 (2016-04-02)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.83 (2016-04-19)	CHANGELOG.md	/^## 1.2.83 (2016-04-19)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.84 (2016-04-22)	CHANGELOG.md	/^## 1.2.84 (2016-04-22)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.85 (2016-06-22)	CHANGELOG.md	/^## 1.2.85 (2016-06-22)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.86 (2017-02-17)	CHANGELOG.md	/^## 1.2.86 (2017-02-17)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.87 (2017-03-23)	CHANGELOG.md	/^## 1.2.87 (2017-03-23)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.88	CHANGELOG.md	/^## 1.2.88$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.89 (2017-06-20)	CHANGELOG.md	/^## 1.2.89 (2017-06-20)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.90 (2017-06-29)	CHANGELOG.md	/^## 1.2.90 (2017-06-29)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.91	CHANGELOG.md	/^## 1.2.91$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.92 (2017-07-06)	CHANGELOG.md	/^## 1.2.92 (2017-07-06)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.93 (2017-07-19)	CHANGELOG.md	/^## 1.2.93 (2017-07-19)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.94 (2017-08-13)	CHANGELOG.md	/^## 1.2.94 (2017-08-13)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.95 (2017-08-16)	CHANGELOG.md	/^## 1.2.95 (2017-08-16)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.96 (2017-08-31)	CHANGELOG.md	/^## 1.2.96 (2017-08-31)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.97 (2017-09-20)	CHANGELOG.md	/^## 1.2.97 (2017-09-20)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.98 (2017-10-13)	CHANGELOG.md	/^## 1.2.98 (2017-10-13)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+1.2.99 (2017-12-17)	CHANGELOG.md	/^## 1.2.99 (2017-12-17)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
+10	manifest.json	/^        "content_scripts\/complete.js",$/;"	s	array:content_scripts.0.js
+10	manifest.json	/^      "background_scripts\/main.js",$/;"	s	array:background.scripts
+10	manifest.json	/^    "clipboardWrite",$/;"	s	array:permissions
+11	manifest.json	/^        "content_scripts\/mappings.js",$/;"	s	array:content_scripts.0.js
+11	manifest.json	/^      "background_scripts\/options.js",$/;"	s	array:background.scripts
+11	manifest.json	/^    "webNavigation"$/;"	s	array:permissions
+12	manifest.json	/^        "content_scripts\/find.js",$/;"	s	array:content_scripts.0.js
+12	manifest.json	/^      "background_scripts\/sessions.js",$/;"	s	array:background.scripts
+128	manifest.json	/^    "128": "icons\/128.png",$/;"	s	object:icons
+13	manifest.json	/^        "content_scripts\/cursor.js",$/;"	s	array:content_scripts.0.js
+13	manifest.json	/^      "background_scripts\/popup.js",$/;"	s	array:background.scripts
+14	manifest.json	/^        "content_scripts\/status.js",$/;"	s	array:content_scripts.0.js
+14	manifest.json	/^      "background_scripts\/update.js",$/;"	s	array:background.scripts
+15	manifest.json	/^        "content_scripts\/hud.js",$/;"	s	array:content_scripts.0.js
+15	manifest.json	/^      "background_scripts\/tab_creation_order.js",$/;"	s	array:background.scripts
+16	manifest.json	/^        "content_scripts\/visual.js",$/;"	s	array:content_scripts.0.js
+16	manifest.json	/^      "background_scripts\/frames.js"$/;"	s	array:background.scripts
+16	manifest.json	/^    "16":  "icons\/16.png"$/;"	s	object:icons
+17	manifest.json	/^        "content_scripts\/scroll.js",$/;"	s	array:content_scripts.0.js
+18	manifest.json	/^        "content_scripts\/search.js",$/;"	s	array:content_scripts.0.js
+19	manifest.json	/^        "content_scripts\/frames.js",$/;"	s	array:content_scripts.0.js
+19	manifest.json	/^      "19": "icons\/disabled.png",$/;"	s	object:browser_action.default_icon
+2	manifest.json	/^        "content_scripts\/utils.js",$/;"	s	array:content_scripts.0.js
+2	manifest.json	/^      "content_scripts\/cvimrc_parser.js",$/;"	s	array:background.scripts
+2	manifest.json	/^    "history",$/;"	s	array:permissions
+20	manifest.json	/^        "content_scripts\/messenger.js"$/;"	s	array:content_scripts.0.js
+3	manifest.json	/^        "content_scripts\/dom.js",$/;"	s	array:content_scripts.0.js
+3	manifest.json	/^      "background_scripts\/clipboard.js",$/;"	s	array:background.scripts
+3	manifest.json	/^    "bookmarks",$/;"	s	array:permissions
+38	manifest.json	/^      "38": "icons\/disabled-38.png"$/;"	s	object:browser_action.default_icon
+4	manifest.json	/^        "content_scripts\/select.js",$/;"	s	array:content_scripts.0.js
+4	manifest.json	/^      "background_scripts\/bookmarks.js",$/;"	s	array:background.scripts
+4	manifest.json	/^    "storage",$/;"	s	array:permissions
+48	manifest.json	/^    "48":  "icons\/48.png",$/;"	s	object:icons
+5	manifest.json	/^        "content_scripts\/hints.js",$/;"	s	array:content_scripts.0.js
+5	manifest.json	/^      "background_scripts\/sites.js",$/;"	s	array:background.scripts
+5	manifest.json	/^    "sessions",$/;"	s	array:permissions
+6	manifest.json	/^        "content_scripts\/bookmarks.js",$/;"	s	array:content_scripts.0.js
+6	manifest.json	/^      "background_scripts\/files.js",$/;"	s	array:background.scripts
+6	manifest.json	/^    "downloads",$/;"	s	array:permissions
+7	manifest.json	/^        "content_scripts\/command.js",$/;"	s	array:content_scripts.0.js
+7	manifest.json	/^      "background_scripts\/links.js",$/;"	s	array:background.scripts
+7	manifest.json	/^    "topSites",$/;"	s	array:permissions
+8	manifest.json	/^        "content_scripts\/keys.js",$/;"	s	array:content_scripts.0.js
+8	manifest.json	/^      "background_scripts\/history.js",$/;"	s	array:background.scripts
+8	manifest.json	/^    "downloads.shelf",$/;"	s	array:permissions
+9	manifest.json	/^        "content_scripts\/clipboard.js",$/;"	s	array:content_scripts.0.js
+9	manifest.json	/^      "background_scripts\/actions.js",$/;"	s	array:background.scripts
+9	manifest.json	/^    "clipboardRead",$/;"	s	array:permissions
+Blacklists	README.md	/^### Blacklists$/;"	S	chapter:cVim Help
+Code blocks	README.md	/^### Code blocks$/;"	S	chapter:cVim Help
+Command Mode	README.md	/^# Command Mode$/;"	c
+Completion Engines	README.md	/^### Completion Engines$/;"	S	chapter:cVim Help
+Contributing	README.md	/^# Contributing$/;"	c
+CvimServer	cvim_server.py	/^class CvimServer(BaseHTTPRequestHandler):$/;"	c
+Example configuration	README.md	/^### Example configuration$/;"	S	chapter:cVim Help
+Keybindings	README.md	/^# Keybindings$/;"	c
+Mappings	README.md	/^### Mappings$/;"	S	chapter:cVim Help
+PORT	cvim_server.py	/^PORT = 8001$/;"	v
+Running commands when a page loads	README.md	/^### Running commands when a page loads$/;"	S	chapter:cVim Help
+Site-specific Configuration	README.md	/^### Site-specific Configuration$/;"	S	chapter:cVim Help
+Tabs	README.md	/^### Tabs$/;"	S	chapter:cVim Help
+Tips	README.md	/^# Tips$/;"	c
+VIM_COMMAND	cvim_server.py	/^VIM_COMMAND = 'gvim -f'$/;"	v
+What is cVim?	README.md	/^# What is cVim?$/;"	c
+Where can I get cVim?	README.md	/^# Where can I get cVim?$/;"	c
+Why is this different than Vimium, ViChrome, or Vrome?	README.md	/^# Why is this different than Vimium, ViChrome, or Vrome?$/;"	c
+[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)	CHANGELOG.md	/^# [Like cVim? Consider donating! https:\/\/www.paypal.me\/1995eaton](https:\/\/www.paypal.me\/19/;"	c
+all	Makefile	/^all:$/;"	t
+all_frames	manifest.json	/^      "all_frames": true$/;"	b	object:content_scripts.0
+author	manifest.json	/^  "author": "Jake Eaton",$/;"	s
+author	package.json	/^  "author": "Jake Eaton <1995eaton@gmail.com>",$/;"	s
+background	manifest.json	/^  "background": {$/;"	o
+browser_action	manifest.json	/^  "browser_action": {$/;"	o
+cVim Changelog	CHANGELOG.md	/^# cVim Changelog$/;"	c
+cVim Help	README.md	/^# cVim Help$/;"	c
+cVimrc	README.md	/^### cVimrc$/;"	S	chapter:cVim Help
+clean	Makefile	/^clean:$/;"	t
+closeTab	manifest.json	/^    "closeTab": {$/;"	o	object:commands
+commands	manifest.json	/^  "commands": {$/;"	o
+content_scripts	manifest.json	/^  "content_scripts": [$/;"	a
+content_security_policy	manifest.json	/^  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';",$/;"	s
+css	manifest.json	/^      "css": ["content_scripts\/main.css"],$/;"	a	object:content_scripts.0
+default_icon	manifest.json	/^    "default_icon": {$/;"	o	object:browser_action
+default_popup	manifest.json	/^    "default_popup": "pages\/popup.html"$/;"	s	object:browser_action
+default_title	manifest.json	/^    "default_title": "cVim",$/;"	s	object:browser_action
+deleteBackWord	manifest.json	/^    "deleteBackWord": {$/;"	o	object:commands
+description	manifest.json	/^      "description": "Close the current tab"$/;"	s	object:commands.closeTab
+description	manifest.json	/^      "description": "Go to the next tab"$/;"	s	object:commands.nextTab
+description	manifest.json	/^      "description": "Go to the previous tab"$/;"	s	object:commands.previousTab
+description	manifest.json	/^      "description": "Let Chrome use <C-n> for cncpcompletion setting (see Help file)"$/;"	s	object:commands.nextCompletionResult
+description	manifest.json	/^      "description": "Let Chrome use <C-w> for the deleteBackWord insert mapping"$/;"	s	object:commands.deleteBackWord
+description	manifest.json	/^      "description": "Open a new tab to a blank page"$/;"	s	object:commands.newTab
+description	manifest.json	/^      "description": "Reload the current tab"$/;"	s	object:commands.reloadTab
+description	manifest.json	/^      "description": "Restart the background scripts (pages will need a refresh)"$/;"	s	object:commands.restartcVim
+description	manifest.json	/^      "description": "Toggle the blacklist for the domain in the current tab"$/;"	s	object:commands.toggleBlacklisted
+description	manifest.json	/^      "description": "Toggle the enabled state of cVim"$/;"	s	object:commands.togglecVim
+description	manifest.json	/^      "description": "View the page source"$/;"	s	object:commands.viewSource
+description	manifest.json	/^  "description": "An extension adding Vim-like bindings to Google Chrome",$/;"	s
+description	package.json	/^  "description": "Vim bindings for Google Chrome.",$/;"	s
+devDependencies	package.json	/^  "devDependencies": {$/;"	o
+do_POST	cvim_server.py	/^    def do_POST(self):$/;"	m	class:CvimServer
+edit_file	cvim_server.py	/^def edit_file(content):$/;"	f
+highlight.js	package.json	/^    "highlight.js": "latest",$/;"	s	object:devDependencies
+icons	manifest.json	/^  "icons": {$/;"	o
+init_server	cvim_server.py	/^def init_server(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):$/;"	f
+js	manifest.json	/^      "js": [$/;"	a	object:content_scripts.0
+manifest_version	manifest.json	/^  "manifest_version": 2,$/;"	n
+markdown-it	package.json	/^    "markdown-it": "latest",$/;"	s	object:devDependencies
+matches	manifest.json	/^      "matches": ["<all_urls>"],$/;"	a	object:content_scripts.0
+name	manifest.json	/^  "name": "cVim",$/;"	s
+name	package.json	/^  "name": "chromium-vim",$/;"	s
+newTab	manifest.json	/^    "newTab": {$/;"	o	object:commands
+nextCompletionResult	manifest.json	/^    "nextCompletionResult": {$/;"	o	object:commands
+nextTab	manifest.json	/^    "nextTab": {$/;"	o	object:commands
+options_page	manifest.json	/^  "options_page": "pages\/options.html",$/;"	s
+pegjs	package.json	/^    "pegjs": "latest"$/;"	s	object:devDependencies
+permissions	manifest.json	/^  "permissions": [$/;"	a
+persistant	manifest.json	/^    "persistant": false,$/;"	b	object:background
+previousTab	manifest.json	/^    "previousTab": {$/;"	o	object:commands
+private	package.json	/^  "private": true,$/;"	b
+release	Makefile	/^release: all$/;"	t
+reloadTab	manifest.json	/^    "reloadTab": {$/;"	o	object:commands
+repository	package.json	/^  "repository": {$/;"	o
+restartcVim	manifest.json	/^    "restartcVim": {$/;"	o	object:commands
+run_at	manifest.json	/^      "run_at": "document_start",$/;"	s	object:content_scripts.0
+scripts	manifest.json	/^    "scripts": [$/;"	a	object:background
+toggleBlacklisted	manifest.json	/^    "toggleBlacklisted": {$/;"	o	object:commands
+togglecVim	manifest.json	/^    "togglecVim": {$/;"	o	object:commands
+type	package.json	/^    "type": "git",$/;"	s	object:repository
+update_url	manifest.json	/^  "update_url": "https:\/\/clients2.google.com\/service\/update2\/crx",$/;"	s
+url	package.json	/^    "url": "https:\/\/github.com\/1995eaton\/chromium-vim"$/;"	s	object:repository
+version	manifest.json	/^  "version": "1.2.99",$/;"	s
+viewSource	manifest.json	/^    "viewSource": {$/;"	o	object:commands
+web_accessible_resources	manifest.json	/^  "web_accessible_resources": ["cmdline_frame.html"]$/;"	a
