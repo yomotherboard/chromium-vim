@@ -9,6 +9,25 @@ var Select = {
 	zero_point: false,
 };
 
+<<<<<<< HEAD
+=======
+// helper for checkElement()
+function rafAsync() {
+    return new Promise(resolve => {
+        requestAnimationFrame(resolve); //faster than set time out
+    });
+}
+
+// waits until a query selector finds a match
+function checkElement(selector) {
+    if (document.querySelector(selector) === null) {
+        return rafAsync().then(() => checkElement(selector));
+    } else {
+        return Promise.resolve(true);
+    }
+}
+
+>>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 // set css style of selected DOM element
 Select.style = function( styleCSS ) {
 		old_style=document.querySelector("#cvim-select-style");
@@ -29,6 +48,10 @@ Select.style = function( styleCSS ) {
 
 // set the queryselector that aggregates the selection list
 Select.selector = function( query_str ) {
+<<<<<<< HEAD
+=======
+		console.log("Select.selector called");
+>>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 		if ( document.getElementsByClassName("cvim-selected")[0] ) {
 			this.selections[this.select_index].classList.remove('cvim-selected');
 		}
@@ -36,9 +59,20 @@ Select.selector = function( query_str ) {
 		this.select_index = 0;
 
 		this.query = query_str;
+<<<<<<< HEAD
 		this.selections = document.querySelectorAll( query_str );
+=======
+>>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 
-		this.selections[this.select_index].classList.add('cvim-selected');
+		checkElement( query_str )
+		.then((element) => {
+			console.info(element);
+			console.log( query_str );
+
+			this.selections = document.querySelectorAll( query_str );
+
+			this.selections[this.select_index].classList.add('cvim-selected');
+		});
 };
 
 // set a command to aggregate selection list instead of a query
@@ -53,8 +87,18 @@ Select.move = function(n) {
 
 		target = this.selections[next_index];
 
+<<<<<<< HEAD
 		if (!target) {
 			return;
+=======
+		if (!target) { 
+			// if target does not exist in selections[] check if new matches loaded
+			this.selections = document.querySelectorAll( this.query )
+			if (!target) {
+				// if the target doesnt exist exit the function (end of list)
+				return;
+			}
+>>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 		} 
 
 		this.selections[this.select_index].classList.remove('cvim-selected');
