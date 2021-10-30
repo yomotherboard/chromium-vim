@@ -39,7 +39,8 @@ var Complete = {
   },
 
   aliases: {
-    g: 'google'
+    g: 'google',
+    z: 'amazon'
   },
 
   activeEngines: [],
@@ -157,6 +158,27 @@ Complete.engines = {
         callback(data.sort(function(a) {
           return a.type !== 'NAVIGATION';
         }).map(function(e) { return e.text; }));
+      });
+    }
+  },
+
+  github: {
+    baseUrl: 'https://github.com',
+    requestUrl: 'https://github.com/search?q=',
+    apiUrl: 'https://api.github.com/search/repositories?q=%s+in:name',
+    formatRequest: function(query) {
+      return encodeURIComponent(query).split('%20').join('+');
+    },
+    queryApi: function(query, callback) {
+      httpRequest({
+        url: Utils.format(this.apiUrl, query),
+        json: true
+      }, function(response) {
+        data = response.items;
+        data = data.map(function(e) {
+          return e.full_name;
+        });
+        callback(data);
       });
     }
   },
