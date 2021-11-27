@@ -9,13 +9,12 @@ var Select = {
 	zero_point: false,
 };
 
-<<<<<<< HEAD
-=======
 // helper for checkElement()
 function rafAsync() {
     return new Promise(resolve => {
         requestAnimationFrame(resolve); //faster than set time out
-    });
+    }
+   );
 }
 
 // waits until a query selector finds a match
@@ -27,7 +26,6 @@ function checkElement(selector) {
     }
 }
 
->>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 // set css style of selected DOM element
 Select.style = function( styleCSS ) {
 		old_style=document.querySelector("#cvim-select-style");
@@ -48,10 +46,7 @@ Select.style = function( styleCSS ) {
 
 // set the queryselector that aggregates the selection list
 Select.selector = function( query_str ) {
-<<<<<<< HEAD
-=======
 		console.log("Select.selector called");
->>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 		if ( document.getElementsByClassName("cvim-selected")[0] ) {
 			this.selections[this.select_index].classList.remove('cvim-selected');
 		}
@@ -59,10 +54,7 @@ Select.selector = function( query_str ) {
 		this.select_index = 0;
 
 		this.query = query_str;
-<<<<<<< HEAD
 		this.selections = document.querySelectorAll( query_str );
-=======
->>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 
 		checkElement( query_str )
 		.then((element) => {
@@ -78,7 +70,7 @@ Select.selector = function( query_str ) {
 // set a command to aggregate selection list instead of a query
 Select.selectCommand = function( command_str ) {
 		this.selections = eval(command_str);
-}
+};
 
 // move through selection list by n items (negative is backward)
 Select.move = function(n) {
@@ -87,10 +79,6 @@ Select.move = function(n) {
 
 		target = this.selections[next_index];
 
-<<<<<<< HEAD
-		if (!target) {
-			return;
-=======
 		if (!target) { 
 			// if target does not exist in selections[] check if new matches loaded
 			this.selections = document.querySelectorAll( this.query )
@@ -98,7 +86,6 @@ Select.move = function(n) {
 				// if the target doesnt exist exit the function (end of list)
 				return;
 			}
->>>>>>> 75d7e95460e869417ba01eea76ad0aeb3b1a2c4b
 		} 
 
 		this.selections[this.select_index].classList.remove('cvim-selected');
@@ -160,7 +147,7 @@ Select.dispatch = function() {
 		if (arguments.length == 2) {
 			this.selections[this.select_index].querySelector(arguments[1]).dispatchEvent(new Event(arguments[0]));
 		}
-}
+};
 
 ////
 ////	SELECTOR SETTINGS
