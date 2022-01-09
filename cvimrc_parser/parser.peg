@@ -61,6 +61,7 @@ IMAP    = 'imap'
 UNMAP   = 'unmap'
 IUNMAP  = 'iunmap'
 COMMAND = 'command'
+SOURCE  = 'source'
 
 Comment
   = WhiteSpace* '"' [^\n]* { return null; }
@@ -92,6 +93,9 @@ IntegerLiteral
 NumberLiteral
   = FloatingPointLiteral
   / IntegerLiteral
+
+Path
+    = [^ ]*
 
 ExpressionList
   = head:(
@@ -169,6 +173,11 @@ MapStatement
     return { MAPPINGS: [a, b, c.join('')].join(' ') };
   }
 
+SourceStatement
+    = s:(SOURCE) _ p:Path {
+        return { MAPPINGS: [s, p.join('')].join(' ') };
+    }
+
 CallStatement
   = CALL _ a:[^\n]* {
     return { MAPPINGS: 'call ' + a.join('') };
@@ -230,6 +239,7 @@ StatementValue
   }
   / CallStatement
   / CommandStatement
+  / SourceStatement
   / MapStatement
   / UnmapStatement
   / Comment

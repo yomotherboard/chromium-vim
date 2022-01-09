@@ -386,6 +386,7 @@ window.parseConfig = (function() {
     result.RC = configText;
     return result;
   };
+
   return function(value) {
     try {
       return {

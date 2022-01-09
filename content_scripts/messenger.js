@@ -164,6 +164,7 @@ port.onMessage.addListener(function(response) {
   }
 });
 
+// PORT sends messages here
 chrome.extension.onMessage.addListener(function(request, sender, callback) {
   switch (request.action) {
   case 'hideHud':
@@ -229,8 +230,9 @@ chrome.extension.onMessage.addListener(function(request, sender, callback) {
       Command.frame.contentWindow.focus();
     }
     if (window.isCommandFrame === true) {
-      window.focus();
+      //window.focus();
       Command.show(request.search, request.value, request.complete);
+      window.focus();
     }
     break;
   case 'hideCommandFrame':

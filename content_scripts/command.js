@@ -705,6 +705,9 @@ Command.execute = function(value, repeats) {
     return;
   }
 
+    // 
+    // :source <path>
+    //
   if (/^source/.test(value)) {
     var path = value.replace(/\S+ */, '');
     if (!path.length) {
@@ -903,6 +906,7 @@ Command.execute = function(value, repeats) {
 };
 
 Command.show = function(search, value, complete) {
+    // wait until cvim dom loaded
   if (!this.domElementsLoaded) {
     Command.callOnCvimLoad(function() {
       Command.show(search, value, complete);
@@ -942,25 +946,12 @@ Command.show = function(search, value, complete) {
     Status.hide();
   }
   this.bar.style.display = 'inline-block';
-  setTimeout(function() {
+  setTimeout(() => {
     this.input.focus();
     if (complete !== null) {
       this.complete(value);
     }
-
-    // UPDATE: seems to work without patch now (Chromium 44.0.2403.130)
-    // Temp fix for Chromium issue in #97
-    if (this.commandBarFocused()) {
-      document.activeElement.select();
-
-      // TODO: figure out why a842dd6 and fix for #527 are necessary
-      // document.getSelection().collapseToEnd();
-      document.getSelection().modify('move', 'right', 'lineboundary');
-
-    }
-    // End temp fix
-
-  }.bind(this), 0);
+  }, 0);
 };
 
 Command.hide = function(callback) {

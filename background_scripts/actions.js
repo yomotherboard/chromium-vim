@@ -833,54 +833,64 @@ Actions = (function() {
     chrome.tabs.sendMessage(o.sender.tab.id, o.request);
   };
 
-  _.loadLocalConfig = function(o) {
-    var path = o.request.path || 'file://' + settings.configpath
-      .split('~').join(settings.homedirectory || '~');
-    httpRequest({ url: path }).then(function(data) {
-      var added = window.parseConfig(data);
-      if (added.error) {
-        console.error('parse error on line %d of cVimrc: %s',
-            added.error.lineno, added.error.message);
-        o.callback({
-          code: -2,
-          error: added.error,
-          config: settings
+    _.loadLocalConfig = function(o) {
+        var path = o.request.path
+            || 'file://' + settings.configpath
+            .split('~')
+            .join(settings.homedirectory || '~');
+
+        httpRequest({ url: path }).then(function(data) {
+            var added = window.parseConfig(data);
+
+            // if error
+            if (added.error) {
+                console.error('parse error on line %d of cVimrc: %s',
+                    added.error.lineno, added.error.message);
+                o.callback({
+                    code: -2,
+                    error: added.error,
+                    config: settings
+                });
+                return;
+            }
+
+            added = added.value;
+            added.localconfig = added.localconfig || false;
+
+            var current = Object.clone(settings);
+            var defaults = Object.clone(defaultSettings);
+            added.localconfig = current.localconfig;
+
+            // should this be removed???
+            Object.merge(defaults, added);
+            if (current.localconfig) {
+                Options.saveSettings({
+                    settings: Object.clone(defaults),
+                    sendSettings: false
+                });
+                Object.merge(settings, current);
+                Object.merge(settings, added);
+                Options.sendSettings();
+            } else {
+                Object.merge(settings, added);
+                settings.RC = current.RC;
+                Options.sendSettings();
+            }
+
+            o.callback({
+                code: 0,
+                error: null,
+                config: settings
+            });
+        }, function() {
+            o.callback({
+                code: -1,
+                error: null,
+                config: settings
+            });
         });
-        return;
-      }
-      added = added.value;
-      added.localconfig = added.localconfig || false;
-      var oldSettings = Object.clone(settings);
-      var settingsClone = Object.clone(defaultSettings);
-      added.localconfig = oldSettings.localconfig;
-      Object.merge(settingsClone, added);
-      if (oldSettings.localconfig) {
-        Options.saveSettings({
-          settings: Object.clone(settingsClone),
-          sendSettings: false
-        });
-        Object.merge(settings, oldSettings);
-        Object.merge(settings, added);
-        Options.sendSettings();
-      } else {
-        Object.merge(settings, added);
-        settings.RC = oldSettings.RC;
-        Options.sendSettings();
-      }
-      o.callback({
-        code: 0,
-        error: null,
-        config: settings
-      });
-    }, function() {
-      o.callback({
-        code: -1,
-        error: null,
-        config: settings
-      });
-    });
-    return true;
-  };
+        return true;
+    };
 
   _.muteTab = function(o) {
     chrome.tabs.update(o.sender.tab.id, {muted: !o.sender.tab.mutedInfo.muted});

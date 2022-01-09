@@ -121,16 +121,27 @@ Marks = (function() {
 
   var lastFileSearch, lastSearchLength;
   _.parseFileCommand = function(search) {
-    if ((search.slice(-1) === '/' && lastSearchLength < search.length) || lastSearchLength > search.length || !(lastFileSearch && lastFileSearch.replace(/[^\/]+$/, '') === search) && (search.slice(-1) === '/' && !(lastFileSearch && lastFileSearch.slice(-1) === '/'))) {
+    if (
+        (search.slice(-1) === '/' && lastSearchLength < search.length)
+        || lastSearchLength > search.length
+        || !(lastFileSearch && lastFileSearch.replace(/[^\/]+$/, '') === search)
+        && (search.slice(-1) === '/' && !(lastFileSearch && lastFileSearch.slice(-1) === '/'))
+    ) {
+
+        // set last search info
       lastFileSearch = search;
       lastSearchLength = search.length;
+
+        // if homedirectory set then parse ~
       if (settings.homedirectory) {
         search = search.replace('~', settings.homedirectory);
       }
+
       RUNTIME('getFilePath', { path: search }, function(data) {
         Marks.filePath(data);
       });
-    } else {
+    }
+    else {
       lastFileSearch = search;
       _.filePath();
     }
