@@ -903,6 +903,14 @@ Command.execute = function(value, repeats) {
     RUNTIME('runScript', {code: value.slice(7)});
   }
 
+	if (/^click +/.test(value)) {
+		DOM.click(value.replace(/^click +/, '').toString());
+	}
+
+	if (/^scroll +/.test(value)) {
+		document.querySelector(value.replace(/^scroll +/, '')).scrollIntoView();
+	}
+
 };
 
 Command.show = function(search, value, complete) {
