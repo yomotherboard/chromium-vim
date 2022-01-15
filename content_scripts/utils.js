@@ -368,11 +368,12 @@ var findFirstOf = function(array, callback) {
   return null;
 };
 
-window.parseConfig = (function() {
-  var formatConfig = function(configText, config) {
+window.parseConfig = (() => {
+  var formatConfig = (configText, config) => {
     var result = {
       MAPPINGS: [],
     };
+    
     for (var key in config) {
       if (key === 'MAPPINGS') {
         result.MAPPINGS.push(config[key]);

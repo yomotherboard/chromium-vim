@@ -140,27 +140,55 @@ var Complete = {
 };
 
 Complete.engines = {
-  google: {
-    baseUrl: 'https://www.google.com',
-    requestUrl: 'https://www.google.com/search?q=',
-    apiUrl: 'https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q=%s',
-    queryApi: function(query, callback) {
-      httpRequest({
-        url: Utils.format(this.apiUrl, query),
-        json: true
-      }, function(response) {
-        var data = response[1].map(function(e, i) {
-          return {
-            type: response[4]['google:suggesttype'][i],
-            text: e
-          };
-        });
-        callback(data.sort(function(a) {
-          return a.type !== 'NAVIGATION';
-        }).map(function(e) { return e.text; }));
-      });
-    }
-  },
+    stackexchange: {
+        baseUrl: 'www.stackoverflow.com',
+        requestUrl: 'https://stackoverflow.com/search?q=%s',
+        apiUrl: 'www.api.stackoverflow.com/2.3/search?order=desc&sort=activity&intitle=%s&site=stackoverflow&filter=!9fS)YbVGcStX6UqV6lOXy',
+        formatRequest: (query) => {
+            return encodeURIComponent(query)
+                .split('%20')
+                .join('+');
+        },
+        queryApi: (query, callback) => {
+            httpRequest({
+                url: Utils.format(this.apiUrl, query),
+                json: true
+            },
+                (response) => {
+                    data = response.items;
+                    data = data.map((e) => {
+                        return e.title;
+                    });
+                    callback(data);
+                }
+            );
+        }
+    },
+
+
+    google: {
+        baseUrl: 'https://www.google.com',
+        requestUrl: 'https://www.google.com/search?q=',
+        apiUrl: 'https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q=%s',
+        queryApi: (query, callback) => {
+            httpRequest({
+                url: Utils.format(this.apiUrl, query),
+                json: true
+            },
+                (response) => {
+                    var data = response[1].map((e, i) => {
+                        return {
+                            type: response[4]['google:suggesttype'][i],
+                            text: e
+                        };
+                    });
+                    callback(data.sort(function(a) {
+                        return a.type !== 'NAVIGATION';
+                    }).map(function(e) { return e.text; }));
+                }
+            );
+        }
+    },
 
   github: {
     baseUrl: 'https://github.com',

@@ -27,6 +27,27 @@
     result.MAPPINGS = result.MAPPINGS.join('\n');
     return result;
   }
+
+  function parseConfig(source_path) {
+	var path = source_path;
+	console.error('path: ', path);
+
+	return httpRequest({ url: path }).then(function(config_txt) {
+			console.error('config txt: ', config_txt);
+            var config = window.parseConfig(config_txt);
+
+            // if error
+            if (config.error) {
+                console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
+                return;
+            }
+
+			/*console.error(JSON.stringify(config));*/
+			return config.value.MAPPINGS;
+		});
+	}
+	
+
   function objectPlural(key) {
     var replacements = {
       qmark: 's',
@@ -95,7 +116,7 @@ NumberLiteral
   / IntegerLiteral
 
 Path
-    = [^ ]*
+    = [^ \t\n]+
 
 ExpressionList
   = head:(
@@ -174,8 +195,11 @@ MapStatement
   }
 
 SourceStatement
-    = s:(SOURCE) _ p:Path {
-        return { MAPPINGS: [s, p.join('')].join(' ') };
+    = SOURCE _ p:Path {
+		var m = parseConfig(p.join(''));
+		console.error('sourced ' + p.join(''));
+		console.error('config: ' + JSON.stringify(m));
+        return { MAPPINGS: parseConfig(p.join('')) };
     }
 
 CallStatement
@@ -230,6 +254,7 @@ JavaScriptBlockDefinition
 
 StatementValue
   = LetStatement
+  / SourceStatement
   / JavaScriptBlockDefinition
   / AutoRunJavaScriptBlock
   / SetStatement
@@ -239,7 +264,6 @@ StatementValue
   }
   / CallStatement
   / CommandStatement
-  / SourceStatement
   / MapStatement
   / UnmapStatement
   / Comment

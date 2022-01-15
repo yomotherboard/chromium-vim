@@ -302,7 +302,7 @@ Actions = (function() {
     });
   };
 
-  _.nextTab = function(o) {
+  _.nextTab = (o) => {
     getTab(o.sender.tab, false, o.request.repeats, false, false);
   };
 
@@ -844,8 +844,7 @@ Actions = (function() {
 
             // if error
             if (added.error) {
-                console.error('parse error on line %d of cVimrc: %s',
-                    added.error.lineno, added.error.message);
+                console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
                 o.callback({
                     code: -2,
                     error: added.error,

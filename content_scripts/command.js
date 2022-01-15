@@ -882,33 +882,55 @@ Command.execute = function(value, repeats) {
     return;
   }
 
-  if (/^let +/.test(value) && value !== 'let') {
-    try {
-      var added = RCParser.parse(value);
-      delete added.MAPPINGS;
-      Object.merge(settings, added);
-      PORT('syncSettings', { settings: settings });
-    } catch (e) {
-      Command.hide();
+    if (/^let +/.test(value) && value !== 'let') {
+        try {
+            var added = RCParser.parse(value);
+            delete added.MAPPINGS;
+            Object.merge(settings, added);
+            PORT('syncSettings', { settings: settings });
+        } catch (e) {
+            Command.hide();
+        }
+        return;
     }
-    return;
-  }
 
-  if (/^call +/.test(value)) {
-    Mappings.parseLine(value);
-    return;
-  }
+    if (/^call +/.test(value)) {
+        Mappings.parseLine(value);
+        return;
+    }
 
-  if (/^script +/.test(value)) {
-    RUNTIME('runScript', {code: value.slice(7)});
-  }
+    if (/^script +/.test(value)) {
+        RUNTIME('runScript', {code: value.slice(7)});
+    }
 
 	if (/^click +/.test(value)) {
-		DOM.click(value.replace(/^click +/, '').toString());
+        let qlist;
+		let qs = value
+            .replace(/^click +/, '').toString();
+
+        if (!!qs[0].match(/^('|")/)) {
+            qlist = [qs];
+        } else if (!!qs.match(/^\[('|")/)) {
+            qlist = qs
+                .substring(1, qs.length-1)
+                .split(/\s*,\s*/);
+        } else {
+            qlist = [`'${qs}'`]
+        }
+
+        for (q of qlist) {
+            let target = document.querySelector(q.substring(1, q.length - 1));
+            target.click();
+        }
 	}
 
 	if (/^scroll +/.test(value)) {
-		document.querySelector(value.replace(/^scroll +/, '')).scrollIntoView();
+		let target = document.querySelector(value.replace(/^scroll +/, ''));
+        target.scrollIntoView();
+	}
+
+	if (/^nav(igate)? +/.test(value)) {
+		window.location.href = value.replace(/^nav(igate)? +/, '');
 	}
 
 };

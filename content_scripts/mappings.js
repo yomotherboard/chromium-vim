@@ -705,7 +705,7 @@ Mappings.actions = {
   },
   muteTab: function() {
     RUNTIME('muteTab');
-  }
+  },
 
 };
 

@@ -189,8 +189,4 @@ window.DOM = {
       element.dispatchEvent(event);
     });
   },
-
-	click: (q) => {
-		console.log(document.querySelector(q), q, typeof q);
-	}
 };
