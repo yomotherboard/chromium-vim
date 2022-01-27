@@ -317,7 +317,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 1.2.99 (2017-12-17)	CHANGELOG.md	/^## 1.2.99 (2017-12-17)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
 1.2.99 (2017-12-17)	pages/changelog.html	/^<h2>1.2.99 (2017-12-17)<\/h2>$/;"	i
 10	manifest.json	/^        "content_scripts\/complete.js",$/;"	s	array:content_scripts.0.js
-10	manifest.json	/^      "background_scripts\/main.js",$/;"	s	array:background.scripts
+10	manifest.json	/^      "background_scripts\/actions.js",$/;"	s	array:background.scripts
 10	manifest.json	/^    "clipboardWrite",$/;"	s	array:permissions
 100	content_scripts/keys.js	/^      100: '4',$/;"	p	class:KeyListener.codeMap
 101	content_scripts/keys.js	/^      101: '5',$/;"	p	class:KeyListener.codeMap
@@ -329,25 +329,26 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 107	content_scripts/keys.js	/^      107: '+',$/;"	p	class:KeyListener.codeMap
 109	content_scripts/keys.js	/^      109: '-',$/;"	p	class:KeyListener.codeMap
 11	manifest.json	/^        "content_scripts\/mappings.js",$/;"	s	array:content_scripts.0.js
-11	manifest.json	/^      "background_scripts\/options.js",$/;"	s	array:background.scripts
+11	manifest.json	/^      "background_scripts\/main.js",$/;"	s	array:background.scripts
 11	manifest.json	/^    "webNavigation"$/;"	s	array:permissions
 111	content_scripts/keys.js	/^      111: '\/',$/;"	p	class:KeyListener.codeMap
 12	content_scripts/keys.js	/^      12:  'Num',$/;"	p	class:KeyListener.codeMap
 12	manifest.json	/^        "content_scripts\/find.js",$/;"	s	array:content_scripts.0.js
-12	manifest.json	/^      "background_scripts\/sessions.js",$/;"	s	array:background.scripts
+12	manifest.json	/^      "background_scripts\/options.js",$/;"	s	array:background.scripts
 128	manifest.json	/^    "128": "icons\/128.png",$/;"	s	object:icons
 13	content_scripts/keys.js	/^      13:  'Enter',$/;"	p	class:KeyListener.codeMap
 13	manifest.json	/^        "content_scripts\/cursor.js",$/;"	s	array:content_scripts.0.js
-13	manifest.json	/^      "background_scripts\/popup.js",$/;"	s	array:background.scripts
+13	manifest.json	/^      "background_scripts\/sessions.js",$/;"	s	array:background.scripts
 14	manifest.json	/^        "content_scripts\/status.js",$/;"	s	array:content_scripts.0.js
-14	manifest.json	/^      "background_scripts\/update.js",$/;"	s	array:background.scripts
+14	manifest.json	/^      "background_scripts\/popup.js",$/;"	s	array:background.scripts
 144	content_scripts/keys.js	/^      144: 'Num',$/;"	p	class:KeyListener.codeMap
 15	manifest.json	/^        "content_scripts\/hud.js",$/;"	s	array:content_scripts.0.js
-15	manifest.json	/^      "background_scripts\/tab_creation_order.js",$/;"	s	array:background.scripts
+15	manifest.json	/^      "background_scripts\/update.js",$/;"	s	array:background.scripts
 16	manifest.json	/^        "content_scripts\/visual.js",$/;"	s	array:content_scripts.0.js
-16	manifest.json	/^      "background_scripts\/frames.js"$/;"	s	array:background.scripts
+16	manifest.json	/^      "background_scripts\/tab_creation_order.js",$/;"	s	array:background.scripts
 16	manifest.json	/^    "16":  "icons\/16.png"$/;"	s	object:icons
 17	manifest.json	/^        "content_scripts\/scroll.js",$/;"	s	array:content_scripts.0.js
+17	manifest.json	/^      "background_scripts\/frames.js"$/;"	s	array:background.scripts
 18	manifest.json	/^        "content_scripts\/search.js",$/;"	s	array:content_scripts.0.js
 186	content_scripts/keys.js	/^      186: [';', ':'],$/;"	p	class:KeyListener.codeMap
 187	content_scripts/keys.js	/^      187: ['=', '+'],$/;"	p	class:KeyListener.codeMap
@@ -415,7 +416,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 8	manifest.json	/^    "downloads.shelf",$/;"	s	array:permissions
 9	content_scripts/keys.js	/^      9:   'Tab',$/;"	p	class:KeyListener.codeMap
 9	manifest.json	/^        "content_scripts\/clipboard.js",$/;"	s	array:content_scripts.0.js
-9	manifest.json	/^      "background_scripts\/actions.js",$/;"	s	array:background.scripts
+9	manifest.json	/^      "background_scripts\/config.js",$/;"	s	array:background.scripts
 9	manifest.json	/^    "clipboardRead",$/;"	s	array:permissions
 96	content_scripts/keys.js	/^      96:  '0',$/;"	p	class:KeyListener.codeMap
 97	content_scripts/keys.js	/^      97:  '1',$/;"	p	class:KeyListener.codeMap
@@ -435,8 +436,9 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 <Nop>	content_scripts/mappings.js	/^  '<Nop>': function() {},$/;"	m	class:Mappings.actions
 <S-Space>	cvimrc_parser/test/test.vim	/^map <S-Space> h$/;"	m
 <Space>	cvimrc_parser/test/test.vim	/^map <Space> l$/;"	m
-AUTOFUNCTIONS	content_scripts/cvimrc_parser.js	/^              AUTOFUNCTIONS: {}$/;"	p	class:peg$c102.result
-AUTOFUNCTIONS	cvimrc_parser/parser.js	/^              AUTOFUNCTIONS: {}$/;"	p	class:peg$c102.result
+AUTOFUNCTIONS	bak/cvimrc_parser.js	/^              AUTOFUNCTIONS: {}$/;"	p	class:peg$c102.result
+AUTOFUNCTIONS	content_scripts/cvimrc_parser.js	/^              AUTOFUNCTIONS: {}$/;"	p	class:peg$c107.result
+AUTOFUNCTIONS	cvimrc_parser/parser.js	/^              AUTOFUNCTIONS: {}$/;"	p	class:peg$c107.result
 Actions	background_scripts/actions.js	/^Actions = (function() {$/;"	f
 ActiveTabs	background_scripts/main.js	/^    ActiveTabs = {},$/;"	v
 AnonymousFunction0b3bbd620100	content_scripts/find.js	/^  nodes.forEach((function() {$/;"	f	function:nodes
@@ -453,9 +455,13 @@ AnonymousFunction0d8647b80700	background_scripts/history.js	/^      }, function(
 AnonymousFunction0d8647b80800	background_scripts/history.js	/^        History.historyStore = results.sort(function(a, b) {$/;"	f
 AnonymousFunction0d8647b80900	background_scripts/history.js	/^      fn: function(item) {$/;"	f	function:History.retrieveSearchHistory
 AnonymousFunction0d8647b80a00	background_scripts/history.js	/^  History.historyTypes.forEach(function(type) {$/;"	f
-AnonymousFunction1066140a0100	content_scripts/bookmarks.js	/^      marks.forEach(function(bookmark) {$/;"	f
-AnonymousFunction1066140a0200	content_scripts/bookmarks.js	/^      fn: function(item) { return item.join(' '); }$/;"	f	function:_.match
-AnonymousFunction1066140a0300	content_scripts/bookmarks.js	/^      RUNTIME('getFilePath', { path: search }, function(data) {$/;"	f	function:_.parseFileCommand
+AnonymousFunction1066140a0100	content_scripts/bookmarks.js	/^      fn: function(item) { return item.join(' '); }$/;"	f	function:_.match
+AnonymousFunction1066140a0200	content_scripts/bookmarks.js	/^      RUNTIME('getFilePath', { path: search }, function(data) {$/;"	f	function:_.parseFileCommand
+AnonymousFunction12b3979d0100	bak/cvimrc_parser.js	/^        .replace(\/[\\x00-\\x0F]\/g,          function(ch) { return '\\\\x0' + hex(ch); })$/;"	f
+AnonymousFunction12b3979d0200	bak/cvimrc_parser.js	/^        .replace(\/[\\x10-\\x1F\\x7F-\\x9F]\/g, function(ch) { return '\\\\x'  + hex(ch); });$/;"	f
+AnonymousFunction12b3979d0300	bak/cvimrc_parser.js	/^        .replace(\/[\\x00-\\x0F]\/g,          function(ch) { return '\\\\x0' + hex(ch); })$/;"	f
+AnonymousFunction12b3979d0400	bak/cvimrc_parser.js	/^        .replace(\/[\\x10-\\x1F\\x7F-\\x9F]\/g, function(ch) { return '\\\\x'  + hex(ch); });$/;"	f
+AnonymousFunction12b3979d0500	bak/cvimrc_parser.js	/^        data.forEach(function(e) {$/;"	f
 AnonymousFunction15da5faa0100	content_scripts/messenger.js	/^port.onDisconnect.addListener(function() {$/;"	f
 AnonymousFunction15da5faa0200	content_scripts/messenger.js	/^    return function(action, args, callback) {$/;"	f	function:$
 AnonymousFunction15da5faa0300	content_scripts/messenger.js	/^port.onMessage.addListener(function(response) {$/;"	f
@@ -465,6 +471,7 @@ AnonymousFunction15da5faa0600	content_scripts/messenger.js	/^chrome.extension.on
 AnonymousFunction15da5faa0700	content_scripts/messenger.js	/^      Command.onSettingsLoad(function() {$/;"	f
 AnonymousFunction1bec98a50100	content_scripts/status.js	/^      Command.callOnCvimLoad(function() {$/;"	f
 AnonymousFunction1bec98a50200	content_scripts/status.js	/^    this.delay = window.setTimeout(function() {$/;"	f	function:Status.setMessage
+AnonymousFunction1da57fdc0100	background_scripts/config.js	/^        }, function() {$/;"	f	function:Config.merge
 AnonymousFunction24a0d1470100	background_scripts/links.js	/^  links.forEach(function(item) {$/;"	f
 AnonymousFunction2dfd10e90100	background_scripts/update.js	/^chrome.runtime.onInstalled.addListener(function(details) {$/;"	f
 AnonymousFunction2dfd10e90200	background_scripts/update.js	/^    }, function(tabInfo) {$/;"	f
@@ -525,46 +532,41 @@ AnonymousFunction4c7d71a71900	content_scripts/hints.js	/^      }, function(data)
 AnonymousFunction53bda71a0100	content_scripts/complete.js	/^    ['baseUrl', 'apiUrl', 'requestUrl'].forEach(function(prop) {$/;"	f
 AnonymousFunction53bda71a0200	content_scripts/complete.js	/^      locale[prop].forEach(function(engineName) {$/;"	f
 AnonymousFunction53bda71a0300	content_scripts/complete.js	/^    return this.activeEngines.filter(function(name) {$/;"	f
-AnonymousFunction53bda71a0400	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.google.queryApi
-AnonymousFunction53bda71a0500	content_scripts/complete.js	/^        var data = response[1].map(function(e, i) {$/;"	f	function:Complete.engines.google.queryApi.AnonymousFunction53bda71a0400
-AnonymousFunction53bda71a0600	content_scripts/complete.js	/^        callback(data.sort(function(a) {$/;"	f	function:Complete.engines.google.queryApi.AnonymousFunction53bda71a0400
-AnonymousFunction53bda71a0700	content_scripts/complete.js	/^        }).map(function(e) { return e.text; }));$/;"	f	function:Complete.engines.google.queryApi.AnonymousFunction53bda71a0400
-AnonymousFunction53bda71a0800	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.github.queryApi
-AnonymousFunction53bda71a0900	content_scripts/complete.js	/^        data = data.map(function(e) {$/;"	f	function:Complete.engines.github.queryApi.AnonymousFunction53bda71a0800
-AnonymousFunction53bda71a0a00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.wikipedia.queryApi
-AnonymousFunction53bda71a0b00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.google-maps.queryApi
-AnonymousFunction53bda71a0c00	content_scripts/complete.js	/^        data = data.map(function(e) {$/;"	f	function:Complete.engines.google-maps.queryApi.AnonymousFunction53bda71a0b00
-AnonymousFunction53bda71a0d00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.google-image.queryApi
-AnonymousFunction53bda71a0e00	content_scripts/complete.js	/^        data = data.map(function(e) {$/;"	f	function:Complete.engines.google-image.queryApi.AnonymousFunction53bda71a0d00
-AnonymousFunction53bda71a0f00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.google-trends.queryApi
-AnonymousFunction53bda71a1000	content_scripts/complete.js	/^        callback(response.entityList.map(function(e) {$/;"	f	function:Complete.engines.google-trends.queryApi.AnonymousFunction53bda71a0f00
-AnonymousFunction53bda71a1100	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.google-finance.queryApi
-AnonymousFunction53bda71a1200	content_scripts/complete.js	/^        callback(response.matches.map(function(e) {$/;"	f	function:Complete.engines.google-finance.queryApi.AnonymousFunction53bda71a1100
-AnonymousFunction53bda71a1300	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.amazon.queryApi
-AnonymousFunction53bda71a1400	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.yahoo.queryApi
-AnonymousFunction53bda71a1500	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.answers.queryApi
-AnonymousFunction53bda71a1600	content_scripts/complete.js	/^        callback(response.r.map(function(e) {$/;"	f	function:Complete.engines.answers.queryApi.AnonymousFunction53bda71a1500
-AnonymousFunction53bda71a1700	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.bing.queryApi
-AnonymousFunction53bda71a1800	content_scripts/complete.js	/^        callback(response[1].map(function(e) {$/;"	f	function:Complete.engines.bing.queryApi.AnonymousFunction53bda71a1700
-AnonymousFunction53bda71a1900	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.ebay.queryApi
-AnonymousFunction53bda71a1a00	content_scripts/complete.js	/^        callback(_ret.res.sug.map(function(e) {$/;"	f	function:Complete.engines.ebay.queryApi.AnonymousFunction53bda71a1900
-AnonymousFunction53bda71a1b00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.youtube.queryApi
-AnonymousFunction53bda71a1c00	content_scripts/complete.js	/^        callback(_ret[1].map(function(e) {$/;"	f	function:Complete.engines.youtube.queryApi.AnonymousFunction53bda71a1b00
-AnonymousFunction53bda71a1d00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.wolframalpha.queryApi
-AnonymousFunction53bda71a1e00	content_scripts/complete.js	/^        callback(response.results.map(function(e) {$/;"	f	function:Complete.engines.wolframalpha.queryApi.AnonymousFunction53bda71a1d00
-AnonymousFunction53bda71a1f00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.webster.queryApi
-AnonymousFunction53bda71a2000	content_scripts/complete.js	/^        callback(response.suggestions.map(function(e) {$/;"	f	function:Complete.engines.webster.queryApi.AnonymousFunction53bda71a1f00
-AnonymousFunction53bda71a2100	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.wiktionary.queryApi
-AnonymousFunction53bda71a2200	content_scripts/complete.js	/^        callback(response[1].map(function(e) {$/;"	f	function:Complete.engines.wiktionary.queryApi.AnonymousFunction53bda71a2100
-AnonymousFunction53bda71a2300	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.duckduckgo.queryApi
-AnonymousFunction53bda71a2400	content_scripts/complete.js	/^        response = response.map(function(e) { return e.phrase; });$/;"	f	function:Complete.engines.duckduckgo.queryApi.AnonymousFunction53bda71a2300
-AnonymousFunction53bda71a2500	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.urbandictionary.queryApi
-AnonymousFunction53bda71a2600	content_scripts/complete.js	/^        callback(response.slice(1).map(function(e) {$/;"	f	function:Complete.engines.urbandictionary.queryApi.AnonymousFunction53bda71a2500
-AnonymousFunction53bda71a2700	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.imdb.queryApi
-AnonymousFunction53bda71a2800	content_scripts/complete.js	/^        callback(_ret.d.map(function(e) {$/;"	f	function:Complete.engines.imdb.queryApi.AnonymousFunction53bda71a2700
-AnonymousFunction53bda71a2900	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.themoviedb.queryApi
-AnonymousFunction53bda71a2a00	content_scripts/complete.js	/^        callback(response.map(function(e) {$/;"	f	function:Complete.engines.themoviedb.queryApi.AnonymousFunction53bda71a2900
-AnonymousFunction53bda71a2b00	content_scripts/complete.js	/^      }, function(response) {$/;"	f	function:Complete.engines.baidu.queryApi
+AnonymousFunction53bda71a0400	content_scripts/complete.js	/^                    callback(data.sort(function(a) {$/;"	f
+AnonymousFunction53bda71a0500	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0600	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0700	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0800	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0900	content_scripts/complete.js	/^        data = data.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a0800
+AnonymousFunction53bda71a0a00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0b00	content_scripts/complete.js	/^        callback(response.entityList.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a0a00
+AnonymousFunction53bda71a0c00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0d00	content_scripts/complete.js	/^        callback(response.matches.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a0c00
+AnonymousFunction53bda71a0e00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a0f00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1000	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1100	content_scripts/complete.js	/^        callback(response.r.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1000
+AnonymousFunction53bda71a1200	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1300	content_scripts/complete.js	/^        callback(response[1].map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1200
+AnonymousFunction53bda71a1400	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1500	content_scripts/complete.js	/^        callback(_ret.res.sug.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1400
+AnonymousFunction53bda71a1600	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1700	content_scripts/complete.js	/^        callback(_ret[1].map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1600
+AnonymousFunction53bda71a1800	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1900	content_scripts/complete.js	/^        callback(response.results.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1800
+AnonymousFunction53bda71a1a00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1b00	content_scripts/complete.js	/^        callback(response.suggestions.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1a00
+AnonymousFunction53bda71a1c00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1d00	content_scripts/complete.js	/^        callback(response[1].map(function(e) {$/;"	f	function:AnonymousFunction53bda71a1c00
+AnonymousFunction53bda71a1e00	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a1f00	content_scripts/complete.js	/^        response = response.map(function(e) { return e.phrase; });$/;"	f	function:AnonymousFunction53bda71a1e00
+AnonymousFunction53bda71a2000	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a2100	content_scripts/complete.js	/^        callback(response.slice(1).map(function(e) {$/;"	f	function:AnonymousFunction53bda71a2000
+AnonymousFunction53bda71a2200	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a2300	content_scripts/complete.js	/^        callback(_ret.d.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a2200
+AnonymousFunction53bda71a2400	content_scripts/complete.js	/^      }, function(response) {$/;"	f
+AnonymousFunction53bda71a2500	content_scripts/complete.js	/^        callback(response.map(function(e) {$/;"	f	function:AnonymousFunction53bda71a2400
+AnonymousFunction53bda71a2600	content_scripts/complete.js	/^      }, function(response) {$/;"	f
 AnonymousFunction5902c72f0100	background_scripts/bookmarks.js	/^  chrome.bookmarks.getTree(function(tree) {$/;"	f
 AnonymousFunction5902c72f0200	background_scripts/bookmarks.js	/^  chrome.bookmarks.getTree(function(tree) {$/;"	f
 AnonymousFunction5902c72f0300	background_scripts/bookmarks.js	/^        var links = dir.children.map(function(e) { return e.url; });$/;"	f	function:AnonymousFunction5902c72f0200
@@ -590,7 +592,6 @@ AnonymousFunction7e735cdc0100	cvimrc_parser/parser.js	/^        .replace(\/[\\x0
 AnonymousFunction7e735cdc0200	cvimrc_parser/parser.js	/^        .replace(\/[\\x10-\\x1F\\x7F-\\x9F]\/g, function(ch) { return '\\\\x'  + hex(ch); });$/;"	f
 AnonymousFunction7e735cdc0300	cvimrc_parser/parser.js	/^        .replace(\/[\\x00-\\x0F]\/g,          function(ch) { return '\\\\x0' + hex(ch); })$/;"	f
 AnonymousFunction7e735cdc0400	cvimrc_parser/parser.js	/^        .replace(\/[\\x10-\\x1F\\x7F-\\x9F]\/g, function(ch) { return '\\\\x'  + hex(ch); });$/;"	f
-AnonymousFunction7e735cdc0500	cvimrc_parser/parser.js	/^        data.forEach(function(e) {$/;"	f
 AnonymousFunction839991dd0100	content_scripts/keys.js	/^    listeners = listeners.filter(function(e) {$/;"	f	function:KeyListener.removeListener
 AnonymousFunction839991dd0200	content_scripts/keys.js	/^      var mods = key.split('-').filter(function(e) { return e; }).sort();$/;"	f	function:KeyListener.keyEquals.normalizeKey
 AnonymousFunction839991dd0300	content_scripts/keys.js	/^    return function(event) {$/;"	f	function:KeyListener.createListener
@@ -631,10 +632,9 @@ AnonymousFunction8e5b4e321300	content_scripts/utils.js	/^  getKey: function(key)
 AnonymousFunction8e5b4e321400	content_scripts/utils.js	/^  findValue: function(keys) {$/;"	f
 AnonymousFunction8e5b4e321500	content_scripts/utils.js	/^  return function() {$/;"	f	function:getLinkableElements
 AnonymousFunction8e5b4e321600	content_scripts/utils.js	/^    return traverseDOM(document.body, function(node) {$/;"	f	function:getLinkableElements.AnonymousFunction8e5b4e321500
-AnonymousFunction8e5b4e321700	content_scripts/utils.js	/^  return function(value) {$/;"	f	function:window.parseConfig
-AnonymousFunction95feefb90100	background_scripts/files.js	/^    return (data.match(\/addRow\\(".*\/g) || []).map(function(e) {$/;"	f
-AnonymousFunction95feefb90200	background_scripts/files.js	/^      httpRequest({url: 'file:\/\/' + path}).then(function(data) {$/;"	f
-AnonymousFunction95feefb90300	background_scripts/files.js	/^      }, function(xhr) { if (xhr); });$/;"	f
+AnonymousFunction95feefb90100	background_scripts/files.js	/^        return (data.match(\/addRow\\(".*\/g) || []).map(function(e) {$/;"	f
+AnonymousFunction95feefb90200	background_scripts/files.js	/^            httpRequest({url: 'file:\/\/' + path}).then(function(data) {$/;"	f
+AnonymousFunction95feefb90300	background_scripts/files.js	/^            }, function(xhr) { if (xhr); });$/;"	f
 AnonymousFunctiona13f781d0100	pages/codemirror/css.js	/^CodeMirror.defineMode("css", function(config, parserConfig) {$/;"	f
 AnonymousFunctiona13f781d0200	pages/codemirror/css.js	/^    return function(stream, state) {$/;"	f	function:AnonymousFunctiona13f781d0100.tokenString
 AnonymousFunctiona13f781d0300	pages/codemirror/css.js	/^  states.top = function(type, stream, state) {$/;"	f
@@ -764,9 +764,7 @@ AnonymousFunctiond38736174100	background_scripts/actions.js	/^      windowList.f
 AnonymousFunctiond38736174200	background_scripts/actions.js	/^    }, function() {$/;"	f
 AnonymousFunctiond38736174300	background_scripts/actions.js	/^    chrome.tabs.query({ currentWindow: true }, function(tabs) {$/;"	f
 AnonymousFunctiond38736174400	background_scripts/actions.js	/^      Clipboard.copy(tabs.map(function(tab) {$/;"	f
-AnonymousFunctiond38736174500	background_scripts/actions.js	/^    httpRequest({ url: path }).then(function(data) {$/;"	f
-AnonymousFunctiond38736174600	background_scripts/actions.js	/^    }, function() {$/;"	f
-AnonymousFunctiond38736174700	background_scripts/actions.js	/^  return function(_request, _sender, _callback, _port) {$/;"	f	function:Actions
+AnonymousFunctiond38736174500	background_scripts/actions.js	/^  return function(_request, _sender, _callback, _port) {$/;"	f	function:Actions
 AnonymousFunctionda431e3f0100	content_scripts/cursor.js	/^    document.addEventListener('mousemove', function(e) {$/;"	f	function:document
 AnonymousFunctiondb6a45000100	content_scripts/mappings.js	/^    Command.callOnCvimLoad(function() {$/;"	f
 AnonymousFunctiondb6a45000200	content_scripts/mappings.js	/^      .filter(function(e) { return e; })$/;"	f	function:Mappings.actions.goUpUrl
@@ -840,7 +838,6 @@ AnonymousFunctiondfa22c710100	content_scripts/cvimrc_parser.js	/^        .replac
 AnonymousFunctiondfa22c710200	content_scripts/cvimrc_parser.js	/^        .replace(\/[\\x10-\\x1F\\x7F-\\x9F]\/g, function(ch) { return '\\\\x'  + hex(ch); });$/;"	f
 AnonymousFunctiondfa22c710300	content_scripts/cvimrc_parser.js	/^        .replace(\/[\\x00-\\x0F]\/g,          function(ch) { return '\\\\x0' + hex(ch); })$/;"	f
 AnonymousFunctiondfa22c710400	content_scripts/cvimrc_parser.js	/^        .replace(\/[\\x10-\\x1F\\x7F-\\x9F]\/g, function(ch) { return '\\\\x'  + hex(ch); });$/;"	f
-AnonymousFunctiondfa22c710500	content_scripts/cvimrc_parser.js	/^        data.forEach(function(e) {$/;"	f
 AnonymousFunctione8a5d22a0100	scripts/create_pages.js	/^  highlight: function(str, lang) {$/;"	f
 AnonymousFunctione8a5d22a0200	scripts/create_pages.js	/^         scripts.map(function(e) {$/;"	f
 AnonymousFunctionf63b963b0100	pages/options.js	/^    RUNTIME('getDefaults', function(defaults) {$/;"	c	class:Settings.resetSettings
@@ -867,8 +864,9 @@ Blacklists	pages/mappings.html	/^<h3>Blacklists<\/h3>$/;"	j
 Bookmarks	background_scripts/bookmarks.js	/^var Bookmarks = {};$/;"	v
 CALLBACKS	content_scripts/complete.js	/^  var CALLBACKS = {};$/;"	v
 COMMANDBARCSS	background_scripts/options.js	/^  COMMANDBARCSS: '#cVim-command-bar, #cVim-command-bar-mode, #cVim-command-bar-input, #cVim-comm/;"	p	class:defaultSettings
-COMMANDS	content_scripts/cvimrc_parser.js	/^            var r = { COMMANDS: {} };$/;"	p	class:peg$c88.r
-COMMANDS	cvimrc_parser/parser.js	/^            var r = { COMMANDS: {} };$/;"	p	class:peg$c88.r
+COMMANDS	bak/cvimrc_parser.js	/^            var r = { COMMANDS: {} };$/;"	p	class:peg$c88.r
+COMMANDS	content_scripts/cvimrc_parser.js	/^            var r = { COMMANDS: {} };$/;"	p	class:peg$c93.r
+COMMANDS	cvimrc_parser/parser.js	/^            var r = { COMMANDS: {} };$/;"	p	class:peg$c93.r
 Clipboard	background_scripts/clipboard.js	/^var Clipboard = {};$/;"	v
 Clipboard	content_scripts/clipboard.js	/^var Clipboard = {$/;"	c
 Code blocks	README.md	/^### Code blocks$/;"	S	chapter:cVim Help
@@ -881,6 +879,7 @@ Command Mode	pages/mappings.html	/^<h1>Command Mode<\/h1>$/;"	h
 Complete	content_scripts/complete.js	/^var Complete = {$/;"	c
 Completion Engines	README.md	/^### Completion Engines$/;"	S	chapter:cVim Help
 Completion Engines	pages/mappings.html	/^<h3>Completion Engines<\/h3>$/;"	j
+Config	background_scripts/config.js	/^Config = {$/;"	c
 Context	pages/codemirror/css.js	/^  function Context(type, indent, prev) {$/;"	c
 Contributing	README.md	/^# Contributing$/;"	c
 Contributing	pages/mappings.html	/^<h1>Contributing<\/h1>$/;"	h
@@ -890,6 +889,7 @@ Ctrl-P	pages/codemirror/vim.js	/^      'Ctrl-P': 'autocomplete',$/;"	p	class:Cod
 Ctrl-[	pages/codemirror/vim.js	/^      'Ctrl-[': exitInsertMode,$/;"	p	class:CodeMirror.keyMap
 Cursor	content_scripts/cursor.js	/^var Cursor = { \/\/ Hide the mouse cursor on keydown (Linux)$/;"	c
 CvimServer	cvim_server.py	/^class CvimServer(BaseHTTPRequestHandler):$/;"	c
+DESCRIBE_EXPECTATION_FNS	bak/cvimrc_parser.js	/^    var DESCRIBE_EXPECTATION_FNS = {$/;"	c	class:peg$SyntaxError.buildMessage
 DESCRIBE_EXPECTATION_FNS	content_scripts/cvimrc_parser.js	/^    var DESCRIBE_EXPECTATION_FNS = {$/;"	c	class:peg$SyntaxError.buildMessage
 DESCRIBE_EXPECTATION_FNS	cvimrc_parser/parser.js	/^    var DESCRIBE_EXPECTATION_FNS = {$/;"	c	class:peg$SyntaxError.buildMessage
 DOM	content_scripts/dom.js	/^window.DOM = {$/;"	c	class:window
@@ -901,9 +901,14 @@ Esc	pages/codemirror/vim.js	/^      'Esc': exitInsertMode,$/;"	p	class:CodeMirro
 ExCommandDispatcher	pages/codemirror/vim.js	/^    Vim.ExCommandDispatcher = function() {$/;"	c	class:Vim
 Example configuration	README.md	/^### Example configuration$/;"	S	chapter:cVim Help
 Example configuration	pages/mappings.html	/^<h3>Example configuration<\/h3>$/;"	j
+FILES	content_scripts/cvimrc_parser.js	/^                var result = { FILES: p.join('') };$/;"	p	class:peg$c89.result
+FILES	content_scripts/cvimrc_parser.js	/^            FILES: []$/;"	p	class:parseScope.result
+FILES	cvimrc_parser/parser.js	/^                var result = { FILES: p.join('') };$/;"	p	class:peg$c89.result
+FILES	cvimrc_parser/parser.js	/^            FILES: []$/;"	p	class:parseScope.result
 FUNCTIONS	background_scripts/options.js	/^  FUNCTIONS: {},$/;"	p	class:defaultSettings
-FUNCTIONS	content_scripts/cvimrc_parser.js	/^              FUNCTIONS: {$/;"	p	class:peg$c103.result
-FUNCTIONS	cvimrc_parser/parser.js	/^              FUNCTIONS: {$/;"	p	class:peg$c103.result
+FUNCTIONS	bak/cvimrc_parser.js	/^              FUNCTIONS: {$/;"	p	class:peg$c103.result
+FUNCTIONS	content_scripts/cvimrc_parser.js	/^              FUNCTIONS: {$/;"	p	class:peg$c108.result
+FUNCTIONS	cvimrc_parser/parser.js	/^              FUNCTIONS: {$/;"	p	class:peg$c108.result
 Files	background_scripts/files.js	/^var Files = {$/;"	c
 Find	content_scripts/find.js	/^var Find = {$/;"	c
 Frames	background_scripts/frames.js	/^Frames = {$/;"	c
@@ -931,9 +936,9 @@ Links	background_scripts/links.js	/^var Links = {};$/;"	v
 Listeners	background_scripts/main.js	/^var Listeners = {$/;"	c
 M	pages/codemirror/vim.js	/^        'm': 'method', 'M': 'method',$/;"	p	class:Vim.symbolToMode
 MAPPINGS	background_scripts/options.js	/^  MAPPINGS: '',$/;"	p	class:defaultSettings
-MAPPINGS	content_scripts/cvimrc_parser.js	/^        var result = {MAPPINGS: []};$/;"	p	class:parseScope.result
-MAPPINGS	content_scripts/utils.js	/^      MAPPINGS: [],$/;"	p	class:window.parseConfig.formatConfig.result
-MAPPINGS	cvimrc_parser/parser.js	/^        var result = {MAPPINGS: []};$/;"	p	class:parseScope.result
+MAPPINGS	bak/cvimrc_parser.js	/^        var result = {MAPPINGS: []};$/;"	p	class:parseScope.result
+MAPPINGS	content_scripts/cvimrc_parser.js	/^            MAPPINGS: [],$/;"	p	class:parseScope.result
+MAPPINGS	cvimrc_parser/parser.js	/^            MAPPINGS: [],$/;"	p	class:parseScope.result
 Mappings	README.md	/^### Mappings$/;"	S	chapter:cVim Help
 Mappings	content_scripts/mappings.js	/^var Mappings = {$/;"	c
 Mappings	pages/mappings.html	/^<h3>Mappings<\/h3>$/;"	j
@@ -944,6 +949,7 @@ PORT	cvim_server.py	/^PORT = 8001$/;"	v
 Popup	background_scripts/popup.js	/^var Popup = {$/;"	c
 Quickmarks	background_scripts/actions.js	/^var Quickmarks = {};$/;"	v
 RC	background_scripts/options.js	/^  RC: '',$/;"	p	class:defaultSettings
+RCParser	bak/cvimrc_parser.js	/^  root.RCParser = {$/;"	c	class:root
 RCParser	content_scripts/cvimrc_parser.js	/^  root.RCParser = {$/;"	c	class:root
 RCParser	cvimrc_parser/parser.js	/^  root.RCParser = {$/;"	c	class:root
 RCParser	cvimrc_parser/test/test.js	/^var RCParser = require('..\/parser.js').RCParser;$/;"	v
@@ -969,9 +975,11 @@ Settings	pages/options.js	/^var Settings = {$/;"	c
 Site-specific Configuration	README.md	/^### Site-specific Configuration$/;"	S	chapter:cVim Help
 Site-specific Configuration	pages/mappings.html	/^<h3>Site-specific Configuration<\/h3>$/;"	j
 Sites	background_scripts/sites.js	/^var Sites = {};$/;"	v
+Start	bak/cvimrc_parser.js	/^        peg$startRuleFunctions = { Start: peg$parseStart },$/;"	p	class:peg$parse.peg$startRuleFunctions
 Start	content_scripts/cvimrc_parser.js	/^        peg$startRuleFunctions = { Start: peg$parseStart },$/;"	p	class:peg$parse.peg$startRuleFunctions
 Start	cvimrc_parser/parser.js	/^        peg$startRuleFunctions = { Start: peg$parseStart },$/;"	p	class:peg$parse.peg$startRuleFunctions
 Status	content_scripts/status.js	/^var Status = {$/;"	c
+SyntaxError	bak/cvimrc_parser.js	/^    SyntaxError: peg$SyntaxError,$/;"	p	class:root.RCParser
 SyntaxError	content_scripts/cvimrc_parser.js	/^    SyntaxError: peg$SyntaxError,$/;"	p	class:root.RCParser
 SyntaxError	cvimrc_parser/parser.js	/^    SyntaxError: peg$SyntaxError,$/;"	p	class:root.RCParser
 T	cvimrc_parser/test/test.vim	/^map T :tabopen<CR>$/;"	m
@@ -1000,8 +1008,9 @@ Why is this different than Vimium, ViChrome, or Vrome?	pages/mappings.html	/^<h1
 [	pages/codemirror/vim.js	/^        '[': 'section', ']': 'section',$/;"	p	class:Vim.symbolToMode
 [	pages/codemirror/vim.js	/^      var increment = ({'(': 1, '{': 1, '[': 1})[symb] || -1;$/;"	p	class:Vim.findMatchedSymbol.increment
 [Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)	CHANGELOG.md	/^# [Like cVim? Consider donating! https:\/\/www.paypal.me\/1995eaton](https:\/\/www.paypal.me\/19/;"	c
-[b]	content_scripts/cvimrc_parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	p	class:peg$c71.scopeIdentifiers
-[b]	cvimrc_parser/parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	p	class:peg$c71.scopeIdentifiers
+[b]	bak/cvimrc_parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	p	class:peg$c71.scopeIdentifiers
+[b]	content_scripts/cvimrc_parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	p	class:peg$c75.scopeIdentifiers
+[b]	cvimrc_parser/parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	p	class:peg$c75.scopeIdentifiers
 ]	pages/codemirror/vim.js	/^                             '[': ']', ']': '['};$/;"	p	class:Vim.motions.textObjectManipulation.mirroredPairs
 ]	pages/codemirror/vim.js	/^        '[': ']', ']': '[',$/;"	p	class:Vim.findMatchedSymbol.reverseSymb
 ]	pages/codemirror/vim.js	/^        '[': 'section', ']': 'section',$/;"	p	class:Vim.symbolToMode
@@ -1052,7 +1061,7 @@ addQuickMark	content_scripts/mappings.js	/^  addQuickMark: function() {$/;"	m	cl
 addSettingBlock	content_scripts/command.js	/^Command.addSettingBlock = function(config) {$/;"	f	function:Command
 addTextListeners	content_scripts/command.js	/^  var addTextListeners = (function() {$/;"	f	function:Command.preventAutoFocus
 addVersionInfo	pages/options.js	/^function addVersionInfo() {$/;"	f
-added	content_scripts/command.js	/^      var added = RCParser.parse(value);$/;"	v
+added	content_scripts/command.js	/^            var added = RCParser.parse(value);$/;"	v
 af	cvimrc_parser/test/test.vim	/^map af createTabbedHint$/;"	m
 aliases	content_scripts/complete.js	/^  aliases: {$/;"	c	class:Complete
 alignHorizontally	pages/codemirror/codemirror.js	/^  function alignHorizontally(cm) {$/;"	f	function:window.CodeMirror
@@ -1060,34 +1069,12 @@ all	Makefile	/^all:$/;"	t
 all	cvimrc_parser/Makefile	/^all:$/;"	t
 allWords	pages/codemirror/css.js	/^  var allWords = mediaTypes_.concat(mediaFeatures_).concat(propertyKeywords_).concat(colorKeywor/;"	v
 all_frames	manifest.json	/^      "all_frames": true$/;"	b	object:content_scripts.0
-amazon	content_scripts/complete.js	/^  amazon: {$/;"	c	class:Complete.engines
 animationXFrame	content_scripts/scroll.js	/^  var animationYFrame, animationXFrame,$/;"	v
 animationYFrame	content_scripts/scroll.js	/^  var animationYFrame, animationXFrame,$/;"	v
-answers	content_scripts/complete.js	/^  answers: {$/;"	c	class:Complete.engines
+apiUrl	content_scripts/complete.js	/^        apiUrl: 'www.api.stackoverflow.com\/2.3\/search?order=desc&sort=activity&intitle=%s&site/;"	p	class:Complete.engines.stackexchange
 apiUrl	content_scripts/complete.js	/^      apiUrl: ['google', 'youtube']$/;"	p	class:Complete.locales.aus
 apiUrl	content_scripts/complete.js	/^      apiUrl: ['google', 'youtube']$/;"	p	class:Complete.locales.jp
 apiUrl	content_scripts/complete.js	/^      apiUrl: ['google', 'youtube']$/;"	p	class:Complete.locales.uk
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/api.bing.com\/osjson.aspx?query=%s',$/;"	p	class:Complete.engines.bing
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/api.urbandictionary.com\/v0\/autocomplete?term=%s',$/;"	p	class:Complete.engines.urbandictionary
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/en.wiktionary.org\/w\/api.php?action=opensearch&limit=15&format=json&searc/;"	p	class:Complete.engines.wiktionary
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/sg.media-imdb.com\/suggests\/',$/;"	p	class:Complete.engines.imdb
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/suggestion.baidu.com\/su?json=1&cb=&wd=',$/;"	p	class:Complete.engines.baidu
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/www.google.com\/complete\/search?client=img&hl=en&gs_rn=43&gs_ri=img&ds=i&/;"	p	class:Complete.engines.google-image
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/www.google.com\/trends\/entitiesQuery?tn=10&q=%s',$/;"	p	class:Complete.engines.google-trends
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'http:\/\/www.merriam-webster.com\/autocomplete?query=%s',$/;"	p	class:Complete.engines.webster
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/api.github.com\/search\/repositories?q=%s+in:name',$/;"	p	class:Complete.engines.github
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/autosug.ebay.com\/autosug?kwd=%s',$/;"	p	class:Complete.engines.ebay
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/clients1.google.com\/complete\/search?client=youtube&hl=en&gl=us&gs_rn=23/;"	p	class:Complete.engines.youtube
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/completion.amazon.com\/search\/complete?method=completion&search-alias=ap/;"	p	class:Complete.engines.amazon
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/duckduckgo.com\/ac\/?q=%s',$/;"	p	class:Complete.engines.duckduckgo
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/en.wikipedia.org\/w\/api.php?action=opensearch&format=json&search=%s',$/;"	p	class:Complete.engines.wikipedia
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/search.yahoo.com\/sugg\/gossip\/gossip-us-ura\/?output=sd1&appid=search.y/;"	p	class:Complete.engines.yahoo
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/search.yahoo.com\/sugg\/ss\/gossip-us_ss-vertical_ss\/?output=sd1&pubid=1/;"	p	class:Complete.engines.answers
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/www.google.com\/complete\/search?client=chrome-omni&gs_ri=chrome-ext&oit=/;"	p	class:Complete.engines.google
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/www.google.com\/finance\/match?matchtype=matchall&q=%s',$/;"	p	class:Complete.engines.google-finance
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/www.google.com\/s?tbm=map&fp=1&gs_ri=maps&source=hp&suggest=p&authuser=0&/;"	p	class:Complete.engines.google-maps
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/www.themoviedb.org\/search\/remote\/multi?query=%s&language=en',$/;"	p	class:Complete.engines.themoviedb
-apiUrl	content_scripts/complete.js	/^    apiUrl: 'https:\/\/www.wolframalpha.com\/input\/autocomplete.jsp?qr=0&i=%s',$/;"	p	class:Complete.engines.wolframalpha
 append	background_scripts/history.js	/^  append: function(value, type) {$/;"	m	class:History
 appendHistory	background_scripts/actions.js	/^  _.appendHistory = function(o) {$/;"	f	function:_
 appendText	pages/codemirror/vim.js	/^      appendText: function(text, linewise) {$/;"	m	class:Register
@@ -1098,6 +1085,7 @@ array_elem	cvimrc_parser/test/test.vim	/^let array_elem = array[1 ][ 2]$/;"	v
 aus	content_scripts/complete.js	/^    aus: {$/;"	c	class:Complete.locales
 author	manifest.json	/^  "author": "Jake Eaton",$/;"	s
 author	package.json	/^  "author": "Jake Eaton <1995eaton@gmail.com>",$/;"	s
+autoJsLength	bak/cvimrc_parser.js	/^      var autoJsLength = 0;$/;"	v
 autoJsLength	content_scripts/cvimrc_parser.js	/^      var autoJsLength = 0;$/;"	v
 autoJsLength	cvimrc_parser/parser.js	/^      var autoJsLength = 0;$/;"	v
 autoSize	pages/options.js	/^  function autoSize() {$/;"	c	class:Settings.init
@@ -1106,35 +1094,14 @@ autohidecursor	background_scripts/options.js	/^  autohidecursor: false,$/;"	p	cl
 autoupdategist	background_scripts/options.js	/^  autoupdategist: false,$/;"	p	class:defaultSettings
 b	content_scripts/visual.js	/^  b: ['left', 'word'],$/;"	p	class:Visual.movements
 background	manifest.json	/^  "background": {$/;"	o
-baidu	content_scripts/complete.js	/^  baidu: {$/;"	c	class:Complete.engines
 barposition	background_scripts/options.js	/^  barposition: 'top',$/;"	p	class:defaultSettings
+baseUrl	content_scripts/complete.js	/^        baseUrl: 'https:\/\/www.netflix.com',$/;"	p	class:Complete.engines.netflix
+baseUrl	content_scripts/complete.js	/^        baseUrl: 'https:\/\/www.stackoverflow.com',$/;"	p	class:Complete.engines.stackexchange
 baseUrl	content_scripts/complete.js	/^      baseUrl: ['google', 'youtube'],$/;"	p	class:Complete.locales.aus
 baseUrl	content_scripts/complete.js	/^      baseUrl: ['google', 'youtube'],$/;"	p	class:Complete.locales.jp
 baseUrl	content_scripts/complete.js	/^      baseUrl: ['google', 'youtube'],$/;"	p	class:Complete.locales.uk
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.amazon.com',$/;"	p	class:Complete.engines.amazon
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.ebay.com',$/;"	p	class:Complete.engines.ebay
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.google.com\/imghp',$/;"	p	class:Complete.engines.google-image
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.google.com\/trends\/',$/;"	p	class:Complete.engines.google-trends
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.imdb.com',$/;"	p	class:Complete.engines.imdb
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.merriam-webster.com',$/;"	p	class:Complete.engines.webster
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'http:\/\/www.urbandictionary.com',$/;"	p	class:Complete.engines.urbandictionary
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/answers.yahoo.com',$/;"	p	class:Complete.engines.answers
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/duckduckgo.com',$/;"	p	class:Complete.engines.duckduckgo
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/en.wikipedia.org\/wiki\/Main_Page',$/;"	p	class:Complete.engines.wikipedia
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/en.wiktionary.org\/wiki\/Wiktionary:Main_Page',$/;"	p	class:Complete.engines.wiktionary
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/github.com',$/;"	p	class:Complete.engines.github
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/search.yahoo.com',$/;"	p	class:Complete.engines.yahoo
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.baidu.com\/',$/;"	p	class:Complete.engines.baidu
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.bing.com',$/;"	p	class:Complete.engines.bing
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.google.com',$/;"	p	class:Complete.engines.google
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.google.com\/finance',$/;"	p	class:Complete.engines.google-finance
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.google.com\/maps\/preview',$/;"	p	class:Complete.engines.google-maps
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.themoviedb.org',$/;"	p	class:Complete.engines.themoviedb
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.wolframalpha.com',$/;"	p	class:Complete.engines.wolframalpha
-baseUrl	content_scripts/complete.js	/^    baseUrl: 'https:\/\/www.youtube.com',$/;"	p	class:Complete.engines.youtube
 beforeSelectionChange	pages/codemirror/vim.js	/^    function beforeSelectionChange(cm, cur) {$/;"	f	function:Vim
 bindKeys	pages/codemirror/vim.js	/^      function bindKeys(keys, modifier) {$/;"	f	function:Vim.buildVimKeyMap
-bing	content_scripts/complete.js	/^  bing: {$/;"	c	class:Complete.engines
 blacklist	pages/popup.html	/^        <a href="#"><div id="blacklist">Disable cVim on this domain<\/div><\/a>$/;"	I
 blacklist	pages/popup.js	/^    blacklist = document.getElementById('blacklist'),$/;"	v
 blacklists	background_scripts/options.js	/^  blacklists: [],$/;"	p	class:defaultSettings
@@ -1161,6 +1128,7 @@ browser_action	manifest.json	/^  "browser_action": {$/;"	o
 buffers	content_scripts/messenger.js	/^        buffers: (function() {$/;"	p	class:Command.completions
 buildCommandMap_	pages/codemirror/vim.js	/^      buildCommandMap_: function() {$/;"	m	class:Vim.ExCommandDispatcher
 buildKeyMap	pages/codemirror/vim.js	/^      buildKeyMap: function() {$/;"	m	class:Vim.vimApi
+buildMessage	bak/cvimrc_parser.js	/^  peg$SyntaxError.buildMessage = function(expected, found) {$/;"	f	function:peg$SyntaxError
 buildMessage	content_scripts/cvimrc_parser.js	/^  peg$SyntaxError.buildMessage = function(expected, found) {$/;"	f	function:peg$SyntaxError
 buildMessage	cvimrc_parser/parser.js	/^  peg$SyntaxError.buildMessage = function(expected, found) {$/;"	f	function:peg$SyntaxError
 buildVimKeyMap	pages/codemirror/vim.js	/^    function buildVimKeyMap() {$/;"	f	function:Vim
@@ -1177,7 +1145,7 @@ calculateWeight	background_scripts/history.js	/^    var calculateWeight = functi
 callCompletionFunction	content_scripts/command.js	/^Command.callCompletionFunction = (function() {$/;"	f	function:Command
 callFind	background_scripts/actions.js	/^  _.callFind = function(o) {$/;"	f	function:_
 callOnCvimLoad	content_scripts/command.js	/^Command.callOnCvimLoad = (function() {$/;"	f	function:Command
-callback	background_scripts/actions.js	/^      callback: _callback,$/;"	p	class:Actions.AnonymousFunctiond38736174700.o
+callback	background_scripts/actions.js	/^      callback: _callback,$/;"	p	class:Actions.AnonymousFunctiond38736174500.o
 callback	content_scripts/scroll.js	/^    callback: null,$/;"	p	class:scroll
 cancelAllWebRequests	background_scripts/actions.js	/^  _.cancelAllWebRequests = function() {$/;"	f	function:_
 cancelAllWebRequests	content_scripts/mappings.js	/^  cancelAllWebRequests: function() {$/;"	m	class:Mappings.actions
@@ -1211,13 +1179,16 @@ charIdxInLine	pages/codemirror/vim.js	/^    function charIdxInLine(start, line, 
 checkBlacklist	content_scripts/command.js	/^  var checkBlacklist = function() {$/;"	m	class:Command.configureSettings
 checkElement	content_scripts/select.js	/^function checkElement(selector) {$/;"	f
 checkError	background_scripts/update.js	/^    var checkError = function() { if (chrome.runtime.lastError) return false; };$/;"	f	function:AnonymousFunction2dfd10e90100
+child	bak/cvimrc_parser.js	/^    child.prototype = new ctor();$/;"	c
 child	content_scripts/cvimrc_parser.js	/^    child.prototype = new ctor();$/;"	c
 child	cvimrc_parser/parser.js	/^    child.prototype = new ctor();$/;"	c
 chrome	content_scripts/command.js	/^        self.completions = { chrome: matches };$/;"	p	class:self.completions
 chromeMatch	content_scripts/search.js	/^Search.chromeMatch = function(string, callback) {$/;"	f	function:Search
 chromesessions	content_scripts/command.js	/^        chromesessions: Object.keys(sessions).map(function(e) {$/;"	p	class:self.completions
+class	bak/cvimrc_parser.js	/^          "class": function(expectation) {$/;"	m	class:peg$SyntaxError.buildMessage.DESCRIBE_EXPECTATION_FNS
 class	content_scripts/cvimrc_parser.js	/^          "class": function(expectation) {$/;"	m	class:peg$SyntaxError.buildMessage.DESCRIBE_EXPECTATION_FNS
 class	cvimrc_parser/parser.js	/^          "class": function(expectation) {$/;"	m	class:peg$SyntaxError.buildMessage.DESCRIBE_EXPECTATION_FNS
+classEscape	bak/cvimrc_parser.js	/^    function classEscape(s) {$/;"	f
 classEscape	content_scripts/cvimrc_parser.js	/^    function classEscape(s) {$/;"	f
 classEscape	cvimrc_parser/parser.js	/^    function classEscape(s) {$/;"	f
 clean	Makefile	/^clean:$/;"	t
@@ -1261,6 +1232,7 @@ codeMap	content_scripts/keys.js	/^    var codeMap = {$/;"	c	class:KeyListener
 codeWord	content_scripts/hints.js	/^  var codeWord = function(n, b) {$/;"	f	function:Hints.genHints
 collapse	content_scripts/visual.js	/^Visual.collapse = function() {$/;"	c	class:Visual
 colorKeywords_	pages/codemirror/css.js	/^  var colorKeywords_ = [$/;"	v
+column	bak/cvimrc_parser.js	/^          column: details.column$/;"	p	class:details
 column	content_scripts/cvimrc_parser.js	/^          column: details.column$/;"	p	class:details
 column	cvimrc_parser/parser.js	/^          column: details.column$/;"	p	class:details
 com/*	content_scripts/hints.js	/^  '*:\/\/*.ebay.com\/*': {$/;"	c	class:Hints.matchPatternFilters.*://*.ebay
@@ -1343,6 +1315,8 @@ createTabbedHint	content_scripts/mappings.js	/^  createTabbedHint: function() { 
 createTextArea	background_scripts/clipboard.js	/^Clipboard.createTextArea = function() {$/;"	f	function:Clipboard
 createUnhoverHint	content_scripts/mappings.js	/^  createUnhoverHint: function() { Hints.create('unhover'); },$/;"	m	class:Mappings.actions
 css	manifest.json	/^      "css": ["content_scripts\/main.css"],$/;"	a	object:content_scripts.0
+ctor	bak/cvimrc_parser.js	/^    ctor.prototype = parent.prototype;$/;"	c
+ctor	bak/cvimrc_parser.js	/^    function ctor() { this.constructor = child; }$/;"	c	class:peg$subclass
 ctor	content_scripts/cvimrc_parser.js	/^    ctor.prototype = parent.prototype;$/;"	c
 ctor	content_scripts/cvimrc_parser.js	/^    function ctor() { this.constructor = child; }$/;"	c	class:peg$subclass
 ctor	cvimrc_parser/parser.js	/^    ctor.prototype = parent.prototype;$/;"	c
@@ -1390,10 +1364,13 @@ deleteSelection	content_scripts/mappings.js	/^  function deleteSelection() {$/;"
 deleteSession	background_scripts/actions.js	/^  _.deleteSession = function(o) {$/;"	f	function:_
 deleteSessionCompletion	content_scripts/command.js	/^  var deleteSessionCompletion = function() {$/;"	f	function:Command.callCompletionFunction
 depth	pages/codemirror/vim.js	/^        depth: 0,$/;"	p	class:Vim.findSymbol.state
+describeExpectation	bak/cvimrc_parser.js	/^    function describeExpectation(expectation) {$/;"	f
 describeExpectation	content_scripts/cvimrc_parser.js	/^    function describeExpectation(expectation) {$/;"	f
 describeExpectation	cvimrc_parser/parser.js	/^    function describeExpectation(expectation) {$/;"	f
+describeExpected	bak/cvimrc_parser.js	/^    function describeExpected(expected) {$/;"	f
 describeExpected	content_scripts/cvimrc_parser.js	/^    function describeExpected(expected) {$/;"	f
 describeExpected	cvimrc_parser/parser.js	/^    function describeExpected(expected) {$/;"	f
+describeFound	bak/cvimrc_parser.js	/^    function describeFound(found) {$/;"	f
 describeFound	content_scripts/cvimrc_parser.js	/^    function describeFound(found) {$/;"	f
 describeFound	cvimrc_parser/parser.js	/^    function describeFound(found) {$/;"	f
 description	manifest.json	/^      "description": "Close the current tab"$/;"	s	object:commands.closeTab
@@ -1410,6 +1387,7 @@ description	manifest.json	/^      "description": "View the page source"$/;"	s	ob
 description	manifest.json	/^  "description": "An extension adding Vim-like bindings to Google Chrome",$/;"	s
 description	package.json	/^  "description": "Vim bindings for Google Chrome.",$/;"	s
 destroy	content_scripts/command.js	/^Command.destroy = function() {$/;"	f	function:Command
+details	bak/cvimrc_parser.js	/^        details = {$/;"	c
 details	content_scripts/cvimrc_parser.js	/^        details = {$/;"	c
 details	cvimrc_parser/parser.js	/^        details = {$/;"	c
 devDependencies	package.json	/^  "devDependencies": {$/;"	o
@@ -1437,13 +1415,11 @@ doReplace	pages/codemirror/vim.js	/^    function doReplace(cm, confirm, lineStar
 do_POST	cvim_server.py	/^    def do_POST(self):$/;"	m	class:CvimServer
 down	content_scripts/keys.js	/^  down: function(key, event) {$/;"	m	class:KeyHandler
 draggingText	pages/codemirror/codemirror.js	/^                  draggingText: false,$/;"	p	class:window.CodeMirror.CodeMirror.state
-duckduckgo	content_scripts/complete.js	/^  duckduckgo: {$/;"	c	class:Complete.engines
 duplicateTab	background_scripts/actions.js	/^  _.duplicateTab = function(o) {$/;"	f	function:_
 dx	content_scripts/scroll.js	/^    dx:   0, \/\/ x-duration$/;"	p	class:scroll
 dy	content_scripts/scroll.js	/^    dy:   0,$/;"	p	class:scroll
 eachUntil	content_scripts/utils.js	/^var eachUntil = function(array, callback) {$/;"	f
 easeFn	content_scripts/scroll.js	/^  var easeFn = function(t, b, c, d) {$/;"	f
-ebay	content_scripts/complete.js	/^  ebay: {$/;"	c	class:Complete.engines
 echoRequest	background_scripts/actions.js	/^  _.echoRequest = function(o) {$/;"	f	function:_
 editMode	pages/options.js	/^Settings.editMode = function(e) {$/;"	f	function:Settings
 editWithVim	background_scripts/actions.js	/^  _.editWithVim = function(o) {$/;"	f	function:_
@@ -1459,6 +1435,7 @@ engines	content_scripts/complete.js	/^Complete.engines = {$/;"	c	class:Complete
 enterInsertMode	pages/codemirror/vim.js	/^      enterInsertMode: function(cm, actionArgs, vim) {$/;"	m	class:Vim.actions
 enterLineMode	content_scripts/visual.js	/^Visual.enterLineMode = function() {$/;"	c	class:Visual
 enterMacroRecordMode	pages/codemirror/vim.js	/^      enterMacroRecordMode: function(cm, actionArgs) {$/;"	m	class:Vim.actions
+error	bak/cvimrc_parser.js	/^    function error(message, location) {$/;"	f
 error	content_scripts/cvimrc_parser.js	/^    function error(message, location) {$/;"	f
 error	cvimrc_parser/parser.js	/^    function error(message, location) {$/;"	f
 escapeRegex	pages/codemirror/vim.js	/^    function escapeRegex(s) {$/;"	f	function:Vim
@@ -1481,6 +1458,7 @@ expandCompletion	content_scripts/command.js	/^Command.expandCompletion = functio
 expandSelectionToLine	pages/codemirror/vim.js	/^    function expandSelectionToLine(_cm, curStart, curEnd) {$/;"	f	function:Vim
 expandToLine	pages/codemirror/vim.js	/^      expandToLine: function(cm, motionArgs) {$/;"	m	class:Vim.motions
 expandWordUnderCursor	pages/codemirror/vim.js	/^    function expandWordUnderCursor(cm, inclusive, _forward, bigWord, noSymbol) {$/;"	f	function:Vim
+expected	bak/cvimrc_parser.js	/^    function expected(description, location) {$/;"	f
 expected	content_scripts/cvimrc_parser.js	/^    function expected(description, location) {$/;"	f
 expected	cvimrc_parser/parser.js	/^    function expected(description, location) {$/;"	f
 extend	content_scripts/utils.js	/^Object.extend = function() {$/;"	f	function:Object
@@ -1515,12 +1493,7 @@ focusSearchResult	content_scripts/visual.js	/^Visual.focusSearchResult = functio
 focused	pages/codemirror/codemirror.js	/^                  overwrite: false, focused: false,$/;"	p	class:window.CodeMirror.CodeMirror.state
 fontProperties_	pages/codemirror/css.js	/^  var fontProperties_ = [$/;"	v
 format	content_scripts/utils.js	/^  format: function(string, value) {$/;"	m	class:Utils
-formatConfig	content_scripts/utils.js	/^  var formatConfig = function(configText, config) {$/;"	f	function:window.parseConfig
-formatRequest	content_scripts/complete.js	/^    formatRequest: function(query) {$/;"	m	class:Complete.engines.bing
-formatRequest	content_scripts/complete.js	/^    formatRequest: function(query) {$/;"	m	class:Complete.engines.github
-formatRequest	content_scripts/complete.js	/^    formatRequest: function(query) {$/;"	m	class:Complete.engines.wikipedia
-formatRequest	content_scripts/complete.js	/^    formatRequest: function(query) {$/;"	m	class:Complete.engines.wiktionary
-formatRequest	content_scripts/complete.js	/^    formatRequest: function(query) {$/;"	m	class:Complete.engines.wolframalpha
+formatRequest	content_scripts/complete.js	/^        formatRequest: (query) => {$/;"	p	class:Complete.engines.stackexchange
 forward	pages/codemirror/vim.js	/^        forward: forward,$/;"	p	class:Vim.findSymbol.state
 forward	pages/codemirror/vim.js	/^        lastChararacterSearch: {increment:0, forward:true, selectedCharacter:''},$/;"	p	class:Vim.resetVimGlobalState.vimGlobalState.lastChararacterSearch
 frameId	content_scripts/frames.js	/^  frameId: null,$/;"	p	class:Frames
@@ -1566,7 +1539,7 @@ getOption	pages/codemirror/vim.js	/^    function getOption(name) {$/;"	f	functio
 getOverlay	pages/codemirror/vim.js	/^      getOverlay: function() {$/;"	m	class:SearchState
 getPaste	background_scripts/actions.js	/^  _.getPaste = function(o) {$/;"	f	function:_
 getPath	background_scripts/bookmarks.js	/^Bookmarks.getPath = function(marks, path, callback, initialPath) {$/;"	c	class:Bookmarks
-getPath	background_scripts/files.js	/^  getPath: function(path, callback) {$/;"	m	class:Files
+getPath	background_scripts/files.js	/^    getPath: function(path, callback) {$/;"	m	class:Files
 getQuery	pages/codemirror/vim.js	/^      getQuery: function() {$/;"	m	class:SearchState
 getQuickMarks	background_scripts/actions.js	/^  _.getQuickMarks = function(o) {$/;"	f	function:_
 getRegister	pages/codemirror/vim.js	/^      getRegister: function(name) {$/;"	m	class:RegisterController
@@ -1591,7 +1564,6 @@ getVisibleBoundingRect	content_scripts/dom.js	/^  getVisibleBoundingRect: functi
 getWindows	background_scripts/actions.js	/^  _.getWindows = function(o) {$/;"	f	function:_
 gistSync	pages/options.html	/^                            <input id="gistSync" value="Sync" type="button">$/;"	I
 gistUrl	pages/options.html	/^                            <input id="gistUrl" type="text" placeholder="https:\/\/gist.github.c/;"	I
-github	content_scripts/complete.js	/^  github: {$/;"	c	class:Complete.engines
 goBack	content_scripts/mappings.js	/^  goBack: function(repeats) {$/;"	m	class:Mappings.actions
 goForward	content_scripts/mappings.js	/^  goForward: function(repeats) {$/;"	m	class:Mappings.actions
 goToInput	content_scripts/mappings.js	/^  goToInput: function(repeats) {$/;"	m	class:Mappings.actions
@@ -1603,11 +1575,6 @@ goToTab	background_scripts/actions.js	/^  _.goToTab = function(o) {$/;"	f	functi
 goToTab	content_scripts/mappings.js	/^  goToTab: function(repeats) {$/;"	m	class:Mappings.actions
 goUpUrl	content_scripts/mappings.js	/^  goUpUrl: function(repeats) {$/;"	m	class:Mappings.actions
 goalCoords	pages/codemirror/vim.js	/^            var goalCoords = { top: lastCharCoords.top + 8, left: vim.lastHSPos };$/;"	c	class:Vim.motions.moveByDisplayLines
-google	content_scripts/complete.js	/^  google: {$/;"	c	class:Complete.engines
-google-finance	content_scripts/complete.js	/^  'google-finance': {$/;"	c	class:Complete.engines
-google-image	content_scripts/complete.js	/^  'google-image': {$/;"	c	class:Complete.engines
-google-maps	content_scripts/complete.js	/^  'google-maps': {$/;"	c	class:Complete.engines
-google-trends	content_scripts/complete.js	/^  'google-trends': {$/;"	c	class:Complete.engines
 gq	cvimrc_parser/test/test.vim	/^map gq :restore<Space>$/;"	m
 gs	cvimrc_parser/test/test.vim	/^map gs fullImageHint$/;"	m
 guttersChanged	pages/codemirror/codemirror.js	/^  function guttersChanged(cm) {$/;"	f	function:window.CodeMirror
@@ -1652,6 +1619,7 @@ handleQuery	pages/codemirror/vim.js	/^        function handleQuery(query, ignore
 hasAlias	content_scripts/complete.js	/^  hasAlias: function(alias) {$/;"	m	class:Complete
 hasAttributes	content_scripts/utils.js	/^var hasAttributes = function(node) {$/;"	f
 hasEngine	content_scripts/complete.js	/^  hasEngine: function(name) {$/;"	m	class:Complete
+hex	bak/cvimrc_parser.js	/^    function hex(ch) {$/;"	f
 hex	content_scripts/cvimrc_parser.js	/^    function hex(ch) {$/;"	f
 hex	cvimrc_parser/parser.js	/^    function hex(ch) {$/;"	f
 hide	content_scripts/command.js	/^Command.hide = function(callback) {$/;"	c	class:Command
@@ -1692,7 +1660,6 @@ hud	background_scripts/options.js	/^  hud: true,$/;"	p	class:defaultSettings
 icons	manifest.json	/^  "icons": {$/;"	o
 ignoreTitleUpdate	content_scripts/session.js	/^  ignoreTitleUpdate: false, tabIndex: null,$/;"	p	class:window.Session
 ignorecase	background_scripts/options.js	/^  ignorecase: true,$/;"	p	class:defaultSettings
-imdb	content_scripts/complete.js	/^  imdb: {$/;"	c	class:Complete.engines
 img	pages/markdown.css	/^img {$/;"	s
 inArray	pages/codemirror/vim.js	/^    function inArray(val, arr) {$/;"	f	function:Vim
 incognito	content_scripts/command.js	/^    incognito: false,$/;"	p	class:Command.execute.tab
@@ -1809,6 +1776,7 @@ lastY	content_scripts/scroll.js	/^      lastX, lastY;$/;"	v
 left	pages/codemirror/vim.js	/^            var goalCoords = { top: lastCharCoords.top + 8, left: vim.lastHSPos };$/;"	p	class:Vim.motions.moveByDisplayLines.goalCoords
 li	pages/markdown.css	/^p, blockquote, ul, ol, dl, li, table, pre {$/;"	s
 li p.first	pages/markdown.css	/^li p.first {$/;"	c
+line	bak/cvimrc_parser.js	/^          line:   details.line,$/;"	p	class:details
 line	content_scripts/cvimrc_parser.js	/^          line:   details.line,$/;"	p	class:details
 line	cvimrc_parser/parser.js	/^          line:   details.line,$/;"	p	class:details
 line	pages/codemirror/vim.js	/^            curEnd = { ch: curStart.ch, line: curStart.line };$/;"	p	class:Vim.commandDispatcher.evalInput.curEnd
@@ -1837,16 +1805,18 @@ listener	content_scripts/keys.js	/^  KeyHandler.listener = new KeyListener(KeyHa
 listener	content_scripts/keys.js	/^  KeyHandler.listener = new KeyListener(KeyHandler.down, KeyHandler.up);$/;"	v	class:KeyHandler
 listenerFn	content_scripts/keys.js	/^    listenerFn.prototype.activate = function() {$/;"	c
 listenerFn	content_scripts/keys.js	/^    var listenerFn = function(callback) {$/;"	c	class:KeyListener
+literal	bak/cvimrc_parser.js	/^          literal: function(expectation) {$/;"	m	class:peg$SyntaxError.buildMessage.DESCRIBE_EXPECTATION_FNS
 literal	content_scripts/cvimrc_parser.js	/^          literal: function(expectation) {$/;"	m	class:peg$SyntaxError.buildMessage.DESCRIBE_EXPECTATION_FNS
 literal	cvimrc_parser/parser.js	/^          literal: function(expectation) {$/;"	m	class:peg$SyntaxError.buildMessage.DESCRIBE_EXPECTATION_FNS
+literalEscape	bak/cvimrc_parser.js	/^    function literalEscape(s) {$/;"	f
 literalEscape	content_scripts/cvimrc_parser.js	/^    function literalEscape(s) {$/;"	f
 literalEscape	cvimrc_parser/parser.js	/^    function literalEscape(s) {$/;"	f
-loadLocalConfig	background_scripts/actions.js	/^  _.loadLocalConfig = function(o) {$/;"	f	function:_
 loadMode	pages/codemirror/codemirror.js	/^  function loadMode(cm) {$/;"	f	function:window.CodeMirror
 loadrc	pages/options.js	/^Settings.loadrc = function(config) {$/;"	c	class:Settings
 localconfig	background_scripts/options.js	/^  localconfig: false,$/;"	p	class:defaultSettings
 locale	background_scripts/options.js	/^  locale: '',$/;"	p	class:defaultSettings
 locales	content_scripts/complete.js	/^  locales: {$/;"	c	class:Complete
+location	bak/cvimrc_parser.js	/^    function location() {$/;"	f
 location	content_scripts/cvimrc_parser.js	/^    function location() {$/;"	f
 location	cvimrc_parser/parser.js	/^    function location() {$/;"	f
 logInsertModeChange	pages/codemirror/vim.js	/^    function logInsertModeChange(macroModeState) {$/;"	f	function:Vim
@@ -1876,7 +1846,6 @@ matchCommand	pages/codemirror/vim.js	/^      matchCommand: function(key, keyMap,
 matchCommand_	pages/codemirror/vim.js	/^      matchCommand_: function(commandName) {$/;"	m	class:Vim.ExCommandDispatcher
 matchKeysPartial	pages/codemirror/vim.js	/^    function matchKeysPartial(pressed, mapped) {$/;"	f	function:Vim
 matchLocation	content_scripts/utils.js	/^var matchLocation = function(url, pattern) { \/\/ Uses @match syntax$/;"	f
-matchPath	content_scripts/bookmarks.js	/^  _.matchPath = function(path) { PORT('getBookmarkPath', {path: path}); };$/;"	f	function:_
 matchPatternFilters	content_scripts/hints.js	/^Hints.matchPatternFilters = {$/;"	c	class:Hints
 matchPatterns	content_scripts/hints.js	/^Hints.matchPatterns = function(pattern) {$/;"	f	function:Hints
 matches	content_scripts/find.js	/^  matches:    [],$/;"	p	class:Find
@@ -1887,6 +1856,8 @@ maybeUpdateLineNumberWidth	pages/codemirror/codemirror.js	/^  function maybeUpda
 md	scripts/create_pages.js	/^var md = require('markdown-it')('default', {$/;"	v
 mediaFeatures_	pages/codemirror/css.js	/^  var mediaFeatures_ = [$/;"	v
 mediaTypes_	pages/codemirror/css.js	/^  var mediaTypes_ = [$/;"	v
+merge	background_scripts/config.js	/^    merge: (path, o='') => {$/;"	p	class:Config
+merge	bak/cvimrc_parser.js	/^      function merge(a, b) {$/;"	f
 merge	content_scripts/cvimrc_parser.js	/^      function merge(a, b) {$/;"	f
 merge	content_scripts/utils.js	/^Object.merge = function(a, b) {$/;"	f	function:Object
 merge	cvimrc_parser/parser.js	/^      function merge(a, b) {$/;"	f
@@ -1942,6 +1913,7 @@ name	pages/codemirror/vim.js	/^              name: commandName,$/;"	p	class:Vim.
 name	pages/codemirror/vim.js	/^        exCommandDispatcher.commandMap_[prefix]={name:name, shortName:prefix, type:'api'};$/;"	p	class:exCommandDispatcher.commandMap_
 nativeStepBack	background_scripts/sessions.js	/^Sessions.nativeStepBack = function() {$/;"	f	function:Sessions
 nativelinkorder	background_scripts/options.js	/^  nativelinkorder: false,$/;"	p	class:defaultSettings
+netflix	content_scripts/complete.js	/^    netflix: {$/;"	c	class:Complete.engines
 newLineAndEnterInsertMode	pages/codemirror/vim.js	/^      newLineAndEnterInsertMode: function(cm, actionArgs, vim) {$/;"	m	class:Vim.actions
 newTab	manifest.json	/^    "newTab": {$/;"	o	object:commands
 newWindow	content_scripts/command.js	/^    newWindow: false,$/;"	p	class:Command.execute.tab
@@ -1959,7 +1931,6 @@ nextMatchPattern	content_scripts/mappings.js	/^  nextMatchPattern: function() {$
 nextResult	content_scripts/search.js	/^Search.nextResult = function(reverse) {$/;"	f	function:Search
 nextScrollPosition	content_scripts/mappings.js	/^  nextScrollPosition: function() {$/;"	m	class:Mappings.actions
 nextSearchResult	content_scripts/mappings.js	/^  nextSearchResult: function(repeats) {$/;"	m	class:Mappings.actions
-nextTab	background_scripts/actions.js	/^  _.nextTab = function(o) {$/;"	f	function:_
 nextTab	content_scripts/mappings.js	/^  nextTab: function(r) {$/;"	m	class:Mappings.actions
 nextTab	manifest.json	/^    "nextTab": {$/;"	o	object:commands
 nextmatchpattern	background_scripts/options.js	/^  nextmatchpattern: '((?!first)(next|older|more|>|›|»|forward| )+)',$/;"	p	class:defaultSettings
@@ -1968,7 +1939,8 @@ node	content_scripts/hints.js	/^    node: node,$/;"	p	class:AnonymousFunction4c7
 nofallthrough	pages/codemirror/vim.js	/^        'nofallthrough': true,$/;"	p	class:Vim.buildVimKeyMap.cmToVimKeymap
 normalizeKey	content_scripts/keys.js	/^    function normalizeKey(key) {$/;"	f	function:KeyListener.keyEquals
 numerichints	background_scripts/options.js	/^  numerichints: false,$/;"	p	class:defaultSettings
-o	background_scripts/actions.js	/^    var o = {$/;"	c	class:Actions.AnonymousFunctiond38736174700
+o	background_scripts/actions.js	/^    var o = {$/;"	c	class:Actions.AnonymousFunctiond38736174500
+objectPlural	bak/cvimrc_parser.js	/^      function objectPlural(key) {$/;"	f
 objectPlural	content_scripts/cvimrc_parser.js	/^      function objectPlural(key) {$/;"	f
 objectPlural	cvimrc_parser/parser.js	/^      function objectPlural(key) {$/;"	f
 offsetCursor	pages/codemirror/vim.js	/^    function offsetCursor(cur, offsetLine, offsetCh) {$/;"	f	function:Vim
@@ -2038,17 +2010,17 @@ overlays	pages/codemirror/codemirror.js	/^                  overlays: [],$/;"	p	
 overrides	content_scripts/keys.js	/^  KeyListener.prototype.overrides = {$/;"	m	class:KeyListener
 overwrite	pages/codemirror/codemirror.js	/^                  overwrite: false, focused: false,$/;"	p	class:window.CodeMirror.CodeMirror.state
 p	pages/markdown.css	/^p, blockquote, ul, ol, dl, li, table, pre {$/;"	s
+parse	bak/cvimrc_parser.js	/^    parse:       peg$parse$/;"	p	class:root.RCParser
 parse	content_scripts/bookmarks.js	/^  _.parse = function(marks) {$/;"	f	function:_
 parse	content_scripts/cvimrc_parser.js	/^    parse:       peg$parse$/;"	p	class:root.RCParser
 parse	content_scripts/keys.js	/^    function parse(tokens) {$/;"	f	function:KeyListener.parseLangMap
 parse	cvimrc_parser/parser.js	/^    parse:       peg$parse$/;"	p	class:root.RCParser
 parseArgs	pages/codemirror/vim.js	/^        function parseArgs() {$/;"	f	function:Vim.exCommands
 parseCommandArgs_	pages/codemirror/vim.js	/^      parseCommandArgs_: function(inputStream, params, command) {$/;"	m	class:Vim.ExCommandDispatcher
-parseConfig	content_scripts/utils.js	/^window.parseConfig = (function() {$/;"	f	function:window
 parseCustom	content_scripts/mappings.js	/^Mappings.parseCustom = function(config, updateSiteMappings) {$/;"	c	class:Mappings
 parseError	content_scripts/keys.js	/^    function parseError(error) {$/;"	f	function:KeyListener.parseLangMap
 parseFileCommand	content_scripts/bookmarks.js	/^  _.parseFileCommand = function(search) {$/;"	f	function:_
-parseHTML	background_scripts/files.js	/^  parseHTML: function(data) {$/;"	m	class:Files
+parseHTML	background_scripts/files.js	/^    parseHTML: function(data) {$/;"	m	class:Files
 parseInput_	pages/codemirror/vim.js	/^      parseInput_: function(cm, inputStream, result) {$/;"	m	class:Vim.ExCommandDispatcher
 parseKeyDown	content_scripts/keys.js	/^    var parseKeyDown = function(event) {$/;"	f	function:KeyListener
 parseKeyString	pages/codemirror/vim.js	/^    function parseKeyString(str) {$/;"	f	function:Vim
@@ -2061,6 +2033,7 @@ parseQuery	pages/codemirror/vim.js	/^    function parseQuery(query, ignoreCase, 
 parseQuickMarks	content_scripts/bookmarks.js	/^  _.parseQuickMarks = function(marks) {$/;"	f	function:_
 parseRC	background_scripts/actions.js	/^  _.parseRC = function(o) {$/;"	f	function:_
 parseRegisterToKeyBuffer	pages/codemirror/vim.js	/^    function parseRegisterToKeyBuffer(macroModeState, registerName) {$/;"	f	function:Vim
+parseScope	bak/cvimrc_parser.js	/^      function parseScope(data) {$/;"	f
 parseScope	content_scripts/cvimrc_parser.js	/^      function parseScope(data) {$/;"	f
 parseScope	cvimrc_parser/parser.js	/^      function parseScope(data) {$/;"	f
 pass	pages/codemirror/css.js	/^  function pass(type, stream, state) {$/;"	f
@@ -2071,198 +2044,303 @@ paste	pages/codemirror/vim.js	/^      paste: function(cm, actionArgs) {$/;"	m	cl
 pasteIncoming	pages/codemirror/codemirror.js	/^                  pasteIncoming: false, cutIncoming: false,$/;"	p	class:window.CodeMirror.CodeMirror.state
 pause	pages/popup.html	/^        <a href="#"><div id="pause">Disable cVim<\/div><\/a>$/;"	I
 pause	pages/popup.js	/^var pause = document.getElementById('pause'),$/;"	v
+peg$SyntaxError	bak/cvimrc_parser.js	/^  function peg$SyntaxError(message, expected, found, location) {$/;"	c
 peg$SyntaxError	content_scripts/cvimrc_parser.js	/^  function peg$SyntaxError(message, expected, found, location) {$/;"	c
 peg$SyntaxError	cvimrc_parser/parser.js	/^  function peg$SyntaxError(message, expected, found, location) {$/;"	c
+peg$anyExpectation	bak/cvimrc_parser.js	/^    function peg$anyExpectation() {$/;"	f
 peg$anyExpectation	content_scripts/cvimrc_parser.js	/^    function peg$anyExpectation() {$/;"	f
 peg$anyExpectation	cvimrc_parser/parser.js	/^    function peg$anyExpectation() {$/;"	f
+peg$buildSimpleError	bak/cvimrc_parser.js	/^    function peg$buildSimpleError(message, location) {$/;"	f
 peg$buildSimpleError	content_scripts/cvimrc_parser.js	/^    function peg$buildSimpleError(message, location) {$/;"	f
 peg$buildSimpleError	cvimrc_parser/parser.js	/^    function peg$buildSimpleError(message, location) {$/;"	f
+peg$buildStructuredError	bak/cvimrc_parser.js	/^    function peg$buildStructuredError(expected, found, location) {$/;"	f
 peg$buildStructuredError	content_scripts/cvimrc_parser.js	/^    function peg$buildStructuredError(expected, found, location) {$/;"	f
 peg$buildStructuredError	cvimrc_parser/parser.js	/^    function peg$buildStructuredError(expected, found, location) {$/;"	f
-peg$c102	content_scripts/cvimrc_parser.js	/^        peg$c102 = function(a) {$/;"	f
-peg$c102	cvimrc_parser/parser.js	/^        peg$c102 = function(a) {$/;"	f
-peg$c103	content_scripts/cvimrc_parser.js	/^        peg$c103 = function(a, b, c) {$/;"	f
-peg$c103	cvimrc_parser/parser.js	/^        peg$c103 = function(a, b, c) {$/;"	f
-peg$c108	content_scripts/cvimrc_parser.js	/^        peg$c108 = function() {$/;"	f
-peg$c108	cvimrc_parser/parser.js	/^        peg$c108 = function() {$/;"	f
-peg$c109	content_scripts/cvimrc_parser.js	/^        peg$c109 = function() { return parseScope([]); },$/;"	f
-peg$c109	cvimrc_parser/parser.js	/^        peg$c109 = function() { return parseScope([]); },$/;"	f
-peg$c110	content_scripts/cvimrc_parser.js	/^        peg$c110 = function(a) { return parseScope(a); },$/;"	f
-peg$c110	cvimrc_parser/parser.js	/^        peg$c110 = function(a) { return parseScope(a); },$/;"	f
+peg$c101	content_scripts/cvimrc_parser.js	/^        peg$c101 = function(a) { return a || []; },$/;"	f
+peg$c101	cvimrc_parser/parser.js	/^        peg$c101 = function(a) { return a || []; },$/;"	f
+peg$c102	bak/cvimrc_parser.js	/^        peg$c102 = function(a) {$/;"	f
+peg$c103	bak/cvimrc_parser.js	/^        peg$c103 = function(a, b, c) {$/;"	f
+peg$c104	content_scripts/cvimrc_parser.js	/^        peg$c104 = function(a) {$/;"	f
+peg$c104	cvimrc_parser/parser.js	/^        peg$c104 = function(a) {$/;"	f
+peg$c107	content_scripts/cvimrc_parser.js	/^        peg$c107 = function(a) {$/;"	f
+peg$c107	cvimrc_parser/parser.js	/^        peg$c107 = function(a) {$/;"	f
+peg$c108	bak/cvimrc_parser.js	/^        peg$c108 = function() {$/;"	f
+peg$c108	content_scripts/cvimrc_parser.js	/^        peg$c108 = function(a, b, c) {$/;"	f
+peg$c108	cvimrc_parser/parser.js	/^        peg$c108 = function(a, b, c) {$/;"	f
+peg$c109	bak/cvimrc_parser.js	/^        peg$c109 = function() { return parseScope([]); },$/;"	f
+peg$c110	bak/cvimrc_parser.js	/^        peg$c110 = function(a) { return parseScope(a); },$/;"	f
+peg$c113	content_scripts/cvimrc_parser.js	/^        peg$c113 = function() {$/;"	f
+peg$c113	cvimrc_parser/parser.js	/^        peg$c113 = function() {$/;"	f
+peg$c114	content_scripts/cvimrc_parser.js	/^        peg$c114 = function() { return parseScope([]); },$/;"	f
+peg$c114	cvimrc_parser/parser.js	/^        peg$c114 = function() { return parseScope([]); },$/;"	f
+peg$c115	content_scripts/cvimrc_parser.js	/^        peg$c115 = function(a) { return parseScope(a); },$/;"	f
+peg$c115	cvimrc_parser/parser.js	/^        peg$c115 = function(a) { return parseScope(a); },$/;"	f
+peg$c15	bak/cvimrc_parser.js	/^        peg$c15 = function() { return text(); },$/;"	f
 peg$c15	content_scripts/cvimrc_parser.js	/^        peg$c15 = function() { return text(); },$/;"	f
 peg$c15	cvimrc_parser/parser.js	/^        peg$c15 = function() { return text(); },$/;"	f
-peg$c38	content_scripts/cvimrc_parser.js	/^        peg$c38 = function(a) { return a; },$/;"	f
-peg$c38	cvimrc_parser/parser.js	/^        peg$c38 = function(a) { return a; },$/;"	f
-peg$c39	content_scripts/cvimrc_parser.js	/^        peg$c39 = function() { return ''; },$/;"	f
-peg$c39	cvimrc_parser/parser.js	/^        peg$c39 = function() { return ''; },$/;"	f
-peg$c42	content_scripts/cvimrc_parser.js	/^        peg$c42 = function(a) { return a.join(''); },$/;"	f
-peg$c42	cvimrc_parser/parser.js	/^        peg$c42 = function(a) { return a.join(''); },$/;"	f
-peg$c47	content_scripts/cvimrc_parser.js	/^        peg$c47 = function() {$/;"	f
-peg$c47	cvimrc_parser/parser.js	/^        peg$c47 = function() {$/;"	f
-peg$c48	content_scripts/cvimrc_parser.js	/^        peg$c48 = function() { return parseFloat(text()); },$/;"	f
-peg$c48	cvimrc_parser/parser.js	/^        peg$c48 = function() { return parseFloat(text()); },$/;"	f
-peg$c49	content_scripts/cvimrc_parser.js	/^        peg$c49 = function() { return 0; },$/;"	f
-peg$c49	cvimrc_parser/parser.js	/^        peg$c49 = function() { return 0; },$/;"	f
+peg$c38	bak/cvimrc_parser.js	/^        peg$c38 = function(a) { return a; },$/;"	f
+peg$c39	bak/cvimrc_parser.js	/^        peg$c39 = function() { return ''; },$/;"	f
+peg$c40	content_scripts/cvimrc_parser.js	/^        peg$c40 = function(a) { return a; },$/;"	f
+peg$c40	cvimrc_parser/parser.js	/^        peg$c40 = function(a) { return a; },$/;"	f
+peg$c41	content_scripts/cvimrc_parser.js	/^        peg$c41 = function() { return ''; },$/;"	f
+peg$c41	cvimrc_parser/parser.js	/^        peg$c41 = function() { return ''; },$/;"	f
+peg$c42	bak/cvimrc_parser.js	/^        peg$c42 = function(a) { return a.join(''); },$/;"	f
+peg$c44	content_scripts/cvimrc_parser.js	/^        peg$c44 = function(a) { return a.join(''); },$/;"	f
+peg$c44	cvimrc_parser/parser.js	/^        peg$c44 = function(a) { return a.join(''); },$/;"	f
+peg$c47	bak/cvimrc_parser.js	/^        peg$c47 = function() {$/;"	f
+peg$c48	bak/cvimrc_parser.js	/^        peg$c48 = function() { return parseFloat(text()); },$/;"	f
+peg$c49	bak/cvimrc_parser.js	/^        peg$c49 = function() { return 0; },$/;"	f
+peg$c49	content_scripts/cvimrc_parser.js	/^        peg$c49 = function() {$/;"	f
+peg$c49	cvimrc_parser/parser.js	/^        peg$c49 = function() {$/;"	f
+peg$c5	bak/cvimrc_parser.js	/^        peg$c5 = function(a) { return text(); },$/;"	f	function:peg$parse
 peg$c5	content_scripts/cvimrc_parser.js	/^        peg$c5 = function(a) { return text(); },$/;"	f	function:peg$parse
 peg$c5	cvimrc_parser/parser.js	/^        peg$c5 = function(a) { return text(); },$/;"	f	function:peg$parse
-peg$c54	content_scripts/cvimrc_parser.js	/^        peg$c54 = function() { return parseInt(text(), 10); },$/;"	f
-peg$c54	cvimrc_parser/parser.js	/^        peg$c54 = function() { return parseInt(text(), 10); },$/;"	f
-peg$c55	content_scripts/cvimrc_parser.js	/^        peg$c55 = function(expr) {$/;"	f
-peg$c55	cvimrc_parser/parser.js	/^        peg$c55 = function(expr) {$/;"	f
-peg$c58	content_scripts/cvimrc_parser.js	/^        peg$c58 = function(head, expr) {$/;"	f
-peg$c58	cvimrc_parser/parser.js	/^        peg$c58 = function(head, expr) {$/;"	f
-peg$c59	content_scripts/cvimrc_parser.js	/^        peg$c59 = function(head, tail) {$/;"	f
-peg$c59	cvimrc_parser/parser.js	/^        peg$c59 = function(head, tail) {$/;"	f
-peg$c64	content_scripts/cvimrc_parser.js	/^        peg$c64 = function() { return []; },$/;"	f
-peg$c64	cvimrc_parser/parser.js	/^        peg$c64 = function() { return []; },$/;"	f
-peg$c65	content_scripts/cvimrc_parser.js	/^        peg$c65 = function(elems) {$/;"	f
-peg$c65	cvimrc_parser/parser.js	/^        peg$c65 = function(elems) {$/;"	f
-peg$c66	content_scripts/cvimrc_parser.js	/^        peg$c66 = function(head, a) {$/;"	f
-peg$c66	cvimrc_parser/parser.js	/^        peg$c66 = function(head, a) {$/;"	f
-peg$c67	content_scripts/cvimrc_parser.js	/^        peg$c67 = function(head, tail) {$/;"	f
-peg$c67	cvimrc_parser/parser.js	/^        peg$c67 = function(head, tail) {$/;"	f
-peg$c70	content_scripts/cvimrc_parser.js	/^        peg$c70 = function(a, b) {$/;"	f
-peg$c70	cvimrc_parser/parser.js	/^        peg$c70 = function(a, b) {$/;"	f
-peg$c71	content_scripts/cvimrc_parser.js	/^        peg$c71 = function(a, b, c) {$/;"	f
-peg$c71	cvimrc_parser/parser.js	/^        peg$c71 = function(a, b, c) {$/;"	f
-peg$c74	content_scripts/cvimrc_parser.js	/^        peg$c74 = function(a) { var r = {}; r[a] = false; return r; },$/;"	f
-peg$c74	cvimrc_parser/parser.js	/^        peg$c74 = function(a) { var r = {}; r[a] = false; return r; },$/;"	f
-peg$c75	content_scripts/cvimrc_parser.js	/^        peg$c75 = function(a) { var r = {}; r[a] = true; return r; },$/;"	f
-peg$c75	cvimrc_parser/parser.js	/^        peg$c75 = function(a) { var r = {}; r[a] = true; return r; },$/;"	f
+peg$c50	content_scripts/cvimrc_parser.js	/^        peg$c50 = function() { return parseFloat(text()); },$/;"	f
+peg$c50	cvimrc_parser/parser.js	/^        peg$c50 = function() { return parseFloat(text()); },$/;"	f
+peg$c51	content_scripts/cvimrc_parser.js	/^        peg$c51 = function() { return 0; },$/;"	f
+peg$c51	cvimrc_parser/parser.js	/^        peg$c51 = function() { return 0; },$/;"	f
+peg$c54	bak/cvimrc_parser.js	/^        peg$c54 = function() { return parseInt(text(), 10); },$/;"	f
+peg$c55	bak/cvimrc_parser.js	/^        peg$c55 = function(expr) {$/;"	f
+peg$c56	content_scripts/cvimrc_parser.js	/^        peg$c56 = function() { return parseInt(text(), 10); },$/;"	f
+peg$c56	cvimrc_parser/parser.js	/^        peg$c56 = function() { return parseInt(text(), 10); },$/;"	f
+peg$c58	bak/cvimrc_parser.js	/^        peg$c58 = function(head, expr) {$/;"	f
+peg$c59	bak/cvimrc_parser.js	/^        peg$c59 = function(head, tail) {$/;"	f
+peg$c59	content_scripts/cvimrc_parser.js	/^        peg$c59 = function(expr) {$/;"	f
+peg$c59	cvimrc_parser/parser.js	/^        peg$c59 = function(expr) {$/;"	f
+peg$c62	content_scripts/cvimrc_parser.js	/^        peg$c62 = function(head, expr) {$/;"	f
+peg$c62	cvimrc_parser/parser.js	/^        peg$c62 = function(head, expr) {$/;"	f
+peg$c63	content_scripts/cvimrc_parser.js	/^        peg$c63 = function(head, tail) {$/;"	f
+peg$c63	cvimrc_parser/parser.js	/^        peg$c63 = function(head, tail) {$/;"	f
+peg$c64	bak/cvimrc_parser.js	/^        peg$c64 = function() { return []; },$/;"	f
+peg$c65	bak/cvimrc_parser.js	/^        peg$c65 = function(elems) {$/;"	f
+peg$c66	bak/cvimrc_parser.js	/^        peg$c66 = function(head, a) {$/;"	f
+peg$c67	bak/cvimrc_parser.js	/^        peg$c67 = function(head, tail) {$/;"	f
+peg$c68	content_scripts/cvimrc_parser.js	/^        peg$c68 = function() { return []; },$/;"	f
+peg$c68	cvimrc_parser/parser.js	/^        peg$c68 = function() { return []; },$/;"	f
+peg$c69	content_scripts/cvimrc_parser.js	/^        peg$c69 = function(elems) {$/;"	f
+peg$c69	cvimrc_parser/parser.js	/^        peg$c69 = function(elems) {$/;"	f
+peg$c70	bak/cvimrc_parser.js	/^        peg$c70 = function(a, b) {$/;"	f
+peg$c70	content_scripts/cvimrc_parser.js	/^        peg$c70 = function(head, a) {$/;"	f
+peg$c70	cvimrc_parser/parser.js	/^        peg$c70 = function(head, a) {$/;"	f
+peg$c71	bak/cvimrc_parser.js	/^        peg$c71 = function(a, b, c) {$/;"	f
+peg$c71	content_scripts/cvimrc_parser.js	/^        peg$c71 = function(head, tail) {$/;"	f
+peg$c71	cvimrc_parser/parser.js	/^        peg$c71 = function(head, tail) {$/;"	f
+peg$c74	bak/cvimrc_parser.js	/^        peg$c74 = function(a) { var r = {}; r[a] = false; return r; },$/;"	f
+peg$c74	content_scripts/cvimrc_parser.js	/^        peg$c74 = function(a, b) {$/;"	f
+peg$c74	cvimrc_parser/parser.js	/^        peg$c74 = function(a, b) {$/;"	f
+peg$c75	bak/cvimrc_parser.js	/^        peg$c75 = function(a) { var r = {}; r[a] = true; return r; },$/;"	f
+peg$c75	content_scripts/cvimrc_parser.js	/^        peg$c75 = function(a, b, c) {$/;"	f
+peg$c75	cvimrc_parser/parser.js	/^        peg$c75 = function(a, b, c) {$/;"	f
+peg$c78	content_scripts/cvimrc_parser.js	/^        peg$c78 = function(a) { var r = {}; r[a] = false; return r; },$/;"	f
+peg$c78	cvimrc_parser/parser.js	/^        peg$c78 = function(a) { var r = {}; r[a] = false; return r; },$/;"	f
+peg$c79	content_scripts/cvimrc_parser.js	/^        peg$c79 = function(a) { var r = {}; r[a] = true; return r; },$/;"	f
+peg$c79	cvimrc_parser/parser.js	/^        peg$c79 = function(a) { var r = {}; r[a] = true; return r; },$/;"	f
+peg$c8	bak/cvimrc_parser.js	/^        peg$c8 = function() { return null; },$/;"	f
 peg$c8	content_scripts/cvimrc_parser.js	/^        peg$c8 = function() { return null; },$/;"	f
 peg$c8	cvimrc_parser/parser.js	/^        peg$c8 = function() { return null; },$/;"	f
-peg$c80	content_scripts/cvimrc_parser.js	/^        peg$c80 = function(a, b) {$/;"	f
-peg$c80	cvimrc_parser/parser.js	/^        peg$c80 = function(a, b) {$/;"	f
-peg$c81	content_scripts/cvimrc_parser.js	/^        peg$c81 = function(a, b) { return [a].concat(b); },$/;"	f
-peg$c81	cvimrc_parser/parser.js	/^        peg$c81 = function(a, b) { return [a].concat(b); },$/;"	f
-peg$c82	content_scripts/cvimrc_parser.js	/^        peg$c82 = function(a) { return [a]; },$/;"	f
-peg$c82	cvimrc_parser/parser.js	/^        peg$c82 = function(a) { return [a]; },$/;"	f
-peg$c83	content_scripts/cvimrc_parser.js	/^        peg$c83 = function(a, b) {$/;"	f
-peg$c83	cvimrc_parser/parser.js	/^        peg$c83 = function(a, b) {$/;"	f
-peg$c84	content_scripts/cvimrc_parser.js	/^        peg$c84 = function(a, b, c) {$/;"	f
-peg$c84	cvimrc_parser/parser.js	/^        peg$c84 = function(a, b, c) {$/;"	f
-peg$c85	content_scripts/cvimrc_parser.js	/^        peg$c85 = function(a) {$/;"	f
-peg$c85	cvimrc_parser/parser.js	/^        peg$c85 = function(a) {$/;"	f
-peg$c88	content_scripts/cvimrc_parser.js	/^        peg$c88 = function(a, b) {$/;"	f
-peg$c88	cvimrc_parser/parser.js	/^        peg$c88 = function(a, b) {$/;"	f
-peg$c91	content_scripts/cvimrc_parser.js	/^        peg$c91 = function(a, b) {$/;"	f
-peg$c91	cvimrc_parser/parser.js	/^        peg$c91 = function(a, b) {$/;"	f
-peg$c96	content_scripts/cvimrc_parser.js	/^        peg$c96 = function(a) { return a || []; },$/;"	f
-peg$c96	cvimrc_parser/parser.js	/^        peg$c96 = function(a) { return a || []; },$/;"	f
-peg$c99	content_scripts/cvimrc_parser.js	/^        peg$c99 = function(a) {$/;"	f
-peg$c99	cvimrc_parser/parser.js	/^        peg$c99 = function(a) {$/;"	f
+peg$c80	bak/cvimrc_parser.js	/^        peg$c80 = function(a, b) {$/;"	f
+peg$c81	bak/cvimrc_parser.js	/^        peg$c81 = function(a, b) { return [a].concat(b); },$/;"	f
+peg$c82	bak/cvimrc_parser.js	/^        peg$c82 = function(a) { return [a]; },$/;"	f
+peg$c83	bak/cvimrc_parser.js	/^        peg$c83 = function(a, b) {$/;"	f
+peg$c84	bak/cvimrc_parser.js	/^        peg$c84 = function(a, b, c) {$/;"	f
+peg$c84	content_scripts/cvimrc_parser.js	/^        peg$c84 = function(a, b) {$/;"	f
+peg$c84	cvimrc_parser/parser.js	/^        peg$c84 = function(a, b) {$/;"	f
+peg$c85	bak/cvimrc_parser.js	/^        peg$c85 = function(a) {$/;"	f
+peg$c85	content_scripts/cvimrc_parser.js	/^        peg$c85 = function(a, b) { return [a].concat(b); },$/;"	f
+peg$c85	cvimrc_parser/parser.js	/^        peg$c85 = function(a, b) { return [a].concat(b); },$/;"	f
+peg$c86	content_scripts/cvimrc_parser.js	/^        peg$c86 = function(a) { return [a]; },$/;"	f
+peg$c86	cvimrc_parser/parser.js	/^        peg$c86 = function(a) { return [a]; },$/;"	f
+peg$c87	content_scripts/cvimrc_parser.js	/^        peg$c87 = function(a, b) {$/;"	f
+peg$c87	cvimrc_parser/parser.js	/^        peg$c87 = function(a, b) {$/;"	f
+peg$c88	bak/cvimrc_parser.js	/^        peg$c88 = function(a, b) {$/;"	f
+peg$c88	content_scripts/cvimrc_parser.js	/^        peg$c88 = function(a, b, c) {$/;"	f
+peg$c88	cvimrc_parser/parser.js	/^        peg$c88 = function(a, b, c) {$/;"	f
+peg$c89	content_scripts/cvimrc_parser.js	/^        peg$c89 = function(p) {$/;"	f
+peg$c89	cvimrc_parser/parser.js	/^        peg$c89 = function(p) {$/;"	f
+peg$c90	content_scripts/cvimrc_parser.js	/^        peg$c90 = function(a) {$/;"	f
+peg$c90	cvimrc_parser/parser.js	/^        peg$c90 = function(a) {$/;"	f
+peg$c91	bak/cvimrc_parser.js	/^        peg$c91 = function(a, b) {$/;"	f
+peg$c93	content_scripts/cvimrc_parser.js	/^        peg$c93 = function(a, b) {$/;"	f
+peg$c93	cvimrc_parser/parser.js	/^        peg$c93 = function(a, b) {$/;"	f
+peg$c96	bak/cvimrc_parser.js	/^        peg$c96 = function(a) { return a || []; },$/;"	f
+peg$c96	content_scripts/cvimrc_parser.js	/^        peg$c96 = function(a, b) {$/;"	f
+peg$c96	cvimrc_parser/parser.js	/^        peg$c96 = function(a, b) {$/;"	f
+peg$c99	bak/cvimrc_parser.js	/^        peg$c99 = function(a) {$/;"	f
+peg$classExpectation	bak/cvimrc_parser.js	/^    function peg$classExpectation(parts, inverted, ignoreCase) {$/;"	f
 peg$classExpectation	content_scripts/cvimrc_parser.js	/^    function peg$classExpectation(parts, inverted, ignoreCase) {$/;"	f
 peg$classExpectation	cvimrc_parser/parser.js	/^    function peg$classExpectation(parts, inverted, ignoreCase) {$/;"	f
+peg$computeLocation	bak/cvimrc_parser.js	/^    function peg$computeLocation(startPos, endPos) {$/;"	f
 peg$computeLocation	content_scripts/cvimrc_parser.js	/^    function peg$computeLocation(startPos, endPos) {$/;"	f
 peg$computeLocation	cvimrc_parser/parser.js	/^    function peg$computeLocation(startPos, endPos) {$/;"	f
+peg$computePosDetails	bak/cvimrc_parser.js	/^    function peg$computePosDetails(pos) {$/;"	f
 peg$computePosDetails	content_scripts/cvimrc_parser.js	/^    function peg$computePosDetails(pos) {$/;"	f
 peg$computePosDetails	cvimrc_parser/parser.js	/^    function peg$computePosDetails(pos) {$/;"	f
+peg$endExpectation	bak/cvimrc_parser.js	/^    function peg$endExpectation() {$/;"	f
 peg$endExpectation	content_scripts/cvimrc_parser.js	/^    function peg$endExpectation() {$/;"	f
 peg$endExpectation	cvimrc_parser/parser.js	/^    function peg$endExpectation() {$/;"	f
+peg$fail	bak/cvimrc_parser.js	/^    function peg$fail(expected) {$/;"	f
 peg$fail	content_scripts/cvimrc_parser.js	/^    function peg$fail(expected) {$/;"	f
 peg$fail	cvimrc_parser/parser.js	/^    function peg$fail(expected) {$/;"	f
+peg$literalExpectation	bak/cvimrc_parser.js	/^    function peg$literalExpectation(text, ignoreCase) {$/;"	f
 peg$literalExpectation	content_scripts/cvimrc_parser.js	/^    function peg$literalExpectation(text, ignoreCase) {$/;"	f
 peg$literalExpectation	cvimrc_parser/parser.js	/^    function peg$literalExpectation(text, ignoreCase) {$/;"	f
+peg$otherExpectation	bak/cvimrc_parser.js	/^    function peg$otherExpectation(description) {$/;"	f
 peg$otherExpectation	content_scripts/cvimrc_parser.js	/^    function peg$otherExpectation(description) {$/;"	f
 peg$otherExpectation	cvimrc_parser/parser.js	/^    function peg$otherExpectation(description) {$/;"	f
+peg$parse	bak/cvimrc_parser.js	/^  function peg$parse(input, options) {$/;"	f
 peg$parse	content_scripts/cvimrc_parser.js	/^  function peg$parse(input, options) {$/;"	f
 peg$parse	cvimrc_parser/parser.js	/^  function peg$parse(input, options) {$/;"	f
+peg$parseArrayLiteral	bak/cvimrc_parser.js	/^    function peg$parseArrayLiteral() {$/;"	f
 peg$parseArrayLiteral	content_scripts/cvimrc_parser.js	/^    function peg$parseArrayLiteral() {$/;"	f
 peg$parseArrayLiteral	cvimrc_parser/parser.js	/^    function peg$parseArrayLiteral() {$/;"	f
+peg$parseAutoRunJavaScriptBlock	bak/cvimrc_parser.js	/^    function peg$parseAutoRunJavaScriptBlock() {$/;"	f
 peg$parseAutoRunJavaScriptBlock	content_scripts/cvimrc_parser.js	/^    function peg$parseAutoRunJavaScriptBlock() {$/;"	f
 peg$parseAutoRunJavaScriptBlock	cvimrc_parser/parser.js	/^    function peg$parseAutoRunJavaScriptBlock() {$/;"	f
+peg$parseCALL	bak/cvimrc_parser.js	/^    function peg$parseCALL() {$/;"	f
 peg$parseCALL	content_scripts/cvimrc_parser.js	/^    function peg$parseCALL() {$/;"	f
 peg$parseCALL	cvimrc_parser/parser.js	/^    function peg$parseCALL() {$/;"	f
+peg$parseCOMMAND	bak/cvimrc_parser.js	/^    function peg$parseCOMMAND() {$/;"	f
 peg$parseCOMMAND	content_scripts/cvimrc_parser.js	/^    function peg$parseCOMMAND() {$/;"	f
 peg$parseCOMMAND	cvimrc_parser/parser.js	/^    function peg$parseCOMMAND() {$/;"	f
+peg$parseCallStatement	bak/cvimrc_parser.js	/^    function peg$parseCallStatement() {$/;"	f
 peg$parseCallStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseCallStatement() {$/;"	f
 peg$parseCallStatement	cvimrc_parser/parser.js	/^    function peg$parseCallStatement() {$/;"	f
+peg$parseCommandStatement	bak/cvimrc_parser.js	/^    function peg$parseCommandStatement() {$/;"	f
 peg$parseCommandStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseCommandStatement() {$/;"	f
 peg$parseCommandStatement	cvimrc_parser/parser.js	/^    function peg$parseCommandStatement() {$/;"	f
+peg$parseComment	bak/cvimrc_parser.js	/^    function peg$parseComment() {$/;"	f
 peg$parseComment	content_scripts/cvimrc_parser.js	/^    function peg$parseComment() {$/;"	f
 peg$parseComment	cvimrc_parser/parser.js	/^    function peg$parseComment() {$/;"	f
+peg$parseDoubleStringCharacter	bak/cvimrc_parser.js	/^    function peg$parseDoubleStringCharacter() {$/;"	f
 peg$parseDoubleStringCharacter	content_scripts/cvimrc_parser.js	/^    function peg$parseDoubleStringCharacter() {$/;"	f
 peg$parseDoubleStringCharacter	cvimrc_parser/parser.js	/^    function peg$parseDoubleStringCharacter() {$/;"	f
+peg$parseEOF	bak/cvimrc_parser.js	/^    function peg$parseEOF() {$/;"	f
 peg$parseEOF	content_scripts/cvimrc_parser.js	/^    function peg$parseEOF() {$/;"	f
 peg$parseEOF	cvimrc_parser/parser.js	/^    function peg$parseEOF() {$/;"	f
+peg$parseEOL	bak/cvimrc_parser.js	/^    function peg$parseEOL() {$/;"	f
 peg$parseEOL	content_scripts/cvimrc_parser.js	/^    function peg$parseEOL() {$/;"	f
 peg$parseEOL	cvimrc_parser/parser.js	/^    function peg$parseEOL() {$/;"	f
+peg$parseExpression	bak/cvimrc_parser.js	/^    function peg$parseExpression() {$/;"	f
 peg$parseExpression	content_scripts/cvimrc_parser.js	/^    function peg$parseExpression() {$/;"	f
 peg$parseExpression	cvimrc_parser/parser.js	/^    function peg$parseExpression() {$/;"	f
+peg$parseExpressionList	bak/cvimrc_parser.js	/^    function peg$parseExpressionList() {$/;"	f
 peg$parseExpressionList	content_scripts/cvimrc_parser.js	/^    function peg$parseExpressionList() {$/;"	f
 peg$parseExpressionList	cvimrc_parser/parser.js	/^    function peg$parseExpressionList() {$/;"	f
+peg$parseFloatingPointLiteral	bak/cvimrc_parser.js	/^    function peg$parseFloatingPointLiteral() {$/;"	f
 peg$parseFloatingPointLiteral	content_scripts/cvimrc_parser.js	/^    function peg$parseFloatingPointLiteral() {$/;"	f
 peg$parseFloatingPointLiteral	cvimrc_parser/parser.js	/^    function peg$parseFloatingPointLiteral() {$/;"	f
+peg$parseIMAP	bak/cvimrc_parser.js	/^    function peg$parseIMAP() {$/;"	f
 peg$parseIMAP	content_scripts/cvimrc_parser.js	/^    function peg$parseIMAP() {$/;"	f
 peg$parseIMAP	cvimrc_parser/parser.js	/^    function peg$parseIMAP() {$/;"	f
+peg$parseIUNMAP	bak/cvimrc_parser.js	/^    function peg$parseIUNMAP() {$/;"	f
 peg$parseIUNMAP	content_scripts/cvimrc_parser.js	/^    function peg$parseIUNMAP() {$/;"	f
 peg$parseIUNMAP	cvimrc_parser/parser.js	/^    function peg$parseIUNMAP() {$/;"	f
+peg$parseIdentifier	bak/cvimrc_parser.js	/^    function peg$parseIdentifier() {$/;"	f
 peg$parseIdentifier	content_scripts/cvimrc_parser.js	/^    function peg$parseIdentifier() {$/;"	f
 peg$parseIdentifier	cvimrc_parser/parser.js	/^    function peg$parseIdentifier() {$/;"	f
+peg$parseIntegerLiteral	bak/cvimrc_parser.js	/^    function peg$parseIntegerLiteral() {$/;"	f
 peg$parseIntegerLiteral	content_scripts/cvimrc_parser.js	/^    function peg$parseIntegerLiteral() {$/;"	f
 peg$parseIntegerLiteral	cvimrc_parser/parser.js	/^    function peg$parseIntegerLiteral() {$/;"	f
+peg$parseJavaScriptBlock	bak/cvimrc_parser.js	/^    function peg$parseJavaScriptBlock() {$/;"	f
 peg$parseJavaScriptBlock	content_scripts/cvimrc_parser.js	/^    function peg$parseJavaScriptBlock() {$/;"	f
 peg$parseJavaScriptBlock	cvimrc_parser/parser.js	/^    function peg$parseJavaScriptBlock() {$/;"	f
+peg$parseJavaScriptBlockChar	bak/cvimrc_parser.js	/^    function peg$parseJavaScriptBlockChar() {$/;"	f
 peg$parseJavaScriptBlockChar	content_scripts/cvimrc_parser.js	/^    function peg$parseJavaScriptBlockChar() {$/;"	f
 peg$parseJavaScriptBlockChar	cvimrc_parser/parser.js	/^    function peg$parseJavaScriptBlockChar() {$/;"	f
+peg$parseJavaScriptBlockDefinition	bak/cvimrc_parser.js	/^    function peg$parseJavaScriptBlockDefinition() {$/;"	f
 peg$parseJavaScriptBlockDefinition	content_scripts/cvimrc_parser.js	/^    function peg$parseJavaScriptBlockDefinition() {$/;"	f
 peg$parseJavaScriptBlockDefinition	cvimrc_parser/parser.js	/^    function peg$parseJavaScriptBlockDefinition() {$/;"	f
+peg$parseLET	bak/cvimrc_parser.js	/^    function peg$parseLET() {$/;"	f
 peg$parseLET	content_scripts/cvimrc_parser.js	/^    function peg$parseLET() {$/;"	f
 peg$parseLET	cvimrc_parser/parser.js	/^    function peg$parseLET() {$/;"	f
+peg$parseLetStatement	bak/cvimrc_parser.js	/^    function peg$parseLetStatement() {$/;"	f
 peg$parseLetStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseLetStatement() {$/;"	f
 peg$parseLetStatement	cvimrc_parser/parser.js	/^    function peg$parseLetStatement() {$/;"	f
+peg$parseLineSeparator	bak/cvimrc_parser.js	/^    function peg$parseLineSeparator() {$/;"	f
 peg$parseLineSeparator	content_scripts/cvimrc_parser.js	/^    function peg$parseLineSeparator() {$/;"	f
 peg$parseLineSeparator	cvimrc_parser/parser.js	/^    function peg$parseLineSeparator() {$/;"	f
+peg$parseMAP	bak/cvimrc_parser.js	/^    function peg$parseMAP() {$/;"	f
 peg$parseMAP	content_scripts/cvimrc_parser.js	/^    function peg$parseMAP() {$/;"	f
 peg$parseMAP	cvimrc_parser/parser.js	/^    function peg$parseMAP() {$/;"	f
+peg$parseMapIdentifier	bak/cvimrc_parser.js	/^    function peg$parseMapIdentifier() {$/;"	f
 peg$parseMapIdentifier	content_scripts/cvimrc_parser.js	/^    function peg$parseMapIdentifier() {$/;"	f
 peg$parseMapIdentifier	cvimrc_parser/parser.js	/^    function peg$parseMapIdentifier() {$/;"	f
+peg$parseMapStatement	bak/cvimrc_parser.js	/^    function peg$parseMapStatement() {$/;"	f
 peg$parseMapStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseMapStatement() {$/;"	f
 peg$parseMapStatement	cvimrc_parser/parser.js	/^    function peg$parseMapStatement() {$/;"	f
+peg$parseMemberExpression	bak/cvimrc_parser.js	/^    function peg$parseMemberExpression() {$/;"	f
 peg$parseMemberExpression	content_scripts/cvimrc_parser.js	/^    function peg$parseMemberExpression() {$/;"	f
 peg$parseMemberExpression	cvimrc_parser/parser.js	/^    function peg$parseMemberExpression() {$/;"	f
+peg$parseNumberLiteral	bak/cvimrc_parser.js	/^    function peg$parseNumberLiteral() {$/;"	f
 peg$parseNumberLiteral	content_scripts/cvimrc_parser.js	/^    function peg$parseNumberLiteral() {$/;"	f
 peg$parseNumberLiteral	cvimrc_parser/parser.js	/^    function peg$parseNumberLiteral() {$/;"	f
+peg$parseParameterList	bak/cvimrc_parser.js	/^    function peg$parseParameterList() {$/;"	f
 peg$parseParameterList	content_scripts/cvimrc_parser.js	/^    function peg$parseParameterList() {$/;"	f
 peg$parseParameterList	cvimrc_parser/parser.js	/^    function peg$parseParameterList() {$/;"	f
+peg$parseParameters	bak/cvimrc_parser.js	/^    function peg$parseParameters() {$/;"	f
 peg$parseParameters	content_scripts/cvimrc_parser.js	/^    function peg$parseParameters() {$/;"	f
 peg$parseParameters	cvimrc_parser/parser.js	/^    function peg$parseParameters() {$/;"	f
+peg$parsePath	content_scripts/cvimrc_parser.js	/^    function peg$parsePath() {$/;"	f
+peg$parsePath	cvimrc_parser/parser.js	/^    function peg$parsePath() {$/;"	f
+peg$parseSET	bak/cvimrc_parser.js	/^    function peg$parseSET() {$/;"	f
 peg$parseSET	content_scripts/cvimrc_parser.js	/^    function peg$parseSET() {$/;"	f
 peg$parseSET	cvimrc_parser/parser.js	/^    function peg$parseSET() {$/;"	f
+peg$parseSITE	bak/cvimrc_parser.js	/^    function peg$parseSITE() {$/;"	f
 peg$parseSITE	content_scripts/cvimrc_parser.js	/^    function peg$parseSITE() {$/;"	f
 peg$parseSITE	cvimrc_parser/parser.js	/^    function peg$parseSITE() {$/;"	f
+peg$parseSOURCE	content_scripts/cvimrc_parser.js	/^    function peg$parseSOURCE() {$/;"	f
+peg$parseSOURCE	cvimrc_parser/parser.js	/^    function peg$parseSOURCE() {$/;"	f
+peg$parseScope	bak/cvimrc_parser.js	/^    function peg$parseScope() {$/;"	f
 peg$parseScope	content_scripts/cvimrc_parser.js	/^    function peg$parseScope() {$/;"	f
 peg$parseScope	cvimrc_parser/parser.js	/^    function peg$parseScope() {$/;"	f
+peg$parseSetStatement	bak/cvimrc_parser.js	/^    function peg$parseSetStatement() {$/;"	f
 peg$parseSetStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseSetStatement() {$/;"	f
 peg$parseSetStatement	cvimrc_parser/parser.js	/^    function peg$parseSetStatement() {$/;"	f
+peg$parseSingleStringCharacter	bak/cvimrc_parser.js	/^    function peg$parseSingleStringCharacter() {$/;"	f
 peg$parseSingleStringCharacter	content_scripts/cvimrc_parser.js	/^    function peg$parseSingleStringCharacter() {$/;"	f
 peg$parseSingleStringCharacter	cvimrc_parser/parser.js	/^    function peg$parseSingleStringCharacter() {$/;"	f
+peg$parseSiteStatement	bak/cvimrc_parser.js	/^    function peg$parseSiteStatement() {$/;"	f
 peg$parseSiteStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseSiteStatement() {$/;"	f
 peg$parseSiteStatement	cvimrc_parser/parser.js	/^    function peg$parseSiteStatement() {$/;"	f
+peg$parseSourceStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseSourceStatement() {$/;"	f
+peg$parseSourceStatement	cvimrc_parser/parser.js	/^    function peg$parseSourceStatement() {$/;"	f
+peg$parseStart	bak/cvimrc_parser.js	/^    function peg$parseStart() {$/;"	f
 peg$parseStart	content_scripts/cvimrc_parser.js	/^    function peg$parseStart() {$/;"	f
 peg$parseStart	cvimrc_parser/parser.js	/^    function peg$parseStart() {$/;"	f
+peg$parseStatement	bak/cvimrc_parser.js	/^    function peg$parseStatement() {$/;"	f
 peg$parseStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseStatement() {$/;"	f
 peg$parseStatement	cvimrc_parser/parser.js	/^    function peg$parseStatement() {$/;"	f
+peg$parseStatementValue	bak/cvimrc_parser.js	/^    function peg$parseStatementValue() {$/;"	f
 peg$parseStatementValue	content_scripts/cvimrc_parser.js	/^    function peg$parseStatementValue() {$/;"	f
 peg$parseStatementValue	cvimrc_parser/parser.js	/^    function peg$parseStatementValue() {$/;"	f
+peg$parseStringCharacter	bak/cvimrc_parser.js	/^    function peg$parseStringCharacter() {$/;"	f
 peg$parseStringCharacter	content_scripts/cvimrc_parser.js	/^    function peg$parseStringCharacter() {$/;"	f
 peg$parseStringCharacter	cvimrc_parser/parser.js	/^    function peg$parseStringCharacter() {$/;"	f
+peg$parseStringLiteral	bak/cvimrc_parser.js	/^    function peg$parseStringLiteral() {$/;"	f
 peg$parseStringLiteral	content_scripts/cvimrc_parser.js	/^    function peg$parseStringLiteral() {$/;"	f
 peg$parseStringLiteral	cvimrc_parser/parser.js	/^    function peg$parseStringLiteral() {$/;"	f
+peg$parseUNMAP	bak/cvimrc_parser.js	/^    function peg$parseUNMAP() {$/;"	f
 peg$parseUNMAP	content_scripts/cvimrc_parser.js	/^    function peg$parseUNMAP() {$/;"	f
 peg$parseUNMAP	cvimrc_parser/parser.js	/^    function peg$parseUNMAP() {$/;"	f
+peg$parseUnmapIdentifierList	bak/cvimrc_parser.js	/^    function peg$parseUnmapIdentifierList() {$/;"	f
 peg$parseUnmapIdentifierList	content_scripts/cvimrc_parser.js	/^    function peg$parseUnmapIdentifierList() {$/;"	f
 peg$parseUnmapIdentifierList	cvimrc_parser/parser.js	/^    function peg$parseUnmapIdentifierList() {$/;"	f
+peg$parseUnmapStatement	bak/cvimrc_parser.js	/^    function peg$parseUnmapStatement() {$/;"	f
 peg$parseUnmapStatement	content_scripts/cvimrc_parser.js	/^    function peg$parseUnmapStatement() {$/;"	f
 peg$parseUnmapStatement	cvimrc_parser/parser.js	/^    function peg$parseUnmapStatement() {$/;"	f
+peg$parseWhiteSpace	bak/cvimrc_parser.js	/^    function peg$parseWhiteSpace() {$/;"	f
 peg$parseWhiteSpace	content_scripts/cvimrc_parser.js	/^    function peg$parseWhiteSpace() {$/;"	f
 peg$parseWhiteSpace	cvimrc_parser/parser.js	/^    function peg$parseWhiteSpace() {$/;"	f
+peg$parse_	bak/cvimrc_parser.js	/^    function peg$parse_() {$/;"	f
 peg$parse_	content_scripts/cvimrc_parser.js	/^    function peg$parse_() {$/;"	f
 peg$parse_	cvimrc_parser/parser.js	/^    function peg$parse_() {$/;"	f
+peg$parse__	bak/cvimrc_parser.js	/^    function peg$parse__() {$/;"	f
 peg$parse__	content_scripts/cvimrc_parser.js	/^    function peg$parse__() {$/;"	f
 peg$parse__	cvimrc_parser/parser.js	/^    function peg$parse__() {$/;"	f
+peg$startRuleFunctions	bak/cvimrc_parser.js	/^        peg$startRuleFunctions = { Start: peg$parseStart },$/;"	c	class:peg$parse
 peg$startRuleFunctions	content_scripts/cvimrc_parser.js	/^        peg$startRuleFunctions = { Start: peg$parseStart },$/;"	c	class:peg$parse
 peg$startRuleFunctions	cvimrc_parser/parser.js	/^        peg$startRuleFunctions = { Start: peg$parseStart },$/;"	c	class:peg$parse
+peg$subclass	bak/cvimrc_parser.js	/^  function peg$subclass(child, parent) {$/;"	f
 peg$subclass	content_scripts/cvimrc_parser.js	/^  function peg$subclass(child, parent) {$/;"	f
 peg$subclass	cvimrc_parser/parser.js	/^  function peg$subclass(child, parent) {$/;"	f
 pegjs	package.json	/^    "pegjs": "latest"$/;"	s	object:devDependencies
@@ -2274,7 +2352,7 @@ pinTab	content_scripts/mappings.js	/^  pinTab: function() {$/;"	m	class:Mappings
 pinned	content_scripts/command.js	/^    pinned: false,$/;"	p	class:Command.execute.tab
 popAndPass	pages/codemirror/css.js	/^  function popAndPass(type, stream, state, n) {$/;"	f
 popContext	pages/codemirror/css.js	/^  function popContext(state) {$/;"	f
-port	background_scripts/actions.js	/^      port:     _port,$/;"	p	class:Actions.AnonymousFunctiond38736174700.o
+port	background_scripts/actions.js	/^      port:     _port,$/;"	p	class:Actions.AnonymousFunctiond38736174500.o
 port	content_scripts/messenger.js	/^var port = chrome.extension.connect({name: 'main'});$/;"	v
 port	pages/popup.js	/^var port = chrome.extension.connect({name: 'popup'});$/;"	v
 portCallback	background_scripts/actions.js	/^  _.portCallback = (function() {$/;"	f	function:_
@@ -2285,7 +2363,7 @@ pre code	pages/markdown.css	/^pre code {$/;"	s
 pre code	pages/markdown.css	/^pre code, pre tt {$/;"	s
 pre tt	pages/markdown.css	/^pre code, pre tt {$/;"	s
 preprocess	pages/codemirror/vim.js	/^      preprocess: {$/;"	c	class:Vim.findSymbolModes
-prettyType	content_scripts/complete.js	/^          var prettyType = (function() {$/;"	f	function:Complete.engines.themoviedb.queryApi.AnonymousFunction53bda71a2900.AnonymousFunction53bda71a2a00
+prettyType	content_scripts/complete.js	/^          var prettyType = (function() {$/;"	f	function:AnonymousFunction53bda71a2400.AnonymousFunction53bda71a2500
 prev	content_scripts/hints.js	/^    'prev': 'a[rel$="prev"]'$/;"	p	class:Hints.matchPatternFilters.*://*.reddit.com/*
 prev	content_scripts/hints.js	/^    'prev': 'div[role="button"][data-tooltip="Newer"]:not([aria-disabled="true"])'$/;"	p	class:Hints.matchPatternFilters.*://mail.google.com/*
 prev	content_scripts/hints.js	/^    'prev': 'td a.prev'$/;"	p	class:Hints.matchPatternFilters.*://*.ebay.com/*
@@ -2315,43 +2393,28 @@ propertyKeywords_	pages/codemirror/css.js	/^  var propertyKeywords_ = [$/;"	v
 pushContext	pages/codemirror/css.js	/^  function pushContext(state, stream, type) {$/;"	f
 pushRepeatDigit	pages/codemirror/vim.js	/^    InputState.prototype.pushRepeatDigit = function(n) {$/;"	m	class:InputState
 pushText	pages/codemirror/vim.js	/^      pushText: function(registerName, operator, text, linewise) {$/;"	m	class:RegisterController
+qlist	content_scripts/command.js	/^        let qlist;$/;"	v
+qmark	bak/cvimrc_parser.js	/^          qmark: 's',$/;"	p	class:objectPlural.replacements
 qmark	content_scripts/cvimrc_parser.js	/^          qmark: 's',$/;"	p	class:objectPlural.replacements
 qmark	cvimrc_parser/parser.js	/^          qmark: 's',$/;"	p	class:objectPlural.replacements
 qmark	cvimrc_parser/test/test.vim	/^let qmark$/;"	v
 qmarks	background_scripts/options.js	/^  qmarks: {},$/;"	p	class:defaultSettings
 qq	cvimrc_parser/test/test.vim	/^map qq closeTab$/;"	m
+qs	content_scripts/command.js	/^		let qs = value$/;"	v
 query	content_scripts/select.js	/^	query: "",$/;"	p	class:Select
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.amazon
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.answers
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.baidu
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.bing
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.duckduckgo
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.ebay
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.github
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.google
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.google-finance
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.google-image
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.google-maps
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.google-trends
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.imdb
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.themoviedb
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.urbandictionary
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.webster
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.wikipedia
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.wiktionary
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.wolframalpha
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.yahoo
-queryApi	content_scripts/complete.js	/^    queryApi: function(query, callback) {$/;"	m	class:Complete.engines.youtube
+queryApi	content_scripts/complete.js	/^        queryApi: (query, callback) => {$/;"	p	class:Complete.engines
 queryEngine	content_scripts/complete.js	/^  queryEngine: function(name, query, callback) {$/;"	m	class:Complete
 queue	content_scripts/mappings.js	/^    queue: '',$/;"	p	class:Mappings.lastCommand
 queue	content_scripts/mappings.js	/^  queue: '',$/;"	p	class:Mappings
 queue	content_scripts/visual.js	/^  queue: '',$/;"	p	class:Visual
 quitChrome	background_scripts/actions.js	/^  _.quitChrome = function() {$/;"	f	function:_
 quitChrome	content_scripts/mappings.js	/^  quitChrome: function() { PORT('quitChrome'); },$/;"	m	class:Mappings.actions
-r	content_scripts/cvimrc_parser.js	/^            var r = { COMMANDS: {} };$/;"	c	class:peg$c88
-r	content_scripts/cvimrc_parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	c	class:peg$c80
-r	cvimrc_parser/parser.js	/^            var r = { COMMANDS: {} };$/;"	c	class:peg$c88
-r	cvimrc_parser/parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	c	class:peg$c80
+r	bak/cvimrc_parser.js	/^            var r = { COMMANDS: {} };$/;"	c	class:peg$c88
+r	bak/cvimrc_parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	c	class:peg$c80
+r	content_scripts/cvimrc_parser.js	/^            var r = { COMMANDS: {} };$/;"	c	class:peg$c93
+r	content_scripts/cvimrc_parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	c	class:peg$c84
+r	cvimrc_parser/parser.js	/^            var r = { COMMANDS: {} };$/;"	c	class:peg$c93
+r	cvimrc_parser/parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	c	class:peg$c84
 rafAsync	content_scripts/select.js	/^function rafAsync() {$/;"	f
 readOptionCSS	scripts/update_usercss.js	/^function readOptionCSS() {$/;"	f
 readUserCSS	scripts/update_usercss.js	/^function readUserCSS() {$/;"	f
@@ -2399,36 +2462,18 @@ replace	pages/codemirror/vim.js	/^      function replace() {$/;"	f	function:Vim.
 replace	pages/codemirror/vim.js	/^      replace: function(cm, actionArgs, vim) {$/;"	m	class:Vim.actions
 replaceAll	pages/codemirror/vim.js	/^      function replaceAll() {$/;"	f	function:Vim.doReplace
 replaceURLNumber	content_scripts/mappings.js	/^  var replaceURLNumber = function(callback) {$/;"	f
+replacements	bak/cvimrc_parser.js	/^        var replacements = {$/;"	c	class:objectPlural
 replacements	content_scripts/cvimrc_parser.js	/^        var replacements = {$/;"	c	class:objectPlural
 replacements	cvimrc_parser/parser.js	/^        var replacements = {$/;"	c	class:objectPlural
 replayMacro	pages/codemirror/vim.js	/^      replayMacro: function(cm, actionArgs, vim) {$/;"	m	class:Vim.actions
 repository	package.json	/^  "repository": {$/;"	o
-request	background_scripts/actions.js	/^      request:  _request,$/;"	p	class:Actions.AnonymousFunctiond38736174700.o
+request	background_scripts/actions.js	/^      request:  _request,$/;"	p	class:Actions.AnonymousFunctiond38736174500.o
+requestUrl	content_scripts/complete.js	/^        requestUrl: 'https:\/\/stackoverflow.com\/search?q=%s',$/;"	p	class:Complete.engines.stackexchange
+requestUrl	content_scripts/complete.js	/^        requestUrl: 'https:\/\/www.netflix.com\/search?q=%s'$/;"	p	class:Complete.engines.netflix
 requestUrl	content_scripts/complete.js	/^        requestUrl: props$/;"	p	class:Complete.addEngine.engines
 requestUrl	content_scripts/complete.js	/^      requestUrl: ['google', 'youtube'],$/;"	p	class:Complete.locales.aus
 requestUrl	content_scripts/complete.js	/^      requestUrl: ['google', 'youtube'],$/;"	p	class:Complete.locales.jp
 requestUrl	content_scripts/complete.js	/^      requestUrl: ['google', 'youtube'],$/;"	p	class:Complete.locales.uk
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'http:\/\/en.wiktionary.org\/wiki\/',$/;"	p	class:Complete.engines.wiktionary
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'http:\/\/www.amazon.com\/s\/?field-keywords=',$/;"	p	class:Complete.engines.amazon
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'http:\/\/www.google.com\/trends\/explore#q=',$/;"	p	class:Complete.engines.google-trends
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'http:\/\/www.imdb.com\/find?s=all&q=',$/;"	p	class:Complete.engines.imdb
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'http:\/\/www.merriam-webster.com\/dictionary\/',$/;"	p	class:Complete.engines.webster
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'http:\/\/www.urbandictionary.com\/define.php?term=',$/;"	p	class:Complete.engines.urbandictionary
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/answers.yahoo.com\/search\/search_result?p=',$/;"	p	class:Complete.engines.answers
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/duckduckgo.com\/?q=',$/;"	p	class:Complete.engines.duckduckgo
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/en.wikipedia.org\/w\/index.php?search=%s&title=Special:Search',$/;"	p	class:Complete.engines.wikipedia
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/github.com\/search?q=',$/;"	p	class:Complete.engines.github
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/search.yahoo.com\/search?p=',$/;"	p	class:Complete.engines.yahoo
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.baidu.com\/s?wd=',$/;"	p	class:Complete.engines.baidu
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.bing.com\/search?q=',$/;"	p	class:Complete.engines.bing
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.ebay.com\/sch\/i.html?_sacat=0&_from=R40&_nkw=',$/;"	p	class:Complete.engines.ebay
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.google.com\/finance?q=',$/;"	p	class:Complete.engines.google-finance
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.google.com\/maps\/search\/',$/;"	p	class:Complete.engines.google-maps
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.google.com\/search?q=',$/;"	p	class:Complete.engines.google
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.google.com\/search?site=imghp&tbm=isch&source=hp&q=',$/;"	p	class:Complete.engines.google-image
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.themoviedb.org\/search?query=',$/;"	p	class:Complete.engines.themoviedb
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.wolframalpha.com\/input\/?i=',$/;"	p	class:Complete.engines.wolframalpha
-requestUrl	content_scripts/complete.js	/^    requestUrl: 'https:\/\/www.youtube.com\/results?search_query=',$/;"	p	class:Complete.engines.youtube
 reselectLastSelection	pages/codemirror/vim.js	/^      reselectLastSelection: function(cm, _actionArgs, vim) {$/;"	m	class:Vim.actions
 reset	content_scripts/command.js	/^    reset = function(key) {$/;"	f	function:Command.preventAutoFocus
 resetModeState	pages/codemirror/codemirror.js	/^  function resetModeState(cm) {$/;"	f	function:window.CodeMirror
@@ -2441,14 +2486,18 @@ reset_button	pages/options.html	/^              <input id="reset_button" value="
 restartcVim	manifest.json	/^    "restartcVim": {$/;"	o	object:commands
 restoreChromeSession	background_scripts/actions.js	/^  _.restoreChromeSession = function(o) {$/;"	f	function:_
 restoreTabCompletion	content_scripts/command.js	/^  var restoreTabCompletion = function(value) {$/;"	f	function:Command.callCompletionFunction
-result	content_scripts/cvimrc_parser.js	/^            var result = {$/;"	c	class:peg$c102
-result	content_scripts/cvimrc_parser.js	/^            var result = {$/;"	c	class:peg$c103
-result	content_scripts/cvimrc_parser.js	/^        var result = {MAPPINGS: []};$/;"	c	class:parseScope
+result	bak/cvimrc_parser.js	/^            var result = {$/;"	c	class:peg$c102
+result	bak/cvimrc_parser.js	/^            var result = {$/;"	c	class:peg$c103
+result	bak/cvimrc_parser.js	/^        var result = {MAPPINGS: []};$/;"	c	class:parseScope
+result	content_scripts/cvimrc_parser.js	/^                var result = { FILES: p.join('') };$/;"	c	class:peg$c89
+result	content_scripts/cvimrc_parser.js	/^            var result = {$/;"	c	class:peg$c107
+result	content_scripts/cvimrc_parser.js	/^            var result = {$/;"	c	class:peg$c108
+result	content_scripts/cvimrc_parser.js	/^        var result = {$/;"	c	class:parseScope
 result	content_scripts/utils.js	/^    var result = function(arg) {$/;"	f	function:Utils.cacheFunction
-result	content_scripts/utils.js	/^    var result = {$/;"	c	class:window.parseConfig.formatConfig
-result	cvimrc_parser/parser.js	/^            var result = {$/;"	c	class:peg$c102
-result	cvimrc_parser/parser.js	/^            var result = {$/;"	c	class:peg$c103
-result	cvimrc_parser/parser.js	/^        var result = {MAPPINGS: []};$/;"	c	class:parseScope
+result	cvimrc_parser/parser.js	/^                var result = { FILES: p.join('') };$/;"	c	class:peg$c89
+result	cvimrc_parser/parser.js	/^            var result = {$/;"	c	class:peg$c107
+result	cvimrc_parser/parser.js	/^            var result = {$/;"	c	class:peg$c108
+result	cvimrc_parser/parser.js	/^        var result = {$/;"	c	class:parseScope
 ret	pages/codemirror/css.js	/^  function ret(style, tp) { type = tp; return style; }$/;"	f	function:AnonymousFunctiona13f781d0100
 retrieve	background_scripts/history.js	/^  retrieve: function(type) {$/;"	m	class:History
 retrieveAllHistory	background_scripts/actions.js	/^  _.retrieveAllHistory = function(o) {$/;"	f	function:_
@@ -2470,9 +2519,11 @@ saveSettings	pages/options.js	/^Settings.saveSettings = function() {$/;"	f	funct
 save_button	pages/options.html	/^              <input id="save_button" value="Save" type="button">$/;"	I
 save_container	pages/options.html	/^            <div id="save_container">$/;"	I
 scalehints	background_scripts/options.js	/^  scalehints: false,$/;"	p	class:defaultSettings
-scopeIdentifiers	content_scripts/cvimrc_parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	c	class:peg$c71
+scopeIdentifiers	bak/cvimrc_parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	c	class:peg$c71
+scopeIdentifiers	bak/cvimrc_parser.js	/^      var scopeIdentifiers = {};$/;"	v
+scopeIdentifiers	content_scripts/cvimrc_parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	c	class:peg$c75
 scopeIdentifiers	content_scripts/cvimrc_parser.js	/^      var scopeIdentifiers = {};$/;"	v
-scopeIdentifiers	cvimrc_parser/parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	c	class:peg$c71
+scopeIdentifiers	cvimrc_parser/parser.js	/^            scopeIdentifiers[a] = {[b]: c};$/;"	c	class:peg$c75
 scopeIdentifiers	cvimrc_parser/parser.js	/^      var scopeIdentifiers = {};$/;"	v
 script	cvimrc_parser/test/test.js	/^var script = require('fs').readFileSync('.\/test\/test.vim', 'utf8');$/;"	v
 scripts	manifest.json	/^    "scripts": [$/;"	a	object:background
@@ -2520,9 +2571,11 @@ searchIsReversed	pages/codemirror/vim.js	/^        searchIsReversed: false,$/;"	
 searchOverlay	pages/codemirror/vim.js	/^    function searchOverlay(query) {$/;"	f	function:Vim
 searchQuery	pages/codemirror/vim.js	/^        searchQuery: null,$/;"	p	class:Vim.resetVimGlobalState.vimGlobalState
 searchResults	background_scripts/history.js	/^  searchResults: null,$/;"	p	class:History
+searchalias	bak/cvimrc_parser.js	/^          searchalias: 'es'$/;"	p	class:objectPlural.replacements
 searchalias	content_scripts/cvimrc_parser.js	/^          searchalias: 'es'$/;"	p	class:objectPlural.replacements
 searchalias	cvimrc_parser/parser.js	/^          searchalias: 'es'$/;"	p	class:objectPlural.replacements
 searchaliases	background_scripts/options.js	/^  searchaliases: {},$/;"	p	class:defaultSettings
+searchengine	bak/cvimrc_parser.js	/^          searchengine: 's',$/;"	p	class:objectPlural.replacements
 searchengine	content_scripts/cvimrc_parser.js	/^          searchengine: 's',$/;"	p	class:objectPlural.replacements
 searchengine	cvimrc_parser/parser.js	/^          searchengine: 's',$/;"	p	class:objectPlural.replacements
 searchengines	background_scripts/options.js	/^  searchengines: {},$/;"	p	class:defaultSettings
@@ -2542,7 +2595,7 @@ sendLastSearch	background_scripts/actions.js	/^  _.sendLastSearch = function() {
 sendMessage	content_scripts/messenger.js	/^  chrome.runtime.sendMessage = function() {};$/;"	f	function:chrome.runtime
 sendSettings	background_scripts/options.js	/^Options.sendSettings = function() {$/;"	f	function:Options
 sendToTabs	background_scripts/history.js	/^  sendToTabs: function() {$/;"	m	class:History
-sender	background_scripts/actions.js	/^      sender:   _sender,$/;"	p	class:Actions.AnonymousFunctiond38736174700.o
+sender	background_scripts/actions.js	/^      sender:   _sender,$/;"	p	class:Actions.AnonymousFunctiond38736174500.o
 sessions	background_scripts/main.js	/^var sessions = {},$/;"	v
 sessions	content_scripts/command.js	/^      sessions: sessions.filter(function(e) {$/;"	p	class:self.completions
 sessions	content_scripts/command.js	/^var settings, sessions;$/;"	v
@@ -2593,8 +2646,9 @@ showPrompt	pages/codemirror/vim.js	/^    function showPrompt(cm, options) {$/;"	
 showtabindices	background_scripts/options.js	/^  showtabindices: false,$/;"	p	class:defaultSettings
 siteFilters	content_scripts/hints.js	/^Hints.siteFilters = {$/;"	c	class:Hints
 sites	background_scripts/options.js	/^  sites: {},$/;"	p	class:defaultSettings
-sites	content_scripts/cvimrc_parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	p	class:peg$c80.r
-sites	cvimrc_parser/parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	p	class:peg$c80.r
+sites	bak/cvimrc_parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	p	class:peg$c80.r
+sites	content_scripts/cvimrc_parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	p	class:peg$c84.r
+sites	cvimrc_parser/parser.js	/^            var r = {sites: {}}; r.sites[a] = b; return r;$/;"	p	class:peg$c84.r
 slideDuration	content_scripts/hud.js	/^  slideDuration: 40$/;"	p	class:HUD
 smartcase	background_scripts/options.js	/^  smartcase: true,$/;"	p	class:defaultSettings
 smoothScrollBy	content_scripts/scroll.js	/^  $.smoothScrollBy = function(elem, x, y, d, callback) {$/;"	f	function:$
@@ -2618,6 +2672,7 @@ span.frame span span	pages/markdown.css	/^span.frame span span {$/;"	s
 specialKey	pages/codemirror/vim.js	/^        var specialKey = ({Enter:'CR',Backspace:'BS',Delete:'Del'})[vimKey];$/;"	c	class:Vim.buildVimKeyMap.cmKeyToVimKey
 split	content_scripts/utils.js	/^  split: function(string, pattern) {$/;"	m	class:Utils
 splitMapping	content_scripts/mappings.js	/^Mappings.splitMapping = function(string) {$/;"	f	function:Mappings
+stackexchange	content_scripts/complete.js	/^    stackexchange: {$/;"	c	class:Complete.engines
 state	pages/codemirror/codemirror.js	/^    this.state = {keyMaps: [],$/;"	c	class:window.CodeMirror.CodeMirror
 state	pages/codemirror/vim.js	/^      var state = {$/;"	c	class:Vim.findSymbol
 stepBack	background_scripts/sessions.js	/^Sessions.stepBack = function(sender) {$/;"	f	function:Sessions
@@ -2655,9 +2710,12 @@ table tr th :first-child	pages/markdown.css	/^table tr th :first-child, table tr
 table tr th :last-child	pages/markdown.css	/^table tr th :last-child, table tr td :last-child {$/;"	s
 table tr:nth-child(2n)	pages/markdown.css	/^table tr:nth-child(2n) {$/;"	s
 tabs	background_scripts/main.js	/^  tabs: {$/;"	c	class:Listeners
+target	content_scripts/command.js	/^		let target = document.querySelector(value.replace(\/^scroll +\/, ''));$/;"	v
+target	content_scripts/command.js	/^            let target = document.querySelector(q.substring(1, q.length - 1));$/;"	v
 tbody	pages/markdown.css	/^tbody {$/;"	s
 td	pages/options.css	/^td {$/;"	s
 test	cvimrc_parser/Makefile	/^test: all$/;"	t
+text	bak/cvimrc_parser.js	/^    function text() {$/;"	f
 text	content_scripts/clipboard.js	/^    var text = t.value;$/;"	v	class:Clipboard
 text	content_scripts/cvimrc_parser.js	/^    function text() {$/;"	f
 text	cvimrc_parser/parser.js	/^    function text() {$/;"	f
@@ -2667,7 +2725,6 @@ textarea	pages/options.css	/^textarea, input {$/;"	s
 textarea:focus	pages/options.css	/^textarea:hover, input:hover, textarea:focus, input:focus {$/;"	s
 textarea:hover	pages/options.css	/^textarea:hover, input:hover, textarea:focus, input:focus {$/;"	s
 themeChanged	pages/codemirror/codemirror.js	/^  function themeChanged(cm) {$/;"	f	function:window.CodeMirror
-themoviedb	content_scripts/complete.js	/^  themoviedb: {$/;"	c	class:Complete.engines
 timeFn	content_scripts/scroll.js	/^  var timeFn = typeof window.performance === 'undefined' ?$/;"	v
 timeoutlen	background_scripts/options.js	/^  timeoutlen: 1000,$/;"	p	class:defaultSettings
 title	pages/options.html	/^                <span id="title">cVim <span id="version-number"><\/span> Options &ndash;$/;"	I
@@ -2748,7 +2805,8 @@ updateSearchQuery	pages/codemirror/vim.js	/^    function updateSearchQuery(cm, r
 updateSettings	content_scripts/command.js	/^Command.updateSettings = function(config) {$/;"	c	class:Command
 updateTabIndices	background_scripts/main.js	/^function updateTabIndices() {$/;"	f
 update_url	manifest.json	/^  "update_url": "https:\/\/clients2.google.com\/service\/update2\/crx",$/;"	s
-urbandictionary	content_scripts/complete.js	/^  urbandictionary: {$/;"	c	class:Complete.engines
+url	background_scripts/files.js	/^        url = 'file:\/\/' + p$/;"	p	class:Files.url
+url	background_scripts/files.js	/^    url: (p) => {$/;"	c	class:Files
 url	content_scripts/command.js	/^  url: [],$/;"	p	class:Command.history
 url	content_scripts/utils.js	/^  url = new URL(url);$/;"	v
 url	package.json	/^    "url": "https:\/\/github.com\/1995eaton\/chromium-vim"$/;"	s	object:repository
@@ -2779,13 +2837,9 @@ vmap	pages/codemirror/vim.js	/^      vmap: function(cm, params) { this.map(cm, p
 w	content_scripts/visual.js	/^  w: ['right', 'word'],$/;"	p	class:Visual.movements
 waitForLoad	content_scripts/utils.js	/^var waitForLoad = function(callback, constructor) {$/;"	f
 web_accessible_resources	manifest.json	/^  "web_accessible_resources": ["cmdline_frame.html"]$/;"	a
-webster	content_scripts/complete.js	/^  webster: {$/;"	c	class:Complete.engines
 wiggleWindow	content_scripts/cursor.js	/^  wiggleWindow: function() {$/;"	m	class:Cursor
-wikipedia	content_scripts/complete.js	/^  wikipedia: {$/;"	c	class:Complete.engines
-wiktionary	content_scripts/complete.js	/^  wiktionary: {$/;"	c	class:Complete.engines
 windows	background_scripts/main.js	/^  windows: {$/;"	c	class:Listeners
 windows	content_scripts/command.js	/^            windows: Object.keys(wins).map(function(e, i) {$/;"	p	class:Command.completions
-wolframalpha	content_scripts/complete.js	/^  wolframalpha: {$/;"	c	class:Complete.engines
 wordAsValue	pages/codemirror/css.js	/^  function wordAsValue(stream) {$/;"	f
 wrappingChanged	pages/codemirror/codemirror.js	/^  function wrappingChanged(cm) {$/;"	f	function:window.CodeMirror
 x0	content_scripts/scroll.js	/^    x0:   0, \/\/ starting x position$/;"	p	class:scroll
@@ -2794,7 +2848,6 @@ xc	content_scripts/scroll.js	/^    xc:   0, \/\/ delta-x during scroll$/;"	p	cla
 xx	cvimrc_parser/test/test.vim	/^map xx closeTab$/;"	m
 y0	content_scripts/scroll.js	/^    y0:   0,$/;"	p	class:scroll
 y1	content_scripts/scroll.js	/^    y1:   0,$/;"	p	class:scroll
-yahoo	content_scripts/complete.js	/^  yahoo: {$/;"	c	class:Complete.engines
 yank	content_scripts/select.js	/^Select.yank = function() {$/;"	f	function:Select
 yank	pages/codemirror/vim.js	/^      yank: function(cm, operatorArgs, _vim, curStart, curEnd, curOriginal) {$/;"	m	class:Vim.operators
 yankDocumentUrl	content_scripts/mappings.js	/^  yankDocumentUrl: function() {$/;"	m	class:Mappings.actions
@@ -2806,7 +2859,6 @@ yankWindowUrls	background_scripts/actions.js	/^  _.yankWindowUrls = function(o) 
 yankWindowUrls	content_scripts/mappings.js	/^  yankWindowUrls: function() {$/;"	m	class:Mappings.actions
 yank_subquery	content_scripts/select.js	/^	yank_subquery: "",$/;"	p	class:Select
 yc	content_scripts/scroll.js	/^    yc:   0,$/;"	p	class:scroll
-youtube	content_scripts/complete.js	/^  youtube: {$/;"	c	class:Complete.engines
 z	content_scripts/complete.js	/^    z: 'amazon'$/;"	p	class:Complete.aliases
 zero_point	content_scripts/select.js	/^	zero_point: false,$/;"	p	class:Select
 zoom	background_scripts/actions.js	/^    var zoom = function(o, scale, override, repeats) {$/;"	f	function:Actions

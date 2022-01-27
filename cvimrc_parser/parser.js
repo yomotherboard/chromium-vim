@@ -260,10 +260,9 @@
             return { MAPPINGS: [a, b, c.join('')].join(' ') };
           },
         peg$c89 = function(p) {
-        		var m = parseConfig(p.join(''));
-        		console.error('sourced ' + p.join(''));
-        		console.error('config: ' + JSON.stringify(m));
-                return { MAPPINGS: parseConfig(p.join('')) };
+                var result = { FILES: p.join('') };
+                console.log(result.FILES);
+                return result;
             },
         peg$c90 = function(a) {
             return { MAPPINGS: 'call ' + a.join('') };
@@ -2957,12 +2956,17 @@
         }
       }
       function parseScope(data) {
-        var result = {MAPPINGS: []};
-        data.forEach(function(e) {
+        var result = {
+            MAPPINGS: [],
+            FILES: []
+        };
+        data.forEach( (e) => {
           if (e === null)
             return;
           if (e.MAPPINGS) {
             result.MAPPINGS.push(e.MAPPINGS);
+          } else if (e.FILES) {
+            result.FILES.push(e.FILES);
           } else {
             merge(result, e);
           }
@@ -2970,26 +2974,6 @@
         result.MAPPINGS = result.MAPPINGS.join('\n');
         return result;
       }
-
-      function parseConfig(source_path) {
-    	var path = source_path;
-    	console.error('path: ', path);
-
-    	return httpRequest({ url: path }).then(function(config_txt) {
-    			console.error('config txt: ', config_txt);
-                var config = window.parseConfig(config_txt);
-
-                // if error
-                if (config.error) {
-                    console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
-                    return;
-                }
-
-    			/*console.error(JSON.stringify(config));*/
-    			return config.value.MAPPINGS;
-    		});
-    	}
-    	
 
       function objectPlural(key) {
         var replacements = {

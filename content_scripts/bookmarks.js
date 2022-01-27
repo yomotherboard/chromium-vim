@@ -95,7 +95,7 @@ Marks = (function() {
   _.parse = function(marks) {
     bookmarks = [];
     (function recurse(marks) {
-      marks.forEach(function(bookmark) {
+      marks.forEach((bookmark) => {
         if (bookmark.url) {
           bookmarks.push([bookmark.title, bookmark.url]);
         }
@@ -147,7 +147,7 @@ Marks = (function() {
     }
   };
 
-  _.matchPath = function(path) { PORT('getBookmarkPath', {path: path}); };
+  _.matchPath = (path) => { PORT('getBookmarkPath', {path: path}); };
 
   return _;
 

@@ -108,7 +108,7 @@ var Complete = {
   },
   queryEngine: function(name, query, callback) {
     var engine = this.engines[name];
-    if (!engine.hasOwnProperty('queryApi'))
+    if ( !engine.queryApi )
       callback([]);
     else
       engine.queryApi(query, callback);
@@ -140,8 +140,12 @@ var Complete = {
 };
 
 Complete.engines = {
+    netflix: {
+        baseUrl: 'https://www.netflix.com',
+        requestUrl: 'https://www.netflix.com/search?q=%s'
+    },
     stackexchange: {
-        baseUrl: 'www.stackoverflow.com',
+        baseUrl: 'https://www.stackoverflow.com',
         requestUrl: 'https://stackoverflow.com/search?q=%s',
         apiUrl: 'www.api.stackoverflow.com/2.3/search?order=desc&sort=activity&intitle=%s&site=stackoverflow&filter=!9fS)YbVGcStX6UqV6lOXy',
         formatRequest: (query) => {
@@ -184,7 +188,8 @@ Complete.engines = {
                     });
                     callback(data.sort(function(a) {
                         return a.type !== 'NAVIGATION';
-                    }).map(function(e) { return e.text; }));
+                    }).map((e) => { return e.text; }));
+                    return data;
                 }
             );
         }
@@ -203,9 +208,7 @@ Complete.engines = {
         json: true
       }, function(response) {
         data = response.items;
-        data = data.map(function(e) {
-          return e.full_name;
-        });
+        data = data.map( e => e.full_name );
         callback(data);
       });
     }
@@ -244,9 +247,7 @@ Complete.engines = {
                    .replace(/\n/g, '')
                    .replace(/\[,/g, '[');
         data = JSON.parse(data);
-        data = data.map(function(e) {
-          return e[0][0][0];
-        });
+        data = data.map( e => e[0][0][0] );
         callback(data);
       });
     }

@@ -1,5 +1,6 @@
 var Quickmarks = {};
 
+
 Actions = (function() {
 
   var lastCommand = null;
@@ -833,61 +834,23 @@ Actions = (function() {
     chrome.tabs.sendMessage(o.sender.tab.id, o.request);
   };
 
-    _.loadLocalConfig = function(o) {
+    _.loadLocalConfig = (o) => {
         var path = o.request.path
-            || 'file://' + settings.configpath
-            .split('~')
-            .join(settings.homedirectory || '~');
+            || Files.url(settings.configpath);
 
-        httpRequest({ url: path }).then(function(data) {
-            var added = window.parseConfig(data);
-
-            // if error
-            if (added.error) {
-                console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
-                o.callback({
-                    code: -2,
-                    error: added.error,
-                    config: settings
-                });
-                return;
+        console.log(path);
+        Config.merge(path, o).then( () => {
+            files = settings.FILES; // to remove file list and avoid resourcing files
+            console.log('files = ', files);
+            settings.FILES = [];
+            for ( f of files ) {
+                Config.merge( Files.url( f ) );
+                console.log(settings);
             }
-
-            added = added.value;
-            added.localconfig = added.localconfig || false;
-
-            var current = Object.clone(settings);
-            var defaults = Object.clone(defaultSettings);
-            added.localconfig = current.localconfig;
-
-            // should this be removed???
-            Object.merge(defaults, added);
-            if (current.localconfig) {
-                Options.saveSettings({
-                    settings: Object.clone(defaults),
-                    sendSettings: false
-                });
-                Object.merge(settings, current);
-                Object.merge(settings, added);
-                Options.sendSettings();
-            } else {
-                Object.merge(settings, added);
-                settings.RC = current.RC;
-                Options.sendSettings();
-            }
-
-            o.callback({
-                code: 0,
-                error: null,
-                config: settings
-            });
-        }, function() {
-            o.callback({
-                code: -1,
-                error: null,
-                config: settings
-            });
         });
+
+        Options.sendSettings();
+
         return true;
     };
 
