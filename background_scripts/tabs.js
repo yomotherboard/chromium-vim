@@ -7,7 +7,7 @@ var Tabs = {
         chrome.tabs.update(tab.id, {muted: !tab.mutedInfo.muted});
     },
 
-    reply: (o, data, callback = ()=>null) => {
+    reply: (o, data, callback = null) => {
         chrome.tabs.sendMessage(o.sender.tab.id, data, callback);
     },
 
@@ -15,11 +15,16 @@ var Tabs = {
         var r = {};
 
         if (!fields) {
-            chrome.tabs.sendMessage(o.sender.tab.id, o.request);
+            r = o.request;
         } else {
             fields.forEach( f => {
                 r[f] = o.request[f];
-            });
-        }
+            });}
+
+		chrome.tabs.sendMessage(o.sender.tab.id, r);
     },
+
+	queryActive: (callback) => {
+		chrome.tabs.query({active: true, currentWindow: true}, callback);
+	},
 }

@@ -2,21 +2,21 @@ var Quickmarks = {};
 
 Actions = (function() {
 
-  var lastCommand = null;
+	var lastCommand = null;
 
-  var openTab = (options, times) => {
-    times = +times || 1;
-    var doOpen = function() {
-      for (var i = 0; i < times; ++i)
-        chrome.tabs.create(options);
-    };
-    if (options.active)
-      setTimeout(doOpen, 80);
-    else
-      doOpen();
-  };
+	var openTab = (options, times) => {
+		times = +times || 1;
+		var doOpen = function() {
+			for (var i = 0; i < times; ++i)
+				chrome.tabs.create(options);
+		};
+		if (options.active)
+			setTimeout(doOpen, 80);
+		else
+			doOpen();
+	};
 
-  var _ = {};
+	var _ = {};
 
   _.updateLastCommand = (o) => {
     lastCommand = o.request.data;
@@ -35,55 +35,44 @@ Actions = (function() {
     o.callback(o.sender.tab.url);
   };
 
-  _.viewSource = (o) => {
-    o.url = 'view-source:' + o.sender.tab.url;
-    _.openLink(o);
-  };
+	_.viewSource = (o) => {
+		o.url = 'view-source:' + o.sender.tab.url;
+		_.openLink(o); };
 
-  _.openLink = (o) => {
-    var i;
-    if (o.request.tab.newWindow) {
-      for (i = 0; i < o.request.repeats; ++i) {
-        chrome.windows.create({
-          url: o.url,
-          focused: o.request.tab.active,
-          incognito: o.request.tab.incognito,
-        });
-      }
-    } else if (o.request.tab.tabbed) {
-      openTab({
-        url: o.url,
-        active: o.request.tab.active,
-        pinned: o.request.tab.pinned,
-        index: getTabOrderIndex(o.sender.tab)
-      }, o.request.repeats);
-    } else {
-      chrome.tabs.update({
-        url: o.url,
-        pinned: o.request.tab.pinned || o.sender.tab.pinned
-      });
-    }
-  };
+	_.openLink = (o) => {
+		var i;
+		if (o.request.tab.newWindow) {
+			for (i = 0; i < o.request.repeats; ++i) {
+				chrome.windows.create({
+					url: o.url,
+					focused: o.request.tab.active,
+					incognito: o.request.tab.incognito,
+				});
+			}
+		} else if (o.request.tab.tabbed) {
+			var r = Object.remap(o, ['url', 'active', 'pinned']);
+			r.index = getTabOrderIndex(o.sender.tab);
+			openTab(r, o.request.repeats);
+		} else {
+			chrome.tabs.update({
+				url: o.url,
+				pinned: o.request.tab.pinned || o.sender.tab.pinned
+			});
+		}
+	};
 
-  _.openLinkTab = (o) => {
-    if (!o.sender.tab) {
-      chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
-        openTab({
-          url: o.url,
-          active: o.request.active,
-          pinned: o.request.pinned,
-          index: getTabOrderIndex(tab[0])
-        }, o.request.repeats);
-      });
-    } else {
-      openTab({
-        url: o.url,
-        active: o.request.active,
-        pinned: o.request.pinned,
-        index: getTabOrderIndex(o.sender.tab)
-      }, o.request.repeats);
-    }
-  };
+	_.openLinkTab = (o) => {
+		var r = Object.remap(o, ['url', 'active', 'pinned']);
+		if (!o.sender.tab) {
+			Tabs.queryActive( (tab) => {
+				r.index = getTabOrderIndex(tab[0]);
+				openTab(r, o.request.repeats);
+			});
+		} else {
+			r.index = getTabOrderIndex(o.sender.tab);
+			openTab(r, o.request.repeats);
+		}
+	};
 
   _.addFrame = (o) => {
     Frames.add(o.sender.tab.id, o.port, o.request.isCommandFrame);
@@ -117,15 +106,15 @@ Actions = (function() {
   };
 
   _.syncSettings = (o) => {
-    if (o.request.settings.hud === false && settings.hud === true) {
+    if (o.request.rc.hud === false && rc.hud === true) {
       chrome.tabs.query({}, function(tabs) {
         tabs.forEach((tab) => {
           chrome.tabs.sendMessage(tab.id, {action: 'hideHud'});
         });
       });
     }
-    for (var key in o.request.settings) {
-      settings[key] = o.request.settings[key];
+    for (var key in o.request.rc) {
+      rc[key] = o.request.rc[key];
     }
     Options.sendSettings();
   };
@@ -151,15 +140,13 @@ Actions = (function() {
     }
   };
 
-  _.openLinkWindow = (o) => {
-    for (var i = 0; i < o.request.repeats; ++i) {
-      chrome.windows.create({
-        url: o.url,
-        focused: o.request.focused,
-        incognito: o.request.incognito
-      });
-    }
-  };
+	_.openLinkWindow = (o) => {
+		var r = Object.remap(o, ['url', 'focused', 'incognito']);
+		range(o.request.repeats).forEach( () => chrome.windows.create(r) );
+		//for (var i = 0; i < o.request.repeats; ++i) {
+			//chrome.windows.create(r);
+		//}
+	};
 
   _.closeTab = (o) => {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
@@ -326,9 +313,7 @@ Actions = (function() {
     });
   };
 
-  _.copy = (o) => {
-    Clipboard.copy(o.request.text);
-  };
+  _.copy = (o) => { Clipboard.copy(o.request.text); };
 
   _.goToTab = (o) => {
     var id = o.request.id, index = o.request.index;
@@ -537,11 +522,11 @@ Actions = (function() {
     };
 
     _.zoomIn = (o) => {
-      zoom(o, settings.zoomfactor, null, o.request.repeats);
+      zoom(o, rc.zoomfactor, null, o.request.repeats);
     };
 
     _.zoomOut = (o) => {
-      zoom(o, -settings.zoomfactor, null, o.request.repeats);
+      zoom(o, - rc.zoomfactor, null, o.request.repeats);
     };
 
     _.zoomOrig = (o) => { zoom(o, null, 1.0, 1); };
@@ -643,7 +628,7 @@ Actions = (function() {
 
       var buffers = tabs.map((e, i) => {
         var title = e.title;
-        if (settings.showtabindices) {
+        if (rc.showtabindices) {
           title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
         }
         return [(i + 1) + ': ' + title, e.url, e.id];
@@ -688,7 +673,7 @@ Actions = (function() {
     Options.refreshSettings(function() {
       o.callback({
         type: 'sendSettings',
-        settings: o.request.reset ? defaultSettings : settings
+        rc: o.request.reset ? defaultSettings : rc
       });
     });
   };
@@ -718,7 +703,7 @@ Actions = (function() {
 
   _.editWithVim = (o) => {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:' + settings.vimport);
+    xhr.open('POST', 'http://127.0.0.1:' + rc.vimport);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         o.callback({type: 'editWithVim', text: xhr.responseText});
@@ -773,7 +758,7 @@ Actions = (function() {
     _.hideCommandFrame = (o) => {
         Tabs.reply(o,
             { action: o.request.action },
-            () => {
+            function() {
                 var frame = Frames.get(o.sender.tab.id);
                 if (frame) {
                     frame.focus(frame.focusedId, true);
@@ -799,9 +784,9 @@ Actions = (function() {
 
     _.loadLocalConfig = (o) => {
         var path = o.request.path
-            || 'file://' + settings.configpath
+            || 'file://' + rc.configpath
             .split('~')
-            .join(settings.homedirectory || '~');
+            .join(rc.homedirectory || '~');
 
         httpRequest({ url: path }).then((data) => {
             var added = window.parseConfig(data);
@@ -812,7 +797,7 @@ Actions = (function() {
                 o.callback({
                     code: -2,
                     error: added.error,
-                    config: settings
+                    config: rc
                 });
                 return;
             }
@@ -820,7 +805,7 @@ Actions = (function() {
             added = added.value;
             added.localconfig = added.localconfig || false;
 
-            var current = Object.clone(settings);
+            var current = Object.clone(rc);
             var defaults = Object.clone(defaultSettings);
             added.localconfig = current.localconfig;
 
@@ -828,28 +813,28 @@ Actions = (function() {
             Object.merge(defaults, added);
             if (current.localconfig) {
                 Options.saveSettings({
-                    settings: Object.clone(defaults),
+                    rc: Object.clone(defaults),
                     sendSettings: false
                 });
-                Object.merge(settings, current);
-                Object.merge(settings, added);
+                Object.merge(rc, current);
+                Object.merge(rc, added);
                 Options.sendSettings();
             } else {
-                Object.merge(settings, added);
-                settings.RC = current.RC;
+                Object.merge(rc, added);
+                rc.RC = current.RC;
                 Options.sendSettings();
             }
 
             o.callback({
                 code: 0,
                 error: null,
-                config: settings
+                config: rc
             });
         }, function() {
             o.callback({
                 code: -1,
                 error: null,
-                config: settings
+                config: rc
             });
         });
         return true;
@@ -875,7 +860,7 @@ Actions = (function() {
         } else if (o.request.url) {
             o.url = o.request.url;
         } else {
-            o.url = settings.defaultnewtabpage ?
+            o.url = rc.defaultnewtabpage ?
                 'chrome://newtab' : '../pages/blank.html';
         }
 
@@ -886,3 +871,4 @@ Actions = (function() {
     };
 
 })();
+
