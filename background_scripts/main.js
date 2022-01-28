@@ -198,29 +198,23 @@ var Listeners = {
 
 
 
-
-//////////////////////////////
-////   HELPER FUNCTIONS   ////
-//////////////////////////////
-
-
 // shows tab indices 
 function updateTabIndices() {
-  if (settings.showtabindices) {
+  if (rc.showtabindices) {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
-      tabs.forEach(function(tab) {
+      tabs.forEach( (tab) => {
         chrome.tabs.sendMessage(tab.id, {
           action: 'displayTabIndices',
           index: tab.index + 1
-        });
-      });
+        });});
     });
   }
 }
 
 
-// activates tab 
-// returns info for activated tab 
+// TODO: change to Tabs.get() or Tabs.go()
+				// activates tab 
+				// returns info for activated tab 
 function getTab(tab, count, abs=null) {
     chrome.tabs.query({windowId: tab.windowId}, function(tabs) {
         var index;
@@ -228,7 +222,7 @@ function getTab(tab, count, abs=null) {
             index = ( abs > -1 ? abs : tabs.length + abs );
         }
         else {
-            var index = count + tab.index;
+            index = count + tab.index;
             if (count !== -1 && count !== 1)
                 index = Math.min(Math.max(0, index), tabs.length - 1);
             else
