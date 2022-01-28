@@ -200,7 +200,7 @@ var Listeners = {
 
 // shows tab indices 
 function updateTabIndices() {
-  if (rc.showtabindices) {
+  if (settings.showtabindices) {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
       tabs.forEach( (tab) => {
         chrome.tabs.sendMessage(tab.id, {
