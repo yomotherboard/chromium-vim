@@ -19,7 +19,7 @@ Actions = (function() {
 
   var _ = {};
 
-  _.updateLastCommand = function(o) {
+  _.updateLastCommand = (o) => {
     lastCommand = o.request.data;
     if (!lastCommand) {
       return;
@@ -32,16 +32,16 @@ Actions = (function() {
     });
   };
 
-  _.getRootUrl = function(o) {
+  _.getRootUrl = (o) => {
     o.callback(o.sender.tab.url);
   };
 
-  _.viewSource = function(o) {
+  _.viewSource = (o) => {
     o.url = 'view-source:' + o.sender.tab.url;
     _.openLink(o);
   };
 
-  _.openLink = function(o) {
+  _.openLink = (o) => {
     var i;
     if (o.request.tab.newWindow) {
       for (i = 0; i < o.request.repeats; ++i) {
@@ -66,7 +66,7 @@ Actions = (function() {
     }
   };
 
-  _.openLinkTab = function(o) {
+  _.openLinkTab = (o) => {
     if (!o.sender.tab) {
       chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
         openTab({
@@ -86,7 +86,7 @@ Actions = (function() {
     }
   };
 
-  _.addFrame = function(o) {
+  _.addFrame = (o) => {
     Frames.add(o.sender.tab.id, o.port, o.request.isCommandFrame);
   };
 
@@ -107,7 +107,7 @@ Actions = (function() {
     return retval;
   })();
 
-  _.focusFrame = function(o) {
+  _.focusFrame = (o) => {
     if (o.request.isRoot) {
       var frame = Frames.get(o.sender.tab.id);
       if (frame)
@@ -117,7 +117,7 @@ Actions = (function() {
     }
   };
 
-  _.syncSettings = function(o) {
+  _.syncSettings = (o) => {
     if (o.request.settings.hud === false && settings.hud === true) {
       chrome.tabs.query({}, function(tabs) {
         tabs.forEach(function(tab) {
@@ -131,7 +131,7 @@ Actions = (function() {
     Options.sendSettings();
   };
 
-  _.openLinksWindow = function(o) {
+  _.openLinksWindow = (o) => {
     var urls = o.request.urls;
     if (!o.request.noconvert) {
       urls = urls.map(function(e) { return Utils.toSearchURL(e); });
@@ -152,7 +152,7 @@ Actions = (function() {
     }
   };
 
-  _.openLinkWindow = function(o) {
+  _.openLinkWindow = (o) => {
     for (var i = 0; i < o.request.repeats; ++i) {
       chrome.windows.create({
         url: o.url,
@@ -162,7 +162,7 @@ Actions = (function() {
     }
   };
 
-  _.closeTab = function(o) {
+  _.closeTab = (o) => {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
       var sortedIds = tabs.map(function(e) { return e.id; });
       var base = o.sender.tab.index;
@@ -184,16 +184,16 @@ Actions = (function() {
                            o.sender.tab.index + (n < 0 ? 0 : 1 + n)));
       });
     };
-    _.closeTabLeft  = function(o) { closeTab(o, -o.request.repeats); };
-    _.closeTabRight = function(o) { closeTab(o, o.request.repeats); };
-    _.closeTabsToLeft = function(o) { closeTab(o, -o.sender.tab.index); };
-    _.closeTabsToRight = function(o) {
+    _.closeTabLeft  = (o) => { closeTab(o, -o.request.repeats); };
+    _.closeTabRight = (o) => { closeTab(o, o.request.repeats); };
+    _.closeTabsToLeft = (o) => { closeTab(o, -o.sender.tab.index); };
+    _.closeTabsToRight = (o) => {
       chrome.tabs.query({currentWindow: true},
           function(tabs) { closeTab(o, tabs.length - o.sender.tab.index); });
     };
   })();
 
-  _.getWindows = function(o) {
+  _.getWindows = (o) => {
     var _ret = {};
     chrome.windows.getAll(function(info) {
       info = info.filter(function(e) {
@@ -217,7 +217,7 @@ Actions = (function() {
     return true;
   };
 
-  _.moveTab = function(o) {
+  _.moveTab = (o) => {
     if (o.request.windowId === o.sender.tab.windowId) {
       return;
     }
@@ -256,11 +256,11 @@ Actions = (function() {
     });
   };
 
-  _.closeWindow = function(o) {
+  _.closeWindow = (o) => {
     chrome.windows.remove(o.sender.tab.windowId);
   };
 
-  _.openLastLinkInTab = function(o) {
+  _.openLastLinkInTab = (o) => {
     if (TabHistory[o.sender.tab.id] === void 0) {
       return;
     }
@@ -270,7 +270,7 @@ Actions = (function() {
     }
   };
 
-  _.openNextLinkInTab = function(o) {
+  _.openNextLinkInTab = (o) => {
     if (TabHistory[o.sender.tab.id] === void 0) {
       return;
     }
@@ -280,20 +280,20 @@ Actions = (function() {
     }
   };
 
-  _.getHistoryStates = function(o) {
+  _.getHistoryStates = (o) => {
     if (TabHistory[o.sender.tab.id] === void 0) {
       return o.callback({links: []});
     }
     o.callback(TabHistory[o.sender.tab.id]);
   };
 
-  _.reloadTab = function(o) {
+  _.reloadTab = (o) => {
     chrome.tabs.reload({
       bypassCache: o.request.nocache
     });
   };
 
-  _.reloadAllTabs = function(o) {
+  _.reloadAllTabs = (o) => {
     chrome.tabs.query({}, function(tabs) {
       tabs.forEach(function(tab) {
         if (!/^chrome:\/\//.test(tab.url) && !(!o.request.current && tab.id === o.sender.tab.id && tab.windowId === o.sender.tab.windowId)) {
@@ -307,15 +307,15 @@ Actions = (function() {
     getTab(o.sender.tab, false, o.request.repeats, false, false);
   };
 
-  _.previousTab = function(o) {
+  _.previousTab = (o) => {
     getTab(o.sender.tab, true, o.request.repeats, false, false);
   };
 
-  _.firstTab = function(o) {
+  _.firstTab = (o) => {
     getTab(o.sender.tab, false, false, true, false);
   };
 
-  _.lastTab = function(o) {
+  _.lastTab = (o) => {
     getTab(o.sender.tab, false, false, false, true);
   };
 
@@ -325,24 +325,24 @@ Actions = (function() {
     History.sendToTabs();
   };
 
-  _.appendHistory = function(o) {
+  _.appendHistory = (o) => {
     if (o.sender.tab.incognito === false) {
       History.append(o.request.value, o.request.type);
       History.sendToTabs();
     }
   };
 
-  _.pinTab = function(o) {
+  _.pinTab = (o) => {
     chrome.tabs.update(o.sender.tab.id, {
       pinned: o.request.pinned !== void 0 ? o.request.pinned : !o.sender.tab.pinned
     });
   };
 
-  _.copy = function(o) {
+  _.copy = (o) => {
     Clipboard.copy(o.request.text);
   };
 
-  _.goToTab = function(o) {
+  _.goToTab = (o) => {
     var id = o.request.id, index = o.request.index;
     chrome.tabs.query({currentWindow: true}, function(tabs) {
       if (id) {
@@ -372,7 +372,7 @@ Actions = (function() {
     _.moveTabLeft  = function(o) { move(o, -o.request.repeats); };
   })();
 
-  _.openPasteTab = function(o) {
+  _.openPasteTab = (o) => {
     var paste = Clipboard.paste();
     if (!paste) {
       return;
@@ -388,7 +388,7 @@ Actions = (function() {
     }
   };
 
-  _.openPaste = function(o) {
+  _.openPaste = (o) => {
     var paste = Clipboard.paste();
     if (!paste) {
       return;
@@ -399,11 +399,11 @@ Actions = (function() {
     });
   };
 
-  _.getPaste = function(o) {
+  _.getPaste = (o) => {
     o.callback(Clipboard.paste());
   };
 
-  _.createSession = function(o) {
+  _.createSession = (o) => {
     sessions[o.request.name] = {};
     chrome.tabs.query({
       currentWindow: true
@@ -422,24 +422,24 @@ Actions = (function() {
     return true;
   };
 
-  _.openBookmarkFolder = function(o) {
+  _.openBookmarkFolder = (o) => {
     Bookmarks.getFolderLinks(o.request.path, Links.multiOpen);
   };
 
-  _.deleteSession = function(o) {
+  _.deleteSession = (o) => {
     delete sessions[o.request.name];
     chrome.storage.local.set({
       sessions: sessions
     });
   };
 
-  _.lastActiveTab = function(o) {
+  _.lastActiveTab = (o) => {
     if (ActiveTabs[o.sender.tab.windowId] !== void 0) {
       chrome.tabs.update(ActiveTabs[o.sender.tab.windowId].shift(), {active: true});
     }
   };
 
-  _.openSession = function(o) {
+  _.openSession = (o) => {
     if (sessions.hasOwnProperty(o.request.name)) {
       var tabs = Object.keys(sessions[o.request.name]).sort().map(function(e) {
         return sessions[o.request.name][e];
@@ -476,7 +476,7 @@ Actions = (function() {
     }
   };
 
-  _.openLast = function(o) {
+  _.openLast = (o) => {
     if (o.sender.tab.incognito)
       return;
     var stepBackFN = Sessions.nativeSessions ?
@@ -487,7 +487,7 @@ Actions = (function() {
     }
   };
 
-  _.isNewInstall = function(o) {
+  _.isNewInstall = (o) => {
     if (o.sender.tab.id === Updates.tabId && Updates.displayMessage) {
       Updates.displayMessage = false;
       Updates.tabId = null;
@@ -508,7 +508,7 @@ Actions = (function() {
     chrome.downloads.setShelfEnabled(true);
   };
 
-  _.updateMarks = function(o) {
+  _.updateMarks = (o) => {
     Quickmarks = o.request.marks;
     chrome.tabs.query({currentWindow: true}, function(tabs) {
       for (var i = 0, l = tabs.length; i < l; ++i) {
@@ -519,11 +519,11 @@ Actions = (function() {
     });
   };
 
-  _.getChromeSessions = function(o) {
+  _.getChromeSessions = (o) => {
     o.callback(Sessions.recentlyClosed);
   };
 
-  _.restoreChromeSession = function(o) {
+  _.restoreChromeSession = (o) => {
     var sessionIds = Sessions.recentlyClosed.map(function(e) {
       return e.id;
     });
@@ -548,25 +548,25 @@ Actions = (function() {
       });
     };
 
-    _.zoomIn = function(o) {
+    _.zoomIn = (o) => {
       zoom(o, settings.zoomfactor, null, o.request.repeats);
     };
 
-    _.zoomOut = function(o) {
+    _.zoomOut = (o) => {
       zoom(o, -settings.zoomfactor, null, o.request.repeats);
     };
 
-    _.zoomOrig = function(o) { zoom(o, null, 1.0, 1); };
+    _.zoomOrig = (o) => { zoom(o, null, 1.0, 1); };
 
   })();
 
-  _.duplicateTab = function(o) {
+  _.duplicateTab = (o) => {
     for (var i = 0; i < o.request.repeats; i++) {
       chrome.tabs.duplicate(o.sender.tab.id);
     }
   };
 
-  _.lastUsedTab = function() {
+  _.lastUsedTab = () => {
     if (LastUsedTabs.length === 2) {
       chrome.tabs.query({}, function(tabs) {
         for (var i = 0; i < tabs.length; i++) {
@@ -579,7 +579,7 @@ Actions = (function() {
     }
   };
 
-  _.runScript = function(o) {
+  _.runScript = (o) => {
     chrome.tabs.executeScript(o.sender.tab.id, {
       code: o.request.code,
       runAt: 'document_start',
@@ -603,14 +603,14 @@ Actions = (function() {
     });
   };
 
-  _.updateLastSearch = function(o) {
+  _.updateLastSearch = (o) => {
     if (!o.request.value)
       return;
     _.lastSearch = o.request.value;
     _.sendLastSearch();
   };
 
-  _.injectCSS = function(o) {
+  _.injectCSS = (o) => {
     chrome.tabs.insertCSS(o.sender.tab.id, {code: o.request.css}, function() {
       // prevent the background script from throwing exceptions
       // when trying to insert CSS into unsupported URLs (chrome://*, etc)
@@ -620,29 +620,29 @@ Actions = (function() {
     });
   };
 
-  _.getBookmarks = function(o) {
+  _.getBookmarks = (o) => {
     Bookmarks.getMarks(function(marks) {
       o.callback({type: 'bookmarks', bookmarks: marks});
     });
   };
 
-  _.searchHistory = function(o) {
+  _.searchHistory = (o) => {
     History.retrieveSearchHistory(o.request.search, o.request.limit || 4, function(results) {
       o.callback({type: 'history', history: results});
     });
   };
 
-  _.getTopSites = function(o) {
+  _.getTopSites = (o) => {
     Sites.getTop(function(results) {
       o.callback({type: 'topsites', sites: results});
     });
   };
 
-  _.getQuickMarks = function(o) {
+  _.getQuickMarks = (o) => {
     o.callback({type: 'quickMarks', marks: Quickmarks});
   };
 
-  _.getBuffers = function(o) {
+  _.getBuffers = (o) => {
     chrome.tabs.query({}, function(tabs) {
       var otherWindows = [];
       tabs = tabs.filter(function(e) {
@@ -668,7 +668,7 @@ Actions = (function() {
     });
   };
 
-  _.getSessionNames = function(o) {
+  _.getSessionNames = (o) => {
     o.callback({
       type: 'sessions',
       sessions: Object.keys(sessions).map(function(e) {
@@ -678,11 +678,11 @@ Actions = (function() {
     });
   };
 
-  _.retrieveAllHistory = function(o) {
+  _.retrieveAllHistory = (o) => {
     o.callback({type: 'commandHistory', history: History.commandHistory});
   };
 
-  _.getBookmarkPath = function(o) {
+  _.getBookmarkPath = (o) => {
     chrome.bookmarks.getTree(function(marks) {
       Bookmarks.getPath(marks[0].children, o.request.path, function(e) {
         o.callback({type: 'bookmarkPath', path: e});
@@ -690,13 +690,13 @@ Actions = (function() {
     });
   };
 
-  _.getLastCommand = function(o) {
+  _.getLastCommand = (o) => {
     if (lastCommand) {
       o.callback({type: 'updateLastCommand', data: lastCommand});
     }
   };
 
-  _.getSettings = function(o) {
+  _.getSettings = (o) => {
     Options.refreshSettings(function() {
       o.callback({
         type: 'sendSettings',
@@ -705,7 +705,7 @@ Actions = (function() {
     });
   };
 
-  _.setIconEnabled = function(o) {
+  _.setIconEnabled = (o) => {
     chrome.browserAction.setIcon({
       path: 'icons/38.png',
       tabId: o.sender.tab.id
@@ -714,21 +714,21 @@ Actions = (function() {
     });
   };
 
-  _.getFilePath = function(o) {
+  _.getFilePath = (o) => {
     Files.getPath(o.request.path, function(data) {
       o.callback(data);
     });
     return true;
   };
 
-  _.getBlacklisted = function(o) {
+  _.getBlacklisted = (o) => {
     Popup.getBlacklisted(function() {
       o.callback(true);
     });
   };
 
 
-  _.editWithVim = function(o) {
+  _.editWithVim = (o) => {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://127.0.0.1:' + settings.vimport);
     xhr.onreadystatechange = function() {
@@ -741,13 +741,13 @@ Actions = (function() {
     }));
   };
 
-  _.httpRequest = function(o) {
+  _.httpRequest = (o) => {
     httpRequest(o.request.request).then(function(res) {
       o.callback({type: 'httpRequest', id: o.request.id, text: res});
     });
   };
 
-  _.createBookmark = function(o) {
+  _.createBookmark = (o) => {
     var url = o.request.url, title = o.request.title;
     chrome.bookmarks.search({url: url}, function(results) {
       if (!results.length) {
@@ -766,11 +766,11 @@ Actions = (function() {
     });
   };
 
-  _.parseRC = function(o) {
+  _.parseRC = (o) => {
     o.callback({type: 'parseRC', config: RCParser.parse(o.request.config)});
   };
 
-  _.showCommandFrame = function(o) {
+  _.showCommandFrame = (o) => {
     Frames.get(o.sender.tab.id).focusedId = o.request.frameId;
     chrome.tabs.sendMessage(o.sender.tab.id, {
       action: o.request.action,
@@ -780,14 +780,14 @@ Actions = (function() {
     });
   };
 
-  _.markActiveFrame = function(o) {
+  _.markActiveFrame = (o) => {
     var frame = Frames.get(o.sender.tab.id);
     if (frame) {
       frame.focusedId = o.request.frameId;
     }
   };
 
-  _.hideCommandFrame = function(o) {
+  _.hideCommandFrame = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, {
       action: o.request.action
     }, function() {
@@ -798,7 +798,7 @@ Actions = (function() {
     });
   };
 
-  _.callFind = function(o) {
+  _.callFind = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, {
       action: o.request.action,
       command: o.request.command,
@@ -806,14 +806,14 @@ Actions = (function() {
     });
   };
 
-  _.setFindIndex = function(o) {
+  _.setFindIndex = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, {
       action: o.request.action,
       index: o.request.index
     });
   };
 
-  _.yankWindowUrls = function(o) {
+  _.yankWindowUrls = (o) => {
     chrome.tabs.query({ currentWindow: true }, function(tabs) {
       Clipboard.copy(tabs.map(function(tab) {
         return tab.url;
@@ -822,15 +822,15 @@ Actions = (function() {
     });
   };
 
-  _.doIncSearch = function(o) {
+  _.doIncSearch = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, o.request);
   };
 
-  _.cancelIncSearch = function(o) {
+  _.cancelIncSearch = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, o.request);
   };
 
-  _.echoRequest = function(o) {
+  _.echoRequest = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, o.request);
   };
 
@@ -854,7 +854,7 @@ Actions = (function() {
         return true;
     };
 
-  _.muteTab = function(o) {
+  _.muteTab = (o) => {
     chrome.tabs.update(o.sender.tab.id, {muted: !o.sender.tab.mutedInfo.muted});
   };
 
