@@ -303,28 +303,10 @@ Actions = (function() {
     });
   };
 
-<<<<<<< HEAD
-  _.nextTab = (o) => {
-    getTab(o.sender.tab, false, o.request.repeats, false, false);
-  };
-
-  _.previousTab = (o) => {
-    getTab(o.sender.tab, true, o.request.repeats, false, false);
-  };
-
-  _.firstTab = (o) => {
-    getTab(o.sender.tab, false, false, true, false);
-  };
-
-  _.lastTab = (o) => {
-    getTab(o.sender.tab, false, false, false, true);
-  };
-=======
   _.nextTab = (o) => { getTab(o.sender.tab, o.request.repeats); };
   _.previousTab = (o) => { getTab(o.sender.tab, -1 * o.request.repeats); };
   _.firstTab = (o) => { getTab(o.sender.tab, null, 0); };
   _.lastTab = (o) => { getTab(o.sender.tab, null, -1); };
->>>>>>> cleanup-actions
 
   _.clearHistory = () => {
     History.clear();
@@ -531,11 +513,7 @@ Actions = (function() {
   };
 
   _.restoreChromeSession = (o) => {
-<<<<<<< HEAD
-    var sessionIds = Sessions.recentlyClosed.map(function(e) {
-=======
     var sessionIds = Sessions.recentlyClosed.map((e) => {
->>>>>>> cleanup-actions
       return e.id;
     });
     if (sessionIds.indexOf(o.request.sessionId) !== -1) {
@@ -793,33 +771,6 @@ Actions = (function() {
     }
   };
 
-<<<<<<< HEAD
-  _.hideCommandFrame = (o) => {
-    chrome.tabs.sendMessage(o.sender.tab.id, {
-      action: o.request.action
-    }, function() {
-      var frame = Frames.get(o.sender.tab.id);
-      if (frame) {
-        frame.focus(frame.focusedId, true);
-      }
-    });
-  };
-
-  _.callFind = (o) => {
-    chrome.tabs.sendMessage(o.sender.tab.id, {
-      action: o.request.action,
-      command: o.request.command,
-      params: o.request.params
-    });
-  };
-
-  _.setFindIndex = (o) => {
-    chrome.tabs.sendMessage(o.sender.tab.id, {
-      action: o.request.action,
-      index: o.request.index
-    });
-  };
-=======
     _.hideCommandFrame = (o) => {
         Tabs.reply(o,
             { action: o.request.action },
@@ -833,7 +784,6 @@ Actions = (function() {
 
     _.callFind = (o) => { Tabs.echo(o, ['action', 'command', 'params']); };
     _.setFindIndex = (o) => { Tabs.echo(o, ['action', 'index']); };
->>>>>>> cleanup-actions
 
   _.yankWindowUrls = (o) => {
     chrome.tabs.query({ currentWindow: true }, function(tabs) {
@@ -844,18 +794,9 @@ Actions = (function() {
     });
   };
 
-<<<<<<< HEAD
-  _.doIncSearch = (o) => {
-    chrome.tabs.sendMessage(o.sender.tab.id, o.request);
-  };
-
-  _.cancelIncSearch = (o) => {
-    chrome.tabs.sendMessage(o.sender.tab.id, o.request);
-  };
-
-  _.echoRequest = (o) => {
-    chrome.tabs.sendMessage(o.sender.tab.id, o.request);
-  };
+    _.doIncSearch = (o) => { Tabs.echo(o); };
+    _.cancelIncSearch = (o) => { Tabs.echo(o); };
+    _.echoRequest = (o) => { Tabs.echo(o); };
 
     _.loadLocalConfig = (o) => {
         var path = o.request.path
@@ -869,30 +810,6 @@ Actions = (function() {
             for ( f of files ) {
                 Config.merge( Files.url( f ) );
                 console.log(settings);
-=======
-    _.doIncSearch = (o) => { Tabs.echo(o); };
-    _.cancelIncSearch = (o) => { Tabs.echo(o); };
-    _.echoRequest = (o) => { Tabs.echo(o); };
-
-    _.loadLocalConfig = (o) => {
-        var path = o.request.path
-            || 'file://' + settings.configpath
-            .split('~')
-            .join(settings.homedirectory || '~');
-
-        httpRequest({ url: path }).then((data) => {
-            var added = window.parseConfig(data);
-
-            // if error
-            if (added.error) {
-                console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
-                o.callback({
-                    code: -2,
-                    error: added.error,
-                    config: settings
-                });
-                return;
->>>>>>> cleanup-actions
             }
         });
 
@@ -901,11 +818,6 @@ Actions = (function() {
         return true;
     };
 
-<<<<<<< HEAD
-  _.muteTab = (o) => {
-    chrome.tabs.update(o.sender.tab.id, {muted: !o.sender.tab.mutedInfo.muted});
-  };
-=======
     _.muteTab = (o) => { Tabs.mute(o.sender.tab); };
 
     return function(_request, _sender, _callback, _port) {
@@ -929,7 +841,6 @@ Actions = (function() {
             o.url = settings.defaultnewtabpage ?
                 'chrome://newtab' : '../pages/blank.html';
         }
->>>>>>> cleanup-actions
 
         if (!o.sender.tab && action !== 'openLinkTab')
             return;
