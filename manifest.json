@@ -78,6 +78,7 @@
       "background_scripts/bookmarks.js",
       "background_scripts/sites.js",
       "background_scripts/files.js",
+      "background_scripts/object.js",
       "background_scripts/links.js",
       "background_scripts/history.js",
       "background_scripts/config.js",
