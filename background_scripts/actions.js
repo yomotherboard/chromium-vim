@@ -107,7 +107,7 @@ Actions = (function() {
   };
 
   _.syncSettings = (o) => {
-    if (o.request.rc.hud === false && rc.hud === true) {
+    if (o.request.settings.hud === false && settings.hud === true) {
       chrome.tabs.query({}, function(tabs) {
         tabs.forEach((tab) => {
           chrome.tabs.sendMessage(tab.id, {action: 'hideHud'});
@@ -115,7 +115,7 @@ Actions = (function() {
       });
     }
     for (var key in o.request.rc) {
-      rc[key] = o.request.rc[key];
+      settings[key] = o.request.rc[key];
     }
     Options.sendSettings();
   };
@@ -523,11 +523,11 @@ Actions = (function() {
     };
 
     _.zoomIn = (o) => {
-      zoom(o, rc.zoomfactor, null, o.request.repeats);
+      zoom(o, settings.zoomfactor, null, o.request.repeats);
     };
 
     _.zoomOut = (o) => {
-      zoom(o, - rc.zoomfactor, null, o.request.repeats);
+      zoom(o, - settings.zoomfactor, null, o.request.repeats);
     };
 
     _.zoomOrig = (o) => { zoom(o, null, 1.0, 1); };
@@ -629,7 +629,7 @@ Actions = (function() {
 
       var buffers = tabs.map((e, i) => {
         var title = e.title;
-        if (rc.showtabindices) {
+        if (settings.showtabindices) {
           title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
         }
         return [(i + 1) + ': ' + title, e.url, e.id];
@@ -674,7 +674,7 @@ Actions = (function() {
     Options.refreshSettings(function() {
       o.callback({
         type: 'sendSettings',
-        rc: o.request.reset ? defaultSettings : rc
+        settings: o.request.reset ? defaultSettings : settings
       });
     });
   };
@@ -704,7 +704,7 @@ Actions = (function() {
 
   _.editWithVim = (o) => {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:' + rc.vimport);
+    xhr.open('POST', 'http://127.0.0.1:' + settings.vimport);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         o.callback({type: 'editWithVim', text: xhr.responseText});
@@ -785,7 +785,6 @@ Actions = (function() {
 
     _.loadLocalConfig = (o) => {
         var path = o.request.path
-<<<<<<< HEAD
             || Files.url(settings.configpath);
 
         console.log(path);
@@ -796,67 +795,11 @@ Actions = (function() {
             for ( f of files ) {
                 Config.merge( Files.url( f ) );
                 console.log(settings);
-=======
-            || 'file://' + rc.configpath
-            .split('~')
-            .join(rc.homedirectory || '~');
-
-        httpRequest({ url: path }).then((data) => {
-            var added = window.parseConfig(data);
-
-            // if error
-            if (added.error) {
-                console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
-                o.callback({
-                    code: -2,
-                    error: added.error,
-                    config: rc
-                });
-                return;
->>>>>>> cleanup-actions
             }
         });
 
-<<<<<<< HEAD
         Options.sendSettings();
 
-=======
-            added = added.value;
-            added.localconfig = added.localconfig || false;
-
-            var current = Object.clone(rc);
-            var defaults = Object.clone(defaultSettings);
-            added.localconfig = current.localconfig;
-
-            // should this be removed???
-            Object.merge(defaults, added);
-            if (current.localconfig) {
-                Options.saveSettings({
-                    rc: Object.clone(defaults),
-                    sendSettings: false
-                });
-                Object.merge(rc, current);
-                Object.merge(rc, added);
-                Options.sendSettings();
-            } else {
-                Object.merge(rc, added);
-                rc.RC = current.RC;
-                Options.sendSettings();
-            }
-
-            o.callback({
-                code: 0,
-                error: null,
-                config: rc
-            });
-        }, function() {
-            o.callback({
-                code: -1,
-                error: null,
-                config: rc
-            });
-        });
->>>>>>> cleanup-actions
         return true;
     };
 
@@ -880,7 +823,7 @@ Actions = (function() {
         } else if (o.request.url) {
             o.url = o.request.url;
         } else {
-            o.url = rc.defaultnewtabpage ?
+            o.url = settings.defaultnewtabpage ?
                 'chrome://newtab' : '../pages/blank.html';
         }
 
