@@ -5,7 +5,7 @@ Actions = (function() {
 
   var lastCommand = null;
 
-  var openTab = function(options, times) {
+  var openTab = (options, times) => {
     times = +times || 1;
     var doOpen = function() {
       for (var i = 0; i < times; ++i)
@@ -24,7 +24,7 @@ Actions = (function() {
     if (!lastCommand) {
       return;
     }
-    activePorts.forEach(function(port) {
+    activePorts.forEach((port) => {
       port.postMessage({
         type: 'updateLastCommand',
         data: o.request.data
@@ -90,15 +90,15 @@ Actions = (function() {
     Frames.add(o.sender.tab.id, o.port, o.request.isCommandFrame);
   };
 
-  _.portCallback = (function() {
+  _.portCallback = (() => {
     var callbacks = {};
 
-    var retval = function(o) {
+    var retval = (o) => {
       callbacks[o.request.id](Object.clone(o.request));
       delete callbacks[o.request.id];
     };
 
-    retval.addCallback = function(callback) {
+    retval.addCallback = (callback) => {
       var id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
       callbacks[id] = callback;
       return id;
@@ -120,7 +120,7 @@ Actions = (function() {
   _.syncSettings = (o) => {
     if (o.request.settings.hud === false && settings.hud === true) {
       chrome.tabs.query({}, function(tabs) {
-        tabs.forEach(function(tab) {
+        tabs.forEach((tab) => {
           chrome.tabs.sendMessage(tab.id, {action: 'hideHud'});
         });
       });
@@ -134,7 +134,7 @@ Actions = (function() {
   _.openLinksWindow = (o) => {
     var urls = o.request.urls;
     if (!o.request.noconvert) {
-      urls = urls.map(function(e) { return Utils.toSearchURL(e); });
+      urls = urls.map((e) => { return Utils.toSearchURL(e); });
     }
     for (var i = 0; i < o.request.repeats; i++) {
       chrome.windows.create({
@@ -164,7 +164,7 @@ Actions = (function() {
 
   _.closeTab = (o) => {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
-      var sortedIds = tabs.map(function(e) { return e.id; });
+      var sortedIds = tabs.map((e) => { return e.id; });
       var base = o.sender.tab.index;
       if (o.request.repeats > sortedIds.length - base) {
         base -= o.request.repeats - (sortedIds.length - base);
@@ -196,14 +196,14 @@ Actions = (function() {
   _.getWindows = (o) => {
     var _ret = {};
     chrome.windows.getAll(function(info) {
-      info = info.filter(function(e) {
+      info = info.filter((e) => {
         return e.type === 'normal' && e.id !== o.sender.tab.windowId;
-      }).map(function(e) {
+      }).map((e) => {
         _ret[e.id] = [];
         return e.id;
       });
       chrome.tabs.query({}, function(tabs) {
-        tabs = tabs.filter(function(e) {
+        tabs = tabs.filter((e) => {
           return info.indexOf(e.windowId) !== -1;
         });
         for (var i = 0; i < tabs.length; i++) {
@@ -222,9 +222,9 @@ Actions = (function() {
       return;
     }
     chrome.windows.getAll(function(info) {
-      info = info.filter(function(e) {
+      info = info.filter((e) => {
         return e.type === 'normal';
-      }).map(function(e) {
+      }).map((e) => {
         return e.id;
       });
       var repin = function() {
@@ -295,7 +295,7 @@ Actions = (function() {
 
   _.reloadAllTabs = (o) => {
     chrome.tabs.query({}, function(tabs) {
-      tabs.forEach(function(tab) {
+      tabs.forEach((tab) => {
         if (!/^chrome:\/\//.test(tab.url) && !(!o.request.current && tab.id === o.sender.tab.id && tab.windowId === o.sender.tab.windowId)) {
           chrome.tabs.reload(tab.id);
         }
@@ -303,6 +303,7 @@ Actions = (function() {
     });
   };
 
+<<<<<<< HEAD
   _.nextTab = (o) => {
     getTab(o.sender.tab, false, o.request.repeats, false, false);
   };
@@ -318,8 +319,14 @@ Actions = (function() {
   _.lastTab = (o) => {
     getTab(o.sender.tab, false, false, false, true);
   };
+=======
+  _.nextTab = (o) => { getTab(o.sender.tab, o.request.repeats); };
+  _.previousTab = (o) => { getTab(o.sender.tab, -1 * o.request.repeats); };
+  _.firstTab = (o) => { getTab(o.sender.tab, null, 0); };
+  _.lastTab = (o) => { getTab(o.sender.tab, null, -1); };
+>>>>>>> cleanup-actions
 
-  _.clearHistory = function() {
+  _.clearHistory = () => {
     History.clear();
     History.saveCommandHistory();
     History.sendToTabs();
@@ -368,8 +375,8 @@ Actions = (function() {
         });
       });
     };
-    _.moveTabRight = function(o) { move(o, o.request.repeats); };
-    _.moveTabLeft  = function(o) { move(o, -o.request.repeats); };
+    _.moveTabRight = (o) => { move(o, o.request.repeats); };
+    _.moveTabLeft  = (o) => { move(o, -o.request.repeats); };
   })();
 
   _.openPasteTab = (o) => {
@@ -377,7 +384,7 @@ Actions = (function() {
     if (!paste) {
       return;
     }
-    paste = paste.split('\n').filter(function(e) { return e.trim(); });
+    paste = paste.split('\n').filter((e) => { return e.trim(); });
     for (var i = 0; i < o.request.repeats; ++i) {
       for (var j = 0, l = paste.length; j < l; ++j) {
         openTab({
@@ -414,7 +421,7 @@ Actions = (function() {
         }
       });
       chrome.storage.local.set({sessions: sessions});
-      o.callback(Object.keys(sessions).map(function(e) {
+      o.callback(Object.keys(sessions).map((e) => {
         return [e, Object.keys(sessions[e]).length.toString() +
           ' tab' + (Object.keys(sessions[e]).length === 1 ? '' : 's')];
       }));
@@ -463,7 +470,7 @@ Actions = (function() {
       } else {
         chrome.tabs.query({currentWindow: true}, function(tabInfo) {
           var windowLength = tabInfo.length;
-          tabs.forEach(function(tab) {
+          tabs.forEach((tab) => {
             openTab({
               url: tab.url,
               pinned: tab.pinned,
@@ -495,15 +502,15 @@ Actions = (function() {
     }
   };
 
-  _.cancelAllWebRequests = function() {
+  _.cancelAllWebRequests = () => {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
-      tabs.forEach(function(tab) {
+      tabs.forEach((tab) => {
         chrome.tabs.sendMessage(tab.id, {action: 'cancelAllWebRequests'});
       });
     });
   };
 
-  _.hideDownloadsShelf = function() {
+  _.hideDownloadsShelf = () => {
     chrome.downloads.setShelfEnabled(false);
     chrome.downloads.setShelfEnabled(true);
   };
@@ -524,7 +531,11 @@ Actions = (function() {
   };
 
   _.restoreChromeSession = (o) => {
+<<<<<<< HEAD
     var sessionIds = Sessions.recentlyClosed.map(function(e) {
+=======
+    var sessionIds = Sessions.recentlyClosed.map((e) => {
+>>>>>>> cleanup-actions
       return e.id;
     });
     if (sessionIds.indexOf(o.request.sessionId) !== -1) {
@@ -592,12 +603,12 @@ Actions = (function() {
 
   // Port actions
 
-  _.sendLastSearch = function() {
+  _.sendLastSearch = () => {
     if (!_.lastSearch) {
       return;
     }
     chrome.tabs.query({}, function(tabs) {
-      tabs.forEach(function(tab) {
+      tabs.forEach((tab) => {
         chrome.tabs.sendMessage(tab.id, {action: 'updateLastSearch', value: _.lastSearch});
       });
     });
@@ -645,7 +656,7 @@ Actions = (function() {
   _.getBuffers = (o) => {
     chrome.tabs.query({}, function(tabs) {
       var otherWindows = [];
-      tabs = tabs.filter(function(e) {
+      tabs = tabs.filter((e) => {
         if (e.windowId === o.sender.tab.windowId)
           return true;
         otherWindows.push(e);
@@ -653,7 +664,7 @@ Actions = (function() {
       });
       tabs = tabs.concat(otherWindows);
 
-      var buffers = tabs.map(function(e, i) {
+      var buffers = tabs.map((e, i) => {
         var title = e.title;
         if (settings.showtabindices) {
           title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
@@ -671,7 +682,7 @@ Actions = (function() {
   _.getSessionNames = (o) => {
     o.callback({
       type: 'sessions',
-      sessions: Object.keys(sessions).map(function(e) {
+      sessions: Object.keys(sessions).map((e) => {
         return [e, Object.keys(sessions[e]).length.toString() + ' tab' +
                    (Object.keys(sessions[e]).length === 1 ? '' : 's')];
       })
@@ -758,7 +769,7 @@ Actions = (function() {
     });
   };
 
-  _.quitChrome = function() {
+  _.quitChrome = () => {
     chrome.windows.getAll({populate: false}, function(windowList) {
       windowList.forEach(function(e) {
         chrome.windows.remove(e.id);
@@ -772,12 +783,7 @@ Actions = (function() {
 
   _.showCommandFrame = (o) => {
     Frames.get(o.sender.tab.id).focusedId = o.request.frameId;
-    chrome.tabs.sendMessage(o.sender.tab.id, {
-      action: o.request.action,
-      search: o.request.search,
-      value: o.request.value,
-      complete: o.request.complete
-    });
+    Tabs.echo(o, ['action', 'search', 'value', 'complete']);
   };
 
   _.markActiveFrame = (o) => {
@@ -787,6 +793,7 @@ Actions = (function() {
     }
   };
 
+<<<<<<< HEAD
   _.hideCommandFrame = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, {
       action: o.request.action
@@ -812,16 +819,32 @@ Actions = (function() {
       index: o.request.index
     });
   };
+=======
+    _.hideCommandFrame = (o) => {
+        Tabs.reply(o,
+            { action: o.request.action },
+            () => {
+                var frame = Frames.get(o.sender.tab.id);
+                if (frame) {
+                    frame.focus(frame.focusedId, true);
+                }
+            });
+    };
+
+    _.callFind = (o) => { Tabs.echo(o, ['action', 'command', 'params']); };
+    _.setFindIndex = (o) => { Tabs.echo(o, ['action', 'index']); };
+>>>>>>> cleanup-actions
 
   _.yankWindowUrls = (o) => {
     chrome.tabs.query({ currentWindow: true }, function(tabs) {
-      Clipboard.copy(tabs.map(function(tab) {
+      Clipboard.copy(tabs.map((tab) => {
         return tab.url;
       }).join('\n'));
       o.callback(tabs.length);
     });
   };
 
+<<<<<<< HEAD
   _.doIncSearch = (o) => {
     chrome.tabs.sendMessage(o.sender.tab.id, o.request);
   };
@@ -846,6 +869,30 @@ Actions = (function() {
             for ( f of files ) {
                 Config.merge( Files.url( f ) );
                 console.log(settings);
+=======
+    _.doIncSearch = (o) => { Tabs.echo(o); };
+    _.cancelIncSearch = (o) => { Tabs.echo(o); };
+    _.echoRequest = (o) => { Tabs.echo(o); };
+
+    _.loadLocalConfig = (o) => {
+        var path = o.request.path
+            || 'file://' + settings.configpath
+            .split('~')
+            .join(settings.homedirectory || '~');
+
+        httpRequest({ url: path }).then((data) => {
+            var added = window.parseConfig(data);
+
+            // if error
+            if (added.error) {
+                console.error(`parse error on line ${added.error.lineno} of ${path}: ${added.error.message}`);
+                o.callback({
+                    code: -2,
+                    error: added.error,
+                    config: settings
+                });
+                return;
+>>>>>>> cleanup-actions
             }
         });
 
@@ -854,36 +901,40 @@ Actions = (function() {
         return true;
     };
 
+<<<<<<< HEAD
   _.muteTab = (o) => {
     chrome.tabs.update(o.sender.tab.id, {muted: !o.sender.tab.mutedInfo.muted});
   };
+=======
+    _.muteTab = (o) => { Tabs.mute(o.sender.tab); };
 
-  return function(_request, _sender, _callback, _port) {
-    var action = _request.action;
-    if (!_.hasOwnProperty(action) || typeof _[action] !== 'function')
-      return;
+    return function(_request, _sender, _callback, _port) {
+        var action = _request.action;
+        if (!_.hasOwnProperty(action) || typeof _[action] !== 'function')
+            return;
 
-    var o = {
-      request:  _request,
-      sender:   _sender,
-      callback: _callback,
-      port:     _port,
+        var o = {
+            request:  _request,
+            sender:   _sender,
+            callback: _callback,
+            port:     _port,
+        };
+        o.request.repeats = Math.max(~~o.request.repeats, 1);
+
+        if (o.request.url && !o.request.noconvert) {
+            o.url = Utils.toSearchURL(o.request.url);
+        } else if (o.request.url) {
+            o.url = o.request.url;
+        } else {
+            o.url = settings.defaultnewtabpage ?
+                'chrome://newtab' : '../pages/blank.html';
+        }
+>>>>>>> cleanup-actions
+
+        if (!o.sender.tab && action !== 'openLinkTab')
+            return;
+
+        return _[action](o);
     };
-    o.request.repeats = Math.max(~~o.request.repeats, 1);
-
-    if (o.request.url && !o.request.noconvert) {
-      o.url = Utils.toSearchURL(o.request.url);
-    } else if (o.request.url) {
-      o.url = o.request.url;
-    } else {
-      o.url = settings.defaultnewtabpage ?
-        'chrome://newtab' : '../pages/blank.html';
-    }
-
-    if (!o.sender.tab && action !== 'openLinkTab')
-      return;
-
-    return _[action](o);
-  };
 
 })();

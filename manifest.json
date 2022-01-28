@@ -87,6 +87,7 @@
       "background_scripts/sessions.js",
       "background_scripts/popup.js",
       "background_scripts/update.js",
+      "background_scripts/tabs.js",
       "background_scripts/tab_creation_order.js",
       "background_scripts/frames.js"
     ]

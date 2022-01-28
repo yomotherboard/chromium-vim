@@ -221,19 +221,19 @@ function updateTabIndices() {
 
 // activates tab 
 // returns info for activated tab 
-function getTab(tab, reverse, count, first, last) {
-  chrome.tabs.query({windowId: tab.windowId}, function(tabs) {
-    if (first) {
-      return chrome.tabs.update(tabs[0].id, {active: true});
-    } else if (last) {
-      return chrome.tabs.update(tabs[tabs.length - 1].id, {active: true});
-    } else {
-      var index = (reverse ? -1 : 1) * count + tab.index;
-      if (count !== -1 && count !== 1)
-        index = Math.min(Math.max(0, index), tabs.length - 1);
-      else
-        index = Utils.trueModulo(index, tabs.length);
-      return chrome.tabs.update(tabs[index].id, {active: true});
-    }
-  });
+function getTab(tab, count, abs=null) {
+    chrome.tabs.query({windowId: tab.windowId}, function(tabs) {
+        var index;
+        if (abs !== null) {
+            index = ( abs > -1 ? abs : tabs.length + abs );
+        }
+        else {
+            var index = count + tab.index;
+            if (count !== -1 && count !== 1)
+                index = Math.min(Math.max(0, index), tabs.length - 1);
+            else
+                index = Utils.trueModulo(index, tabs.length);
+        }
+        return chrome.tabs.update(tabs[index].id, {active: true});
+    });
 }
