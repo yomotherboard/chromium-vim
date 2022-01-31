@@ -4,8 +4,8 @@ var Select = {
 	query: "",
 	click_subquery: "",
 	yank_subquery: "",
-	scroll_to_select: false,
-	center_point: 250,
+	scroll_to_select: true,
+	center_point: 50,
 	zero_point: false,
 };
 
@@ -27,7 +27,7 @@ function checkElement(selector) {
 }
 
 // set css style of selected DOM element
-Select.style = function( styleCSS ) {
+Select.style = ( styleCSS ) => {
 		old_style=document.querySelector("#cvim-select-style");
 
 		if (old_style) {
@@ -36,17 +36,15 @@ Select.style = function( styleCSS ) {
 
 		cvim_select_style =
 			`<style id="cvim-select-style">
-				.cvim-selected {
-					` + styleCSS + `
-					}
+				.cvim-selected { ${styleCSS} }
 			</style>`;
 
 		document.head.insertAdjacentHTML("beforeend", cvim_select_style);
 };
 
 // set the queryselector that aggregates the selection list
-Select.selector = function( query_str ) {
-		console.log("Select.selector called");
+Select.set = ( query_str ) => {
+		console.log("Select.set called");
 		if ( document.getElementsByClassName("cvim-selected")[0] ) {
 			this.selections[this.select_index].classList.remove('cvim-selected');
 		}

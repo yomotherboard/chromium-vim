@@ -40,6 +40,7 @@ var Complete = {
 
   aliases: {
     g: 'google',
+    m: 'googlemaps',
     z: 'amazon'
   },
 
@@ -139,21 +140,29 @@ var Complete = {
   }
 };
 
+// to reduce redundancy in content scripts, which load in every tab:
+//
+    // these engines could be moved to a background script 'engines.js'
+    // and a specific engine could be requested from the background script
+    // by this file (complete.js) when it is needed.
 Complete.engines = {
+    // add reddit: https://rapidapi.com/sparior/api/reddit3/
+
     netflix: {
         baseUrl: 'https://www.netflix.com',
         requestUrl: 'https://www.netflix.com/search?q=%s'
     },
+
     stackexchange: {
         baseUrl: 'https://www.stackoverflow.com',
-        requestUrl: 'https://stackoverflow.com/search?q=%s',
-        apiUrl: 'www.api.stackoverflow.com/2.3/search?order=desc&sort=activity&intitle=%s&site=stackoverflow&filter=!9fS)YbVGcStX6UqV6lOXy',
-        formatRequest: (query) => {
+        requestUrl: 'https://stackoverflow.com/search?q=',
+        apiUrl: 'https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle=%s&site=stackoverflow&filter=!9fS)YbVGcStX6UqV6lOXy',
+        formatRequest: function(query) {
             return encodeURIComponent(query)
                 .split('%20')
                 .join('+');
         },
-        queryApi: (query, callback) => {
+        queryApi: function(query, callback) {
             httpRequest({
                 url: Utils.format(this.apiUrl, query),
                 json: true
@@ -174,7 +183,7 @@ Complete.engines = {
         baseUrl: 'https://www.google.com',
         requestUrl: 'https://www.google.com/search?q=',
         apiUrl: 'https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q=%s',
-        queryApi: (query, callback) => {
+        queryApi: function(query, callback) {
             httpRequest({
                 url: Utils.format(this.apiUrl, query),
                 json: true
@@ -189,7 +198,7 @@ Complete.engines = {
                     callback(data.sort(function(a) {
                         return a.type !== 'NAVIGATION';
                     }).map((e) => { return e.text; }));
-                    return data;
+                    //return data;
                 }
             );
         }
@@ -231,7 +240,9 @@ Complete.engines = {
     }
   },
 
-  'google-maps': {
+    // api now private.
+    // replace with places API or another service for autocomplete addresses
+  googlemaps: {
     baseUrl: 'https://www.google.com/maps/preview',
     requestUrl: 'https://www.google.com/maps/search/',
     apiUrl: 'https://www.google.com/s?tbm=map&fp=1&gs_ri=maps&source=hp&suggest=p&authuser=0&hl=en&pf=p&tch=1&ech=2&q=%s',

@@ -32,6 +32,7 @@ port.onDisconnect.addListener(function() {
   };
 })();
 
+// RUNTIME sends messages here ?
 port.onMessage.addListener(function(response) {
   var key;
   switch (response.type) {
@@ -165,6 +166,7 @@ port.onMessage.addListener(function(response) {
 });
 
 // PORT sends messages here
+// Recieved by cVimCommandBar shadowDOM
 chrome.extension.onMessage.addListener(function(request, sender, callback) {
   switch (request.action) {
   case 'hideHud':

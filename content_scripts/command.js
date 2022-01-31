@@ -39,8 +39,8 @@ Command.descriptions = [
   ['nohlsearch',   'Clears the search highlight'],
   ['viewsource',   'View the source for the current document'],
   ['script',       'Run JavaScript on the current page'],
-//Added by yomotherboard
-	['man',				'Open manual page']
+  ['click',        'Click on element matching query'],
+  ['scroll',       'Scroll to element matching query'],
 ];
 
 Command.dataElements = [];
@@ -705,9 +705,6 @@ Command.execute = function(value, repeats) {
     return;
   }
 
-    // 
-    // :source <path>
-    //
   if (/^source/.test(value)) {
     var path = value.replace(/\S+ */, '');
     if (!path.length) {
@@ -903,7 +900,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {code: value.slice(7)});
     }
 
-	if (/^click +/.test(value)) {
+	if (/^cl(ick)? +/.test(value)) {
         let qlist;
 		let qs = value
             .replace(/^click +/, '').toString();
@@ -915,22 +912,55 @@ Command.execute = function(value, repeats) {
                 .substring(1, qs.length-1)
                 .split(/\s*,\s*/);
         } else {
-            qlist = [`'${qs}'`]
+            qlist = [`'${qs}'`];
         }
 
         for (q of qlist) {
-            let target = document.querySelector(q.substring(1, q.length - 1));
-            target.click();
+            //let query = q.substring(1, q.length - 1);
+            RUNTIME('runScript', {
+                code: `
+                    var target = document.querySelector(${q});
+                    target.click();
+                `
+            });
         }
 	}
 
-	if (/^scroll +/.test(value)) {
-		let target = document.querySelector(value.replace(/^scroll +/, ''));
-        target.scrollIntoView();
+	if (/^scr(oll)? +/.test(value)) {
+        let query = value.replace(/^scroll +/, '');
+        if ( !query.match(/^('|")/) ) {
+            query = `'${query}'`;
+        }
+
+        RUNTIME('runScript', {
+            code: `
+                var target = document.querySelector(${query});
+                target.scrollIntoView();
+            `
+        });
 	}
 
 	if (/^nav(igate)? +/.test(value)) {
-		window.location.href = value.replace(/^nav(igate)? +/, '');
+        let rel_path = value.replace(/^nav(igate)? +/, '')
+        RUNTIME('runScript', {
+            code: `
+                window.location.href = ${rel_path};
+            `
+        });
+	}
+
+	if (/^s(elect)?s(et)? +/.test(value)) {
+        let query = value.replace(/^s(elect)?s(et)? +/, '')
+        RUNTIME('runScript', {
+            code: `Select.set(${query});`
+        });
+	}
+
+	if (/^s(elect)?sty(le)? +/.test(value)) {
+        let style = value.replace(/^s(elect)?sty(le)? +/, '')
+        RUNTIME('runScript', {
+            code: `Select.style(${style});`
+        });
 	}
 
 };

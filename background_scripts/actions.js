@@ -805,6 +805,8 @@ Actions = (function() {
 
     _.muteTab = (o) => { Tabs.mute(o.sender.tab); };
 
+
+
     return function(_request, _sender, _callback, _port) {
         var action = _request.action;
         if (!_.hasOwnProperty(action) || typeof _[action] !== 'function')
