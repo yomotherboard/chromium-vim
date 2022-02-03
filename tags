@@ -200,7 +200,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 0	manifest.json	/^    {$/;"	o	array:content_scripts
 0	manifest.json	/^  "web_accessible_resources": ["cmdline_frame.html"]$/;"	s	array:web_accessible_resources
 1	manifest.json	/^        "content_scripts\/session.js",$/;"	s	array:content_scripts.0.js
-1	manifest.json	/^      "content_scripts\/select.js",$/;"	s	array:background.scripts
+1	manifest.json	/^      "content_scripts\/cvimrc_parser.js",$/;"	s	array:background.scripts
 1	manifest.json	/^    "tabs",$/;"	s	array:permissions
 1.2.43	CHANGELOG.md	/^## 1.2.43$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
 1.2.43	pages/changelog.html	/^<h2>1.2.43<\/h2>$/;"	i
@@ -317,7 +317,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 1.2.99 (2017-12-17)	CHANGELOG.md	/^## 1.2.99 (2017-12-17)$/;"	s	chapter:[Like cVim? Consider donating! https://www.paypal.me/1995eaton](https://www.paypal.me/1995eaton)
 1.2.99 (2017-12-17)	pages/changelog.html	/^<h2>1.2.99 (2017-12-17)<\/h2>$/;"	i
 10	manifest.json	/^        "content_scripts\/complete.js",$/;"	s	array:content_scripts.0.js
-10	manifest.json	/^      "background_scripts\/config.js",$/;"	s	array:background.scripts
+10	manifest.json	/^      "background_scripts\/actions.js",$/;"	s	array:background.scripts
 10	manifest.json	/^    "clipboardWrite",$/;"	s	array:permissions
 100	content_scripts/keys.js	/^      100: '4',$/;"	p	class:KeyListener.codeMap
 101	content_scripts/keys.js	/^      101: '5',$/;"	p	class:KeyListener.codeMap
@@ -329,28 +329,28 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 107	content_scripts/keys.js	/^      107: '+',$/;"	p	class:KeyListener.codeMap
 109	content_scripts/keys.js	/^      109: '-',$/;"	p	class:KeyListener.codeMap
 11	manifest.json	/^        "content_scripts\/mappings.js",$/;"	s	array:content_scripts.0.js
-11	manifest.json	/^      "background_scripts\/actions.js",$/;"	s	array:background.scripts
+11	manifest.json	/^      "background_scripts\/main.js",$/;"	s	array:background.scripts
 11	manifest.json	/^    "webNavigation"$/;"	s	array:permissions
 111	content_scripts/keys.js	/^      111: '\/',$/;"	p	class:KeyListener.codeMap
 12	content_scripts/keys.js	/^      12:  'Num',$/;"	p	class:KeyListener.codeMap
 12	manifest.json	/^        "content_scripts\/find.js",$/;"	s	array:content_scripts.0.js
-12	manifest.json	/^      "background_scripts\/main.js",$/;"	s	array:background.scripts
+12	manifest.json	/^      "background_scripts\/options.js",$/;"	s	array:background.scripts
 128	manifest.json	/^    "128": "icons\/128.png",$/;"	s	object:icons
 13	content_scripts/keys.js	/^      13:  'Enter',$/;"	p	class:KeyListener.codeMap
 13	manifest.json	/^        "content_scripts\/cursor.js",$/;"	s	array:content_scripts.0.js
-13	manifest.json	/^      "background_scripts\/options.js",$/;"	s	array:background.scripts
+13	manifest.json	/^      "background_scripts\/sessions.js",$/;"	s	array:background.scripts
 14	manifest.json	/^        "content_scripts\/status.js",$/;"	s	array:content_scripts.0.js
-14	manifest.json	/^      "background_scripts\/sessions.js",$/;"	s	array:background.scripts
+14	manifest.json	/^      "background_scripts\/popup.js",$/;"	s	array:background.scripts
 144	content_scripts/keys.js	/^      144: 'Num',$/;"	p	class:KeyListener.codeMap
 15	manifest.json	/^        "content_scripts\/hud.js",$/;"	s	array:content_scripts.0.js
-15	manifest.json	/^      "background_scripts\/popup.js",$/;"	s	array:background.scripts
+15	manifest.json	/^      "background_scripts\/update.js",$/;"	s	array:background.scripts
 16	manifest.json	/^        "content_scripts\/visual.js",$/;"	s	array:content_scripts.0.js
-16	manifest.json	/^      "background_scripts\/update.js",$/;"	s	array:background.scripts
+16	manifest.json	/^      "background_scripts\/tabs.js",$/;"	s	array:background.scripts
 16	manifest.json	/^    "16":  "icons\/16.png"$/;"	s	object:icons
 17	manifest.json	/^        "content_scripts\/scroll.js",$/;"	s	array:content_scripts.0.js
-17	manifest.json	/^      "background_scripts\/tabs.js",$/;"	s	array:background.scripts
+17	manifest.json	/^      "background_scripts\/tab_creation_order.js",$/;"	s	array:background.scripts
 18	manifest.json	/^        "content_scripts\/search.js",$/;"	s	array:content_scripts.0.js
-18	manifest.json	/^      "background_scripts\/tab_creation_order.js",$/;"	s	array:background.scripts
+18	manifest.json	/^      "background_scripts\/frames.js"$/;"	s	array:background.scripts
 186	content_scripts/keys.js	/^      186: [';', ':'],$/;"	p	class:KeyListener.codeMap
 187	content_scripts/keys.js	/^      187: ['=', '+'],$/;"	p	class:KeyListener.codeMap
 188	content_scripts/keys.js	/^      188: [',', '<'],$/;"	p	class:KeyListener.codeMap
@@ -358,12 +358,11 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 19	content_scripts/keys.js	/^      19:  'Pause',$/;"	p	class:KeyListener.codeMap
 19	manifest.json	/^        "content_scripts\/frames.js",$/;"	s	array:content_scripts.0.js
 19	manifest.json	/^      "19": "icons\/disabled.png",$/;"	s	object:browser_action.default_icon
-19	manifest.json	/^      "background_scripts\/frames.js"$/;"	s	array:background.scripts
 190	content_scripts/keys.js	/^      190: ['.', '>'],$/;"	p	class:KeyListener.codeMap
 191	content_scripts/keys.js	/^      191: ['\/', '?'],$/;"	p	class:KeyListener.codeMap
 192	content_scripts/keys.js	/^      192: ['`', '~'],$/;"	p	class:KeyListener.codeMap
 2	manifest.json	/^        "content_scripts\/utils.js",$/;"	s	array:content_scripts.0.js
-2	manifest.json	/^      "content_scripts\/cvimrc_parser.js",$/;"	s	array:background.scripts
+2	manifest.json	/^      "background_scripts\/clipboard.js",$/;"	s	array:background.scripts
 2	manifest.json	/^    "history",$/;"	s	array:permissions
 20	content_scripts/keys.js	/^      20:  'Caps',$/;"	p	class:KeyListener.codeMap
 20	manifest.json	/^        "content_scripts\/messenger.js"$/;"	s	array:content_scripts.0.js
@@ -373,7 +372,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 222	content_scripts/keys.js	/^      222: ['\\'', '"']$/;"	p	class:KeyListener.codeMap
 27	content_scripts/keys.js	/^      27:  'Esc',$/;"	p	class:KeyListener.codeMap
 3	manifest.json	/^        "content_scripts\/dom.js",$/;"	s	array:content_scripts.0.js
-3	manifest.json	/^      "background_scripts\/clipboard.js",$/;"	s	array:background.scripts
+3	manifest.json	/^      "background_scripts\/bookmarks.js",$/;"	s	array:background.scripts
 3	manifest.json	/^    "bookmarks",$/;"	s	array:permissions
 32	content_scripts/keys.js	/^      32:  'Space',$/;"	p	class:KeyListener.codeMap
 33	content_scripts/keys.js	/^      33:  'PageUp',$/;"	p	class:KeyListener.codeMap
@@ -385,7 +384,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 38	manifest.json	/^      "38": "icons\/disabled-38.png"$/;"	s	object:browser_action.default_icon
 39	content_scripts/keys.js	/^      39:  'Right',$/;"	p	class:KeyListener.codeMap
 4	manifest.json	/^        "content_scripts\/select.js",$/;"	s	array:content_scripts.0.js
-4	manifest.json	/^      "background_scripts\/bookmarks.js",$/;"	s	array:background.scripts
+4	manifest.json	/^      "background_scripts\/sites.js",$/;"	s	array:background.scripts
 4	manifest.json	/^    "storage",$/;"	s	array:permissions
 40	content_scripts/keys.js	/^      40:  'Down',$/;"	p	class:KeyListener.codeMap
 42	content_scripts/keys.js	/^      42:  'PrintScreen',$/;"	p	class:KeyListener.codeMap
@@ -396,7 +395,7 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 48	manifest.json	/^    "48":  "icons\/48.png",$/;"	s	object:icons
 49	content_scripts/keys.js	/^      49:  ['1', '!'],$/;"	p	class:KeyListener.codeMap
 5	manifest.json	/^        "content_scripts\/hints.js",$/;"	s	array:content_scripts.0.js
-5	manifest.json	/^      "background_scripts\/sites.js",$/;"	s	array:background.scripts
+5	manifest.json	/^      "background_scripts\/files.js",$/;"	s	array:background.scripts
 5	manifest.json	/^    "sessions",$/;"	s	array:permissions
 50	content_scripts/keys.js	/^      50:  ['2', '@'],$/;"	p	class:KeyListener.codeMap
 51	content_scripts/keys.js	/^      51:  ['3', '#'],$/;"	p	class:KeyListener.codeMap
@@ -407,18 +406,18 @@ $scrollTo	content_scripts/scroll.js	/^function $scrollTo(elem, x, y) {$/;"	f
 56	content_scripts/keys.js	/^      56:  ['8', '*'],$/;"	p	class:KeyListener.codeMap
 57	content_scripts/keys.js	/^      57:  ['9', '('],$/;"	p	class:KeyListener.codeMap
 6	manifest.json	/^        "content_scripts\/bookmarks.js",$/;"	s	array:content_scripts.0.js
-6	manifest.json	/^      "background_scripts\/files.js",$/;"	s	array:background.scripts
+6	manifest.json	/^      "background_scripts\/object.js",$/;"	s	array:background.scripts
 6	manifest.json	/^    "downloads",$/;"	s	array:permissions
 7	manifest.json	/^        "content_scripts\/command.js",$/;"	s	array:content_scripts.0.js
-7	manifest.json	/^      "background_scripts\/object.js",$/;"	s	array:background.scripts
+7	manifest.json	/^      "background_scripts\/links.js",$/;"	s	array:background.scripts
 7	manifest.json	/^    "topSites",$/;"	s	array:permissions
 8	content_scripts/keys.js	/^      8:   'BS',$/;"	p	class:KeyListener.codeMap
 8	manifest.json	/^        "content_scripts\/keys.js",$/;"	s	array:content_scripts.0.js
-8	manifest.json	/^      "background_scripts\/links.js",$/;"	s	array:background.scripts
+8	manifest.json	/^      "background_scripts\/history.js",$/;"	s	array:background.scripts
 8	manifest.json	/^    "downloads.shelf",$/;"	s	array:permissions
 9	content_scripts/keys.js	/^      9:   'Tab',$/;"	p	class:KeyListener.codeMap
 9	manifest.json	/^        "content_scripts\/clipboard.js",$/;"	s	array:content_scripts.0.js
-9	manifest.json	/^      "background_scripts\/history.js",$/;"	s	array:background.scripts
+9	manifest.json	/^      "background_scripts\/config.js",$/;"	s	array:background.scripts
 9	manifest.json	/^    "clipboardRead",$/;"	s	array:permissions
 96	content_scripts/keys.js	/^      96:  '0',$/;"	p	class:KeyListener.codeMap
 97	content_scripts/keys.js	/^      97:  '1',$/;"	p	class:KeyListener.codeMap
@@ -952,6 +951,7 @@ Scroll	content_scripts/scroll.js	/^var Scroll = {$/;"	c
 Search	content_scripts/search.js	/^var Search = {};$/;"	v
 SearchState	pages/codemirror/vim.js	/^    SearchState.prototype = {$/;"	c
 SearchState	pages/codemirror/vim.js	/^    function SearchState() {}$/;"	f	function:Vim
+Select	content_scripts/select.js	/^Select.set = function ( query_str ) {$/;"	c
 Select	content_scripts/select.js	/^var Select = {$/;"	c
 Session	content_scripts/session.js	/^window.Session = {$/;"	c	class:window
 Sessions	background_scripts/sessions.js	/^var Sessions = {},$/;"	v
@@ -1184,7 +1184,7 @@ center	content_scripts/select.js	/^Select.center = function(new_center) {$/;"	c	
 centerMatchB	content_scripts/mappings.js	/^  centerMatchB: function() {$/;"	m	class:Mappings.actions
 centerMatchH	content_scripts/mappings.js	/^  centerMatchH: function() {$/;"	m	class:Mappings.actions
 centerMatchT	content_scripts/mappings.js	/^  centerMatchT: function() {$/;"	m	class:Mappings.actions
-center_point	content_scripts/select.js	/^	center_point: 250,$/;"	p	class:Select
+center_point	content_scripts/select.js	/^	center_point: 50,$/;"	p	class:Select
 ch	pages/codemirror/vim.js	/^                ch: lineLength(cm, curStart.line + 1) };$/;"	p	class:AnonymousFunctionccd93cc00200.tmp
 ch	pages/codemirror/vim.js	/^              ch: findFirstNonWhiteSpaceCharacter(cm.getLine(cur.line + 1)) };$/;"	p	class:Vim.actions.paste.curPosFinal
 ch	pages/codemirror/vim.js	/^              ch: findFirstNonWhiteSpaceCharacter(cm.getLine(cur.line)) };$/;"	p	class:Vim.actions.paste.curPosFinal
@@ -1411,6 +1411,7 @@ devDependencies	package.json	/^  "devDependencies": {$/;"	o
 dialog	pages/codemirror/vim.js	/^    function dialog(cm, template, shortText, onClose, options) {$/;"	f	function:Vim
 dimhintcharacters	background_scripts/options.js	/^  dimhintcharacters: true,$/;"	p	class:defaultSettings
 direction	content_scripts/scroll.js	/^  var direction = (function() {$/;"	f	function:Scroll.scroll
+disp	content_scripts/command.js	/^        var disp = 0;$/;"	v
 dispatch	content_scripts/select.js	/^Select.dispatch = function() {$/;"	f	function:Select
 dispatchAction	content_scripts/hints.js	/^Hints.dispatchAction = function(link, shift) {$/;"	c	class:Hints
 display	content_scripts/hud.js	/^HUD.display = function(text, duration) {$/;"	c	class:HUD
@@ -2386,6 +2387,8 @@ qmark	cvimrc_parser/test/test.vim	/^let qmark$/;"	v
 qmarks	background_scripts/options.js	/^  qmarks: {},$/;"	p	class:defaultSettings
 qq	cvimrc_parser/test/test.vim	/^map qq closeTab$/;"	m
 qs	content_scripts/command.js	/^		let qs = value$/;"	v
+query	content_scripts/command.js	/^        let query = value.replace(\/^scr(oll)? +\/, '');$/;"	v
+query	content_scripts/command.js	/^        var query = value.replace(\/^\\S+ +\/, '');$/;"	v
 query	content_scripts/select.js	/^	query: "",$/;"	p	class:Select
 queryActive	background_scripts/tabs.js	/^	queryActive: (callback) => {$/;"	v
 queryApi	content_scripts/complete.js	/^        queryApi: function(query, callback) {$/;"	m	class:Complete.engines.google
@@ -2439,6 +2442,7 @@ registerController	pages/codemirror/vim.js	/^        registerController: new Reg
 reject	content_scripts/hints.js	/^    reject: [$/;"	p	class:Hints.siteFilters.*://*.google.*/*
 reject	content_scripts/hints.js	/^    reject: [$/;"	p	class:Hints.siteFilters.*://*.reddit.com/*
 reject	content_scripts/hints.js	/^    reject: [$/;"	p	class:Hints.siteFilters.*://github.com/*
+rel_path	content_scripts/command.js	/^        let rel_path = value.replace(\/^nav(igate)? +\/, '');$/;"	v
 release	Makefile	/^release: all$/;"	t
 reloadAllButCurrent	content_scripts/mappings.js	/^  reloadAllButCurrent: function() {$/;"	m	class:Mappings.actions
 reloadAllTabs	content_scripts/mappings.js	/^  reloadAllTabs: function() {$/;"	m	class:Mappings.actions
@@ -2579,7 +2583,7 @@ scrollXFunction	content_scripts/scroll.js	/^      scrollXFunction, scrollYFuncti
 scrollXFunction	content_scripts/scroll.js	/^  scrollXFunction = function() {$/;"	f
 scrollYFunction	content_scripts/scroll.js	/^      scrollXFunction, scrollYFunction,$/;"	v
 scrollYFunction	content_scripts/scroll.js	/^  scrollYFunction = function() {$/;"	f
-scroll_to_select	content_scripts/select.js	/^	scroll_to_select: false,$/;"	p	class:Select
+scroll_to_select	content_scripts/select.js	/^	scroll_to_select: true,$/;"	p	class:Select
 scrollduration	background_scripts/options.js	/^  scrollduration: 500,$/;"	p	class:defaultSettings
 scrollduration	cvimrc_parser/test/test.vim	/^let scrollduration = 250$/;"	v
 scrollingElement	content_scripts/scroll.js	/^  return function scrollingElement(dir) {$/;"	f	function:scrollingElement
@@ -2612,7 +2616,6 @@ selectNode	content_scripts/visual.js	/^Visual.selectNode = function(index) {$/;"
 select_index	content_scripts/select.js	/^	select_index: 0,$/;"	p	class:Select
 selectedCharacter	pages/codemirror/vim.js	/^        lastChararacterSearch: {increment:0, forward:true, selectedCharacter:''},$/;"	p	class:Vim.resetVimGlobalState.vimGlobalState.lastChararacterSearch
 selections	content_scripts/select.js	/^	selections: [],$/;"	p	class:Select
-selector	content_scripts/select.js	/^Select.selector = function( query_str ) {$/;"	c	class:Select
 selfPaired	pages/codemirror/vim.js	/^        var selfPaired = {'\\'': true, '"': true};$/;"	c	class:Vim.motions.textObjectManipulation
 sendMessage	content_scripts/messenger.js	/^  chrome.runtime.sendMessage = function() {};$/;"	f	function:chrome.runtime
 sendSettings	background_scripts/options.js	/^Options.sendSettings = function() {$/;"	f	function:Options
@@ -2700,7 +2703,8 @@ storageMethod	background_scripts/options.js	/^var storageMethod = 'local',$/;"	v
 store	content_scripts/clipboard.js	/^  store: '',$/;"	p	class:Clipboard
 string	content_scripts/hints.js	/^    var containsNumber, validMatch, stringNum, string;$/;"	v
 stringNum	content_scripts/hints.js	/^    var containsNumber, validMatch, stringNum, string;$/;"	v
-style	content_scripts/select.js	/^Select.style = function( styleCSS ) {$/;"	f	function:Select
+style	content_scripts/command.js	/^        let style = value.replace(\/^s(elect)?sty(le)? +\/, '');$/;"	v
+style	content_scripts/select.js	/^Select.style = function ( styleCSS ) {$/;"	f	function:Select
 style	pages/codemirror/vim.js	/^        'style': 'fat-cursor'$/;"	p	class:Vim.buildVimKeyMap.cmToVimKeymap
 style-guide	doc/dev/style.html	/^<h1 id="style-guide">Style Guide<\/h1>$/;"	I
 suppressEdits	pages/codemirror/codemirror.js	/^                  suppressEdits: false,$/;"	p	class:window.CodeMirror.CodeMirror.state
@@ -2729,8 +2733,6 @@ table tr th :first-child	pages/markdown.css	/^table tr th :first-child, table tr
 table tr th :last-child	pages/markdown.css	/^table tr th :last-child, table tr td :last-child {$/;"	s
 table tr:nth-child(2n)	pages/markdown.css	/^table tr:nth-child(2n) {$/;"	s
 tabs	background_scripts/main.js	/^  tabs: {$/;"	c	class:Listeners
-target	content_scripts/command.js	/^		let target = document.querySelector(value.replace(\/^scroll +\/, ''));$/;"	v
-target	content_scripts/command.js	/^            let target = document.querySelector(q.substring(1, q.length - 1));$/;"	v
 tbody	pages/markdown.css	/^tbody {$/;"	s
 td	pages/options.css	/^td {$/;"	s
 test	cvimrc_parser/Makefile	/^test: all$/;"	t
@@ -2791,6 +2793,7 @@ tx	content_scripts/scroll.js	/^    tx:   0, \/\/ delta-t$/;"	p	class:scroll
 txo	content_scripts/scroll.js	/^    txo:  0, \/\/ last time measurement$/;"	p	class:scroll
 ty	content_scripts/scroll.js	/^    ty:   0,$/;"	p	class:scroll
 tyo	content_scripts/scroll.js	/^    tyo:  0,$/;"	p	class:scroll
+type	content_scripts/command.js	/^        let type = value.replace(\/^s(?:elect)?(.)\/, '$1');$/;"	v
 type	package.json	/^    "type": "git",$/;"	s	object:repository
 type	pages/codemirror/vim.js	/^              type: 'exToEx',$/;"	p	class:Vim.ExCommandDispatcher.map.commandMap_
 type	pages/codemirror/vim.js	/^              type: 'exToKey',$/;"	p	class:Vim.ExCommandDispatcher.map.commandMap_

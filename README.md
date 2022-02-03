@@ -1,12 +1,15 @@
 # What is cVim?
 
-Vim for Google Chrome. I hate using the mouse, especially after learning Vim. With my desktop (Linux), I have a lot of key bindings that make doing things easier: I open Chrome with `Alt+w`, I close a window with `Alt+Shift+d`, I open a terminal with `Alt+t`. This is harder to do with Chrome because it has no section for customizing keyboard shortcuts, and it is still necessary to use the mouse to do things like click links. cVim aims to eliminate this problem as best as the Chrome extensions API will allow it to.
+Vim for Google Chrome / Chromium. cVim aims to provide:
+* A mouse-free browsing experience
+* A highly customizable and powerful browsing experience
+
 
 # Where can I get cVim?
 
- * There are two ways:
-  * You can install it through the [Chrome web store](https://chrome.google.com/webstore/detail/cvim/ihlenndgcmojhcghmfjfneahoeklbjjh)
-  * You can download the `.zip` file [here](https://github.com/1995eaton/chromium-vim/archive/master.zip) and enable cVim by going to the `chrome://extensions` URL and checking developer mode, then pointing Chrome to the unzipped folder via the `Load unpacked extensions...` button.
+* Presently, you must install cVim from source as it is in development
+  <!--* You can download the `.zip` file [here](https://github.com/1995eaton/chromium-vim/archive/master.zip) and enable cVim by going to the `chrome://extensions` URL and checking developer mode, then pointing Chrome to the unzipped folder via the `Load unpacked extensions...` button.-->
+
 
 # Why is this different than Vimium, ViChrome, or Vrome?
 
@@ -22,6 +25,12 @@ These extensions do a wonderful job of adding Vim-like keybindings to Google Chr
   * Regex page search with highlighting
   * Command bar with tab-completion
   * Smooth scrolling
+
+Major new features to those who are coming from the old cVim:
+
+  * [Select feature](https://github.com/yomotherboard/chromium-vim/)
+  * Split config into multiple files
+
 
 # cVim Help
 ### cVimrc
@@ -157,7 +166,7 @@ imap <C-m> deleteWord
 " Create a variable that can be used/referenced in the command bar
 let @@reddit_prog = 'http://www.reddit.com/r/programming'
 let @@top_all = 'top?sort=top&t=all'
-let @@top_day = 'top?sort=top&t=day'
+let @@top_day = 'tfeature?sort=top&t=day'
 
 " TA binding opens 'http://www.reddit.com/r/programming/top?sort=top&t=all' in a new tab
 map TA :tabnew @@reddit_prog/@@top_all<CR>
@@ -490,6 +499,53 @@ let completionengines = ['google', 'google-image', 'youtube'] " Show only these 
 | :togglepin                                  | toggle the pin state of the current tab                                                |
 | :pintab                                     | pin the current tab                                                                    |
 | :unpintab                                   | unpin the current tab                                                                  |
+| :click &lt;query&gt;                        | click on element returned from css query                                               |
+| :scroll &lt;query&gt;                       | scroll to element returned from css query                                              |
+| :selectset &lt;query&gt;                    | set selection list to elements returned from css query                                 |
+
+# Select Feature
+
+The select feature is highly customizable and extensible. It is similar to the quickfix list of vim/neovim. The most basic example of its use is as follows:
+1. Populate the selection list with a set of DOM elements that match a given css query:
+```
+:selectset h2
+```
+This populates the selection list with all `h2` header elements from the page.
+2. Navigate back and forth through these selections with `<C-j>` and `<C-k>`
+3. Use the return/enter key or `<C-l>` to click on the given object. By default it will search within the element for the first link (`<a> tag`) and navigate to that link.
+
+All commands for configuring this feature are:
+| :selectset `<query>`          | set the query used to populate the selection list                     | sset |
+| :selectstyle `<css>`          | set the css used to style the focused selection                       | ssty |
+| :selecttag `<index>`          | tag the focused selection, a specific index, or a list of indices     | stag |
+
+Settings for this feature can automatically be loaded on web pages using your config files. This is particularly useful for site specific configurations.
+
+For example, I created a file `amazon.cvim` in `~/.config/cvim/sites/amazon.cvim` with the contents:
+```
+site '*://*.amazon.com/s*' {
+    call :sset '[data-component-type="s-search-result"]'
+	call :ssty 'border: 4px solid darkslateblue;'
+
+	map j :selectnextCR>
+	map k :selectprev<CR>
+}
+```
+
+# Split Configuration
+
+Use the `source` command to split up configuration:
+```
+source /path/to/additional/config.cvimrc
+source /path/to/additional/config2.cvimrc
+```
+
+This allows users to share site specific mappings and [select mode] configurations with others, e.g.:
+```
+source ~/.config/cvim/sites/amazon.cvimrc
+source ~/.config/cvim/sites/google.cvimrc
+```
+
 
 # Tips
 

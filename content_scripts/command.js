@@ -493,18 +493,33 @@ Command.complete = function(value) {
 
 Command.execute = function(value, repeats) {
 
+    if (value.indexOf('@{":') !== -1) {
+        RUNTIME('getPaste', function(paste) {
+            flags = value.match(/@{":([^}]*)}/)[1];
+            for (fl of flags) {
+                switch( fl ) {    
+                    case 'u':
+                        paste = encodeURI(paste);
+                        break;
+                }
+            }
+            Command.execute(value.split(/@{[^}]*}/).join(paste), repeats);
+        });
+        return;
+    }
+
   if (value.indexOf('@%') !== -1) {
     RUNTIME('getRootUrl', function(url) {
       Command.execute(value.split('@%').join(url), repeats);
     });
     return;
   }
-  if (value.indexOf('@"') !== -1) {
-    RUNTIME('getPaste', function(paste) {
-      Command.execute(value.split('@"').join(paste), repeats);
-    });
-    return;
-  }
+    if (value.indexOf('@"') !== -1) {
+        RUNTIME('getPaste', function(paste) {
+            Command.execute(value.split('@"').join(paste), repeats);
+        });
+        return;
+    }
 
   commandMode = false;
 
@@ -927,7 +942,7 @@ Command.execute = function(value, repeats) {
 	}
 
 	if (/^scr(oll)? +/.test(value)) {
-        let query = value.replace(/^scroll +/, '');
+        let query = value.replace(/^scr(oll)? +/, '');
         if ( !query.match(/^('|")/) ) {
             query = `'${query}'`;
         }
@@ -941,7 +956,7 @@ Command.execute = function(value, repeats) {
 	}
 
 	if (/^nav(igate)? +/.test(value)) {
-        let rel_path = value.replace(/^nav(igate)? +/, '')
+        let rel_path = value.replace(/^nav(igate)? +/, '');
         RUNTIME('runScript', {
             code: `
                 window.location.href = ${rel_path};
@@ -950,16 +965,56 @@ Command.execute = function(value, repeats) {
 	}
 
 	if (/^s(elect)?s(et)? +/.test(value)) {
-        let query = value.replace(/^s(elect)?s(et)? +/, '')
+        var query = value.replace(/^\S+ +/, '');
+        if ( !query.match(/^('|")/) ) {
+            query = `'${query}'`;
+        }
         RUNTIME('runScript', {
             code: `Select.set(${query});`
         });
 	}
 
+    if (/^s(elect)?(n(ext)?|p(rev)?|m(ove)?) */.test(value)) {
+        var disp = 0;
+        let type = value.replace(/^s(?:elect)?(.)/, '$1');
+
+        switch( type[0] ) {
+            case 'n':
+                disp = 1;
+                break;
+            case 'p':
+                disp = -1;
+                break;
+            case 'm':
+                disp = parseInt(value.replace(/^\S+\s+/, ''));
+                break;
+        }
+        
+        RUNTIME('runScript', {
+            code: `Select.move(${disp * repeats});`,
+            repeats: repeats
+        });
+    }
+
 	if (/^s(elect)?sty(le)? +/.test(value)) {
-        let style = value.replace(/^s(elect)?sty(le)? +/, '')
+        let style = value.replace(/^s(elect)?sty(le)? +/, '');
         RUNTIME('runScript', {
             code: `Select.style(${style});`
+        });
+	}
+
+	if (/^s(elect)?tag +/.test(value)) {
+        let index_string = value.replace(/^s(elect)?tag +/, '');
+        // TODO: implement index and index-list selection
+        RUNTIME('runScript', {
+            code: `Select.tag();`
+        });
+	}
+
+	if (/^s(elect)?tagsty(le)? +/.test(value)) {
+        let style = value.replace(/^s(elect)?tagsty(le)? +/, '');
+        RUNTIME('runScript', {
+            code: `Select.tagStyle(${style});`
         });
 	}
 

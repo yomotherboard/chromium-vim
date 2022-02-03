@@ -72,7 +72,6 @@
     "persistant": false,
     "scripts": [
       "content_scripts/utils.js",
-      "content_scripts/select.js",
       "content_scripts/cvimrc_parser.js",
       "background_scripts/clipboard.js",
       "background_scripts/bookmarks.js",

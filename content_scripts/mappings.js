@@ -9,8 +9,10 @@ var Mappings = {
     fn: '',
     queue: '',
     repeatStr: '',
-    repeats: 1
-  }
+    repeats: 1,
+    wildcards: [],
+  },
+  wildcards: [],
 };
 
 Mappings.defaults = [
@@ -131,11 +133,17 @@ Mappings.defaults = [
   ['g+',        'incrementURLPath'],
   ['g-',        'decrementURLPath'],
   ['#',         'resetScrollFocus'],
-  ['cm',        'muteTab']
+  ['cm',        'muteTab'],
+  ['<C-j>',     'selectNext'],
+  ['<C-k>',     'selectPrev'],
+  ['<C-v>',     'selectTag'],
+  ['<C-y>',     'selectYank'],
+  ['<Enter>',   'selectClick'],
 ];
 
 Mappings.defaultsClone = Object.clone(Mappings.defaults);
 
+// TODO:    replace `repeats` with `count`
 Mappings.actions = {
 
   lastUsedTab: function() { RUNTIME('lastUsedTab'); },
@@ -407,6 +415,13 @@ Mappings.actions = {
   nextScrollPosition: function() {
     Scroll.nextHistoryState();
   },
+  // TODO:  make goToMark behave more like vim with
+    //      capital/lowercase letters corresponding
+    //      to global vs per tab marks.
+    //
+    //      Also allow disabling this feature with
+    //      &globalonlymarks and &localonlymarks
+    //
   goToMark: function() {
     var key = Mappings.lastCommand.queue.slice(-1);
     if (Scroll.positions.hasOwnProperty(key)) {
@@ -418,7 +433,11 @@ Mappings.actions = {
     }
   },
   setMark: function() {
-    Scroll.positions[Mappings.lastCommand.queue.slice(-1)] =
+        // TODO:    user Mappings.lastCommand.queue as is done here
+        //          to allow access to wildcards from mappings in 
+        //          user defined functions and mapping definitions
+        //
+    Scroll.positions[Mappings.lastCommand.wildcards[0]] =
       [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
   },
   createHint: function() { Hints.create(); },
@@ -706,6 +725,22 @@ Mappings.actions = {
   muteTab: function() {
     RUNTIME('muteTab');
   },
+
+    selectNext: function(repeats) {
+        Select.move(repeats);
+    },
+    selectPrev: function(repeats) {
+        Select.move(-1 * repeats);
+    },
+    selectYank: function() {
+        Select.yank();
+    },
+    selectClick: function() {
+        Select.click();
+    },
+    selectTag: function(repeats) {
+        Select.tag(repeats);
+    },
 
 };
 
@@ -1054,6 +1089,7 @@ Mappings.nonRepeatableCommands = [];
 Mappings.clearQueue = function() {
   currentTrieNode = mappingTrie;
   this.queue = this.repeats = '';
+  this.wildcards = [];
   this.validMatch = false;
 };
 
@@ -1086,6 +1122,9 @@ Mappings.convertToAction = function(key) {
     Hints.handleHint(key);
     return true;
   }
+    // TODO:    use format similar to above `if(Hints.active)`
+    //          to handle keys for select and change selection to
+    //          a full mode a la `visual mode`
 
   if (/^[0-9]$/.test(key) &&
       !(currentTrieNode.hasKey(key) &&
@@ -1096,10 +1135,12 @@ Mappings.convertToAction = function(key) {
   }
 
   this.queue += key;
-  if (!currentTrieNode.hasKey(key)) {
-    if (currentTrieNode.getKey('*')) {
+  if (!currentTrieNode.hasKey(key)) {                   // if the current keystroke is not an explicit match
+    if (currentTrieNode.getKey('*')) {                  // see if there is a wildcard in Trie node
+      this.wildcards.push(key);
+      console.log('wildcards: ', this.wildcards);
       currentTrieNode = currentTrieNode.getKey('*');
-    } else {
+    } else {                                            // otherwise keystroke failed to map to action
       this.clearQueue();
       return false;
     }
@@ -1144,6 +1185,7 @@ Mappings.convertToAction = function(key) {
       this.lastCommand.fn = mapVal;
       this.lastCommand.params = actionParams;
       this.lastCommand.repeatStr = this.repeats;
+      this.lastCommand.wildcards = this.wildcards;
     }
     if (mapVal.charAt(0) === ':') {
       this.actions.shortCuts(mapVal, this.lastCommand.repeats);

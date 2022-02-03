@@ -1,11 +1,17 @@
+// select action: hover or other events can be triggered every
+//      time selection is changed. For example, show
+//      amazon rating distribution with hover event
+//      when selected item is changed.
+
 var Select = {
 	select_index: 0,
 	selections: [],
 	query: "",
-	click_subquery: "",
+	click_subquery: "a",
+    tagged: [],
 	yank_subquery: "",
 	scroll_to_select: true,
-	center_point: 50,
+	center_point: 200,
 	zero_point: false,
 };
 
@@ -27,12 +33,10 @@ function checkElement(selector) {
 }
 
 // set css style of selected DOM element
-Select.style = ( styleCSS ) => {
+Select.style = function ( styleCSS ) {
 		old_style=document.querySelector("#cvim-select-style");
 
-		if (old_style) {
-			old_style.remove();
-		}
+		if (old_style) { old_style.remove(); }
 
 		cvim_select_style =
 			`<style id="cvim-select-style">
@@ -43,8 +47,7 @@ Select.style = ( styleCSS ) => {
 };
 
 // set the queryselector that aggregates the selection list
-Select.set = ( query_str ) => {
-		console.log("Select.set called");
+Select.set = function ( query_str ) {
 		if ( document.getElementsByClassName("cvim-selected")[0] ) {
 			this.selections[this.select_index].classList.remove('cvim-selected');
 		}
@@ -65,6 +68,37 @@ Select.set = ( query_str ) => {
 		});
 };
 
+Select.tag = function (n=1) {
+    if (!n) { return; }
+
+    var target = this.selections[this.select_index];
+
+    if ( target.classList.contains( 'cvim-tagged' ) )
+    {
+        target.classList.remove('cvim-tagged');
+        this.tagged.splice( this.tagged.indexOf(this.select_index), 1 );
+    }
+    else {
+        target.classList.add('cvim-tagged');
+        this.tagged.push(this.select_index);
+    }
+
+    this.move(1); this.tag(--n);
+}
+
+Select.tagStyle = function ( styleCSS ) {
+		old_style=document.querySelector("#cvim-tag-style");
+
+		if (old_style) { old_style.remove(); }
+
+		cvim_tag_style =
+			`<style id="cvim-tag-style">
+				.cvim-tagged { ${styleCSS} }
+			</style>`;
+
+		document.head.insertAdjacentHTML("beforeend", cvim_tag_style);
+};
+
 // set a command to aggregate selection list instead of a query
 Select.selectCommand = function( command_str ) {
 		this.selections = eval(command_str);
@@ -72,43 +106,44 @@ Select.selectCommand = function( command_str ) {
 
 // move through selection list by n items (negative is backward)
 Select.move = function(n) {
-		n = parseInt(n);
-		next_index = this.select_index + n;
+    console.log(this.query);
+    n = parseInt(n);
+    next_index = this.select_index + n;
 
-		target = this.selections[next_index];
+    target = this.selections[next_index];
 
-		if (!target) { 
-			// if target does not exist in selections[] check if new matches loaded
-			this.selections = document.querySelectorAll( this.query )
-			if (!target) {
-				// if the target doesnt exist exit the function (end of list)
-				return;
-			}
-		} 
+    if (!target) { 
+        // if target does not exist in selections[] check if new matches loaded
+        this.selections = document.querySelectorAll( this.query );
+        if (!target) {
+            // if the target doesnt exist exit the function (end of list)
+            return;
+        }
+    } 
 
-		this.selections[this.select_index].classList.remove('cvim-selected');
-		target.classList.add('cvim-selected');
+    this.selections[this.select_index].classList.remove('cvim-selected');
+    target.classList.add('cvim-selected');
 
-		if (this.scroll_to_select) {
-			console.log(target.getBoundingClientRect().y);
-			window.scrollBy(0, target.getBoundingClientRect().y - parseFloat(this.center_point));
-		}
+    if (this.scroll_to_select) {
+        console.log(target.getBoundingClientRect().y);
+        window.scrollBy(0, target.getBoundingClientRect().y - parseFloat(this.center_point));
+    }
 
-		if (next_index == 0) {
-			if (this.zero_point.length == 2) {
-				if( (typeof(this.zero_point[0]) === "number") && (typeof(this.zero_point[1]) === "number") ) {
-					scrollTo(this.zero_point[0], this.zero_point[1]);
-				} else if ( typeof(this.zero_point) === "string" ) {
-					document.querySelector(this.zero_point).scrollIntoView();
-				} else if (typeof(this.zero_point) === "boolean") {
-					if (this.zero_point == false) {
-						// skip zero point movement
-					}
-				}
-			}
-		}
+    if (next_index == 0) {
+        if (this.zero_point.length == 2) {
+            if( (typeof(this.zero_point[0]) === "number") && (typeof(this.zero_point[1]) === "number") ) {
+                scrollTo(this.zero_point[0], this.zero_point[1]);
+            } else if ( typeof(this.zero_point) === "string" ) {
+                document.querySelector(this.zero_point).scrollIntoView();
+            } else if (typeof(this.zero_point) === "boolean") {
+                if (this.zero_point == false) {
+                    // skip zero point movement
+                }
+            }
+        }
+    }
 
-		this.select_index = next_index;
+    this.select_index = next_index;
 };
 
 ////
