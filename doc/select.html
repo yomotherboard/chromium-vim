@@ -1,8 +1,49 @@
 <h1 id="select-feature">Select Feature</h1>
-<p>The select feature is highly customizable and extensible. It is similar to the quickfix list of vim/neovim. The most basic example of its use is as follows: 1. Populate the selection list with a set of DOM elements that match a given css query:</p>
-<pre><code>:selectset h2</code></pre>
-<p>This populates the selection list with all <code>h2</code> header elements from the page. 2. Navigate back and forth through these selections with <code>&lt;C-j&gt;</code> and <code>&lt;C-k&gt;</code> 3. Use the return/enter key or <code>&lt;C-l&gt;</code> to click on the given object. By default it will search within the element for the first link (<code>&lt;a&gt; tag</code>) and navigate to that link.</p>
-<p>All commands for configuring this feature are: | :selectset <code>&lt;query&gt;</code> | set the query used to populate the selection list | sset | | :selectstyle <code>&lt;css&gt;</code> | set the css used to style the focused selection | ssty | | :selecttag <code>&lt;index&gt;</code> | tag the focused selection, a specific index, or a list of indices | stag |</p>
+<p>The select feature is highly customizable and extensible. It is similar to the quickfix list of vim/neovim. The most basic example of its use is as follows:</p>
+<h2 id="basic-usage">Basic Usage</h2>
+<ol type="1">
+<li>Populate the selection list with a set of DOM elements that match a given css query:</li>
+</ol>
+<pre><code>        :selectset h2</code></pre>
+<pre><code>    This populates the selection list with all `h2` header elements from the page.</code></pre>
+<ol start="2" type="1">
+<li>Navigate back and forth through these selections with <code>&lt;C-j&gt;</code> and <code>&lt;C-k&gt;</code></li>
+<li>Use the return/enter key or <code>&lt;C-l&gt;</code> to click on the given object. By default it will search within the element for the first link (<code>&lt;a&gt; tag</code>) and navigate to that link.</li>
+</ol>
+<h2 id="commands">Commands</h2>
+<p>All commands for configuring this feature are:</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 60%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>command</th>
+<th>description</th>
+<th>abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>:selectset <code>&lt;query&gt;</code></td>
+<td>set the query used to populate the selection list</td>
+<td>sset</td>
+</tr>
+<tr class="even">
+<td>:selectstyle <code>&lt;css&gt;</code></td>
+<td>set the css used to style the focused selection</td>
+<td>ssty</td>
+</tr>
+<tr class="odd">
+<td>:selecttag <code>&lt;index&gt;</code></td>
+<td>tag the focused selection, a specific index, or a list of indices</td>
+<td>stag</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration</h2>
 <p>Settings for this feature can automatically be loaded on web pages using your config files. This is particularly useful for site specific configurations.</p>
 <p>For example, I created a file <code>amazon.cvim</code> in <code>~/.config/cvim/sites/amazon.cvim</code> with the contents:</p>
 <pre><code>site &#39;*://*.amazon.com/s*&#39; {
