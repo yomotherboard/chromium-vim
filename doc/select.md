@@ -6,9 +6,10 @@ The select feature is highly customizable and extensible. It is similar to the q
 
 1. Populate the selection list with a set of DOM elements that match a given css query:
 ```
-		:selectset h2
+:selectset h2
+
+" this populates the selection list with all `h2` header elements from the page.
 ```
-		This populates the selection list with all `h2` header elements from the page.
 
 
 2. Navigate back and forth through these selections with `<C-j>` and `<C-k>`
