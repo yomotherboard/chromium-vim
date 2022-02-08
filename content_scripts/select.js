@@ -60,7 +60,6 @@ Select.set = function ( query_str ) {
 		checkElement( query_str )
 		.then((element) => {
 			console.info(element);
-			console.log( query_str );
 
 			this.selections = document.querySelectorAll( query_str );
 
@@ -106,7 +105,6 @@ Select.selectCommand = function( command_str ) {
 
 // move through selection list by n items (negative is backward)
 Select.move = function(n) {
-    console.log(this.query);
     n = parseInt(n);
     next_index = this.select_index + n;
 
@@ -125,7 +123,6 @@ Select.move = function(n) {
     target.classList.add('cvim-selected');
 
     if (this.scroll_to_select) {
-        console.log(target.getBoundingClientRect().y);
         window.scrollBy(0, target.getBoundingClientRect().y - parseFloat(this.center_point));
     }
 

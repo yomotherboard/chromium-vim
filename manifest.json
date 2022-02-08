@@ -26,6 +26,9 @@
     "nextCompletionResult": {
       "description": "Let Chrome use <C-n> for cncpcompletion setting (see Help file)"
     },
+    "selectTag": {
+      "description": "Let Chrome use <C-t> for the selectTag mapping"
+    },
     "deleteBackWord": {
       "description": "Let Chrome use <C-w> for the deleteBackWord insert mapping"
     },

@@ -161,6 +161,11 @@ var Listeners = {
           chrome.tabs.sendMessage(tab[0].id, {action: 'deleteBackWord'});
         });
         break;
+      case 'selectTag':
+        chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
+          chrome.tabs.sendMessage(tab[0].id, {action: 'selectTag'});
+        });
+        break;
       case 'closeTab':
         chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
           chrome.tabs.remove(tab[0].id, function() {

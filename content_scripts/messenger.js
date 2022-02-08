@@ -327,6 +327,15 @@ chrome.extension.onMessage.addListener(function(request, sender, callback) {
   case 'isFrameVisible':
     callback(e.innerWidth > 5 && e.innerHeight > 5);
     break;
+  case 'selectTag':
+    Mappings.actions.selectTag(Mappings.repeats || 1);
+    Mappings.repeats = '';
+    break;
+
+        case 'scrollTo':
+            window.scrollTo.apply(null, request.value);
+            break;
   }
+
 
 });

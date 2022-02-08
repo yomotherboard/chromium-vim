@@ -41,6 +41,10 @@ Command.descriptions = [
   ['script',       'Run JavaScript on the current page'],
   ['click',        'Click on element matching query'],
   ['scroll',       'Scroll to element matching query'],
+  ['selectset',    'Select elements matching query'],
+  ['selectstyle',  'Set CSS for focused selection'],
+  ['selectclick',  'Click focused element matching query'],
+  ['selectevent',  'Dispatch event to focused selection'],
 ];
 
 Command.dataElements = [];
@@ -1017,6 +1021,21 @@ Command.execute = function(value, repeats) {
             code: `Select.tagStyle(${style});`
         });
 	}
+
+    // send click to tags if there are selected tags
+	if (/^s(elect)?click +/.test(value)) {
+        let query = value.replace(/^s(elect)?click +/, '');
+        RUNTIME('runScript', {
+            code: `Select.click(${query});`
+        });
+	}
+
+    if (/^s(elect)?event +/.test(value)) {
+        let event = value.replace(/^s(elect)?event +/, '');
+        RUNTIME('runScript', {
+            code: `Select.dispatch(${event});`
+        });
+    }
 
 };
 
