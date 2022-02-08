@@ -672,29 +672,36 @@ Mappings.actions = {
       document.getSelection().modify('move', 'right', 'lineboundary');
     }
   },
-  shortCuts: function(command, repeats) {
-    commandMode = true;
-    if (command.indexOf('@%') !== -1) {
-      RUNTIME('getRootUrl', function(url) {
-        this.shortCuts(command.split('@%').join(url), repeats);
-      }.bind(this));
-      return;
-    }
-    return window.setTimeout(function() {
-      var shouldComplete = !/<cr>(\s+)?$/i.test(command);
-      command = command
-        .replace(/^:/, '')
-        .replace(/<cr>(\s+)?$/i, '')
-        .replace(/<space>/ig, ' ');
-      if (!shouldComplete) {
-        Command.execute(command, repeats);
-        return;
-      }
-      Command.show(false, command, shouldComplete);
-      this.queue = '';
-      this.repeats = '';
-    }, 0);
-  },
+
+    shortCuts: function(command, repeats) {
+        commandMode = true;
+
+        // loopback conditions
+        if (command.indexOf('@%') !== -1) {
+            RUNTIME('getRootUrl', function(url) {
+                this.shortCuts(command.split('@%').join(url), repeats);
+            }.bind(this));
+            return;
+        }
+
+        return window.setTimeout(function() {
+            command.split(/<CR>/i).forEach( (c,i,o) => {
+                if ( c == '' ) return;
+                var shouldComplete = !/^$/.test(c);
+                c = c
+                    .replace(/^:/, '')
+                    .replace(/<space>/ig, ' ');
+                if ( !shouldComplete || i < o.length-1 ) {
+                    Command.execute(c, repeats);
+                    return;
+                }
+                Command.show(false, c, shouldComplete);
+                this.queue = '';
+                this.repeats = '';
+            });
+        }, 0);
+    },
+
   openSearchBar: function() {
     Find.lastIndex = Find.index;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
