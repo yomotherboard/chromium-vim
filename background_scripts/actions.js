@@ -787,18 +787,16 @@ Actions = (function() {
         var path = o.request.path
             || Files.url(settings.configpath);
 
-        console.log(path);
+        Config.reset();
         Config.merge(path, o).then( () => {
             files = settings.FILES; // to remove file list and avoid resourcing files
-            console.log('files = ', files);
             settings.FILES = [];
             for ( f of files ) {
                 Config.merge( Files.url( f ) );
-                console.log(settings);
             }
-        });
 
-        Options.sendSettings();
+            Options.sendSettings();
+        });
 
         return true;
     };
