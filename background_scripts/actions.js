@@ -803,6 +803,22 @@ Actions = (function() {
 
     _.muteTab = (o) => { Tabs.mute(o.sender.tab); };
 
+    _.markPoint = (o) => {
+        Marks.markPoint( o.request.char, o.sender.tab, o.request.pos, o.sender.tab.url );
+    }
+
+    _.goToMark = (o) => {
+        var mark = Marks.points[o.request.char];
+            getTab(mark.tab, null); 
+
+		chrome.tabs.sendMessage(mark.tab.id, {
+            action: 'scrollTo',
+            value: mark.pos,
+        });
+
+        // TODO:    if tab is closed then open url in new tab and scroll
+    }
+
 
 
     return function(_request, _sender, _callback, _port) {

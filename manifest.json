@@ -75,6 +75,7 @@
       "content_scripts/cvimrc_parser.js",
       "background_scripts/clipboard.js",
       "background_scripts/bookmarks.js",
+      "background_scripts/marks.js",
       "background_scripts/sites.js",
       "background_scripts/files.js",
       "background_scripts/object.js",

@@ -67,7 +67,7 @@ Mappings.defaults = [
   ['[d',        'previousDomain'],
   [']d',        'nextDomain'],
   ['g0',        'firstTab'],
-  ['M*',        'addQuickMark'],
+  ['<C-m>*',    'addQuickMark'],
   ['A',         'openLastHint'],
   ['go*',       'openQuickMark'],
   ['gn*',       'openQuickMarkTabbed'],
@@ -101,8 +101,10 @@ Mappings.defaults = [
   ['\'\'',      'lastScrollPosition'],
   ['<C-o>',     'previousScrollPosition'],
   ['<C-i>',     'nextScrollPosition'],
-  ['\'*',       'goToMark'],
-  [';*',        'setMark'],
+  ['\'*',       'goToGlobalMark'],
+  ['\"*',       'goToLocalMark'],
+  [';*',        'setGlobalMark'],
+  //[';*',        'setLocalMark'],
   ['zt',        'centerMatchT'],
   ['zb',        'centerMatchB'],
   ['zz',        'centerMatchH'],
@@ -422,24 +424,47 @@ Mappings.actions = {
     //      Also allow disabling this feature with
     //      &globalonlymarks and &localonlymarks
     //
-  goToMark: function() {
-    var key = Mappings.lastCommand.queue.slice(-1);
-    if (Scroll.positions.hasOwnProperty(key)) {
-      Scroll.lastPosition =
-        [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
-      window.scrollTo.apply(null, Scroll.positions[key]);
-    } else {
-      Status.setMessage('Mark not set', 1, 'error');
-    }
+
+
+    goToLocalMark: function() {
+        var key = Mappings.lastCommand.queue.slice(-1);
+        if (Scroll.positions.hasOwnProperty(key)) {
+            Scroll.lastPosition =
+                [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
+            window.scrollTo.apply(null, Scroll.positions[key]);
+        } else {
+            Status.setMessage('Mark not set', 1, 'error');
+        }
+    },
+
+    goToGlobalMark: function() {
+        var key = Mappings.lastCommand.queue.slice(-1);
+
+        RUNTIME('goToMark', { char: key });
+    //if (Scroll.positions.hasOwnProperty(key)) {
+        //RUNTIME('goToMark');
+    //} else {
+        //Status.setMessage('Mark not set', 1, 'error');
+    //}
   },
-  setMark: function() {
+
+    setLocalMark: function() {
         // TODO:    user Mappings.lastCommand.queue as is done here
         //          to allow access to wildcards from mappings in 
         //          user defined functions and mapping definitions
         //
-    Scroll.positions[Mappings.lastCommand.wildcards[0]] =
-      [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
-  },
+        Scroll.positions[Mappings.lastCommand.wildcards[0]] =
+            [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
+    },
+
+    setGlobalMark: function() {
+        RUNTIME('markPoint', 
+            {
+                char: Mappings.lastCommand.wildcards[0],
+                pos: [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop],
+            })
+    },
+
   createHint: function() { Hints.create(); },
   createTabbedHint: function() { Hints.create('tabbed'); },
   createActiveTabbedHint: function() { Hints.create('tabbedActive'); },
