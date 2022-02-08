@@ -21,7 +21,7 @@ Config = {
             var defaults = Object.clone(defaultSettings);
             added.localconfig = current.localconfig;
 
-            Object.merge(defaults, added);
+            Config.add(defaults, added);
             console.log(path);
             if (current.localconfig) {
                 if (!settings.MAPPINGS) { settings = Object.clone(defaults); }
@@ -29,7 +29,6 @@ Config = {
                 Object.merge(settings, current);
                 
                 Config.add(settings, added);
-                console.log('4: settings + added', settings);
             } else {
                 Object.merge(settings, added);
                 settings.RC = current.RC;
@@ -73,5 +72,10 @@ Config = {
                 }
             }
         });
+    },
+    reset: () => {
+        var localconfig = settings.localconfig;
+        settings = Object.clone(defaultSettings);
+        settings.localconfig = localconfig;
     }
 }
