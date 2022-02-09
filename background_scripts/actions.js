@@ -791,12 +791,14 @@ Actions = (function() {
         Config.merge(path, o).then( () => {
             files = settings.FILES; // to remove file list and avoid resourcing files
             settings.FILES = [];
-            for ( f of files ) {
-                Config.merge( Files.url( f ) );
-            }
-
-            Options.sendSettings();
+            files.forEach((f, i) => {
+                Config.merge( Files.url( f ) ).then( () => {
+                    if (i == files.length - 1) {
+                        Options.sendSettings();
+                    }});
+            });
         });
+
 
         return true;
     };
