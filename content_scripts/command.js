@@ -662,32 +662,40 @@ Command.execute = function(value, repeats) {
     return;
   }
 
-  if (/^bookmarks +/.test(value) && !/^\S+\s*$/.test(value)) {
-    if (/^\S+\s+\//.test(value)) {
-      RUNTIME('openBookmarkFolder', {
-        path: value.replace(/\S+\s+/, ''),
-        noconvert: true
-      });
-      return;
+    if (/^bookmarks +/.test(value)) {
+        if ( /^\S+\s*$/.test(value) ) {
+            RUNTIME('openLink', {
+                tab: tab,
+                url: 'chrome://bookmarks',
+                noconvert: true
+            });
+            return;
+        }
+        if (/^\S+\s+\//.test(value)) {
+            RUNTIME('openBookmarkFolder', {
+                path: value.replace(/\S+\s+/, ''),
+                noconvert: true
+            });
+            return;
+        }
+        if (this.completionResults.length &&
+            !this.completionResults.some(function(e) {
+                return e[2] === value.replace(/^\S+\s*/, '');
+            })) {
+            RUNTIME('openLink', {
+                tab: tab,
+                url: this.completionResults[0][2],
+                noconvert: true
+            });
+            return;
+        }
+        RUNTIME('openLink', {
+            tab: tab,
+            url: value.replace(/^\S+\s+/, ''),
+            noconvert: true
+        });
+        return;
     }
-    if (this.completionResults.length &&
-        !this.completionResults.some(function(e) {
-          return e[2] === value.replace(/^\S+\s*/, '');
-        })) {
-      RUNTIME('openLink', {
-        tab: tab,
-        url: this.completionResults[0][2],
-        noconvert: true
-      });
-      return;
-    }
-    RUNTIME('openLink', {
-      tab: tab,
-      url: value.replace(/^\S+\s+/, ''),
-      noconvert: true
-    });
-    return;
-  }
 
   if (/^history +/.test(value) && !/^\S+\s*$/.test(value)) {
     RUNTIME('openLink', {
