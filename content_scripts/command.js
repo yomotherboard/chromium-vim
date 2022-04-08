@@ -603,13 +603,6 @@ Command.execute = function(value, repeats) {
       repeats: repeats
     });
     return;
-  case 'help':
-    tab.tabbed = true;
-    RUNTIME('openLink', {
-      tab: tab,
-      url: chrome.extension.getURL('/pages/mappings.html')
-    });
-    return;
   case 'stop':
     window.stop();
     return;
@@ -661,6 +654,28 @@ Command.execute = function(value, repeats) {
     });
     return;
   }
+
+	if (/^help/.test(value)) {
+		tab.tabbed = true;
+
+		var help_name = value.replace('help ', '');
+
+		console.log(value, help_name);
+
+		var help_url;
+		switch ( help_name ) {
+			case 'select':
+				help_url = '/pages/select.html';
+				break;
+			default:
+				help_url = '/pages/mappings.html';
+		}
+		RUNTIME('openLink', {
+			tab: tab,
+			url: chrome.extension.getURL( help_url )
+		});
+		return;
+	}
 
     if (/^bookmarks +/.test(value)) {
         if ( /^\S+\s*$/.test(value) ) {

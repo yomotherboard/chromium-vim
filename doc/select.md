@@ -4,7 +4,7 @@ The select feature is highly customizable and extensible. It is similar to the q
 
 ## Basic Usage
 
-1. Populate the selection list with a set of DOM elements that match a given css query:
+1. Populate the selection list with a set of DOM elements that match a given [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors):
 ```
 :selectset h2
 
