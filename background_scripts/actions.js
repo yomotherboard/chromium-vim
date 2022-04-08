@@ -620,8 +620,7 @@ Actions = (function() {
     chrome.tabs.query({}, function(tabs) {
       var otherWindows = [];
       tabs = tabs.filter((e) => {
-        if (e.windowId === o.sender.tab.windowId)
-          return true;
+        if (e.windowId === o.sender.tab.windowId) return true;
         otherWindows.push(e);
         return false;
       });

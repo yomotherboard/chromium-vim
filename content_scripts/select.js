@@ -147,16 +147,17 @@ Select.move = function(n) {
 ////	SUBSELECTORS
 ////
 Select.click = function() {
-		// if a string is passed as an argument use this to select clickable object
-		if (arguments.length == 1) {
-				this.selections[this.select_index].querySelector(arguments[0]).click();
-		} else // if no string is passed use 'this.click_subquery' 
-			{
-				if (this.click_subquery === "") {
-						this.selections[this.select_index].click();
-				}
-				this.selections[this.select_index].querySelector(this.click_subquery).click();
-		}
+    // if a string is passed as an argument use this to select clickable object
+    if (arguments.length == 1) {
+        console.log(arguments[0]);
+        this.selections[this.select_index].querySelector(arguments[0]).click();
+    } else // if no string is passed use 'this.click_subquery' 
+    {
+        if (this.click_subquery === "") {
+            this.selections[this.select_index].click();
+        }
+        this.selections[this.select_index].querySelector(this.click_subquery).click();
+    }
 };
 
 Select.yank = function() {

@@ -45,6 +45,7 @@ Command.descriptions = [
   ['selectstyle',  'Set CSS for focused selection'],
   ['selectclick',  'Click focused element matching query'],
   ['selectevent',  'Dispatch event to focused selection'],
+  ['selectsetclick',    'Set query for clicking selection'],
 ];
 
 Command.dataElements = [];
@@ -945,7 +946,7 @@ Command.execute = function(value, repeats) {
 	if (/^cl(ick)? +/.test(value)) {
         let qlist;
 		let qs = value
-            .replace(/^click +/, '').toString();
+            .replace(/^cl(ick)? +/, '').toString();
 
         if (!!qs[0].match(/^('|")/)) {
             qlist = [qs];
@@ -1050,6 +1051,13 @@ Command.execute = function(value, repeats) {
         let query = value.replace(/^s(elect)?click +/, '');
         RUNTIME('runScript', {
             code: `Select.click(${query});`
+        });
+	}
+
+	if (/^s(elect)?s(et)?click +/.test(value)) {
+        let query = value.replace(/^s(elect)?s(et)?click +/, '');
+        RUNTIME('runScript', {
+            code: `Select.clickSelector(${query});`
         });
 	}
 
