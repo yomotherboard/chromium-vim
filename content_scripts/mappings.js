@@ -141,6 +141,7 @@ Mappings.defaults = [
   ['<C-v>',     'selectTag'],
   ['<C-y>',     'selectYank'],
   ['<Enter>',   'selectClick'],
+  //['g?',    'helpMappings'],      TODO: why does this throw error?
 ];
 
 Mappings.defaultsClone = Object.clone(Mappings.defaults);
@@ -683,6 +684,13 @@ Mappings.actions = {
             }.bind(this));
             return;
         }
+        // TODO: finish this implementation of variables/wildcards
+        //if (command.indexOf('$') !== -1) {
+            //RUNTIME('getRootUrl', function(url) {
+                //this.shortCuts(command.split('@%').join(url), repeats);
+            //}.bind(this));
+            //return;
+        //}
 
         return window.setTimeout(function() {
             command.split(/<CR>/i).forEach( (c,i,o) => {
