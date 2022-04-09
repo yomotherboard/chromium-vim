@@ -937,6 +937,10 @@ Mappings.insertCommand = function(modifier, callback) {
   }
 };
 
+// TODO: 	Add parsing for escaped characters.
+// 			These will be used to allow wildcards and special
+// 			tokens in mappings.
+// TODO:	This seems like it could be simplified.
 Mappings.splitMapping = function(string) {
   var blocks = [].slice.call(string.match(/<[^>]+>/g) || []);
   var split = [];
@@ -1158,12 +1162,12 @@ Mappings.convertToAction = function(key) {
     //          to handle keys for select and change selection to
     //          a full mode a la `visual mode`
 
+
   if (/^[0-9]$/.test(key) &&
-      !(currentTrieNode.hasKey(key) &&
-        this.repeats === '') &&
+      !(currentTrieNode.hasKey(key) && this.repeats === '') &&
       !(key === '0' && this.repeats === '')) {
-    this.repeats += key;
-    return;
+	  this.repeats += key;
+	  return;
   }
 
   this.queue += key;

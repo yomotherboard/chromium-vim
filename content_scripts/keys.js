@@ -89,7 +89,7 @@ if (HAS_EVENT_KEY_SUPPORT) {
     '<': ',',
     '>': '.',
     '|': '\\',
-    '"': '\\',
+    '"': '\\', // is this a mistake?
     '?': '/',
   };
 
