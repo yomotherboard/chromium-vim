@@ -984,12 +984,48 @@ Command.execute = function(value, repeats) {
 	}
 
 	if (/^nav(igate)? +/.test(value)) {
-        let rel_path = value.replace(/^nav(igate)? +/, '');
-        RUNTIME('runScript', {
-            code: `
-                window.location.href = ${rel_path};
-            `
-        });
+        let args = value.replace(/^nav(igate)? +/, '');
+		var cmd = '';
+		var regex;
+		var url = 'window.location.href'
+
+		data = args.split(/'/);
+
+		for (var i=0; i < data.length; i++) {
+			if ( data.length - i < 2 ) break;
+			flag = data[i].trim();
+			arg = data[i+1].trim();
+			console.log('flag: ', flag);
+			console.log('arg: ', arg);
+
+			switch ( flag ) {
+				case '+':
+					const str = arg;
+					url += ` + '${str}' `;
+					break;
+				case '-':
+					regex = new RegExp( arg, "g" );
+					console.log(regex);
+					url = `(${url}).replace(${regex}, '')`;
+					break;
+				case 'd':
+					regex = new RegExp( arg.replace(/^(.*)$/, "\\&$1=[^&]*"), "g" );
+					console.log(regex);
+					url = `(${url}).replace(${regex}, '')`;
+					break;
+					// case 'a' 	increment value in url specified by regex
+					// case 'x' 	decrement value in url specified by regex
+					// case 'd' 	delete url parameter
+					// case 'r' 	replace regex match (multi argument)
+				default:
+					url = arg;
+			}
+
+			i++;
+		}
+		cmd = `window.location.href = ${url}`;
+
+		RUNTIME('runScript', { code: cmd });
 	}
 
 	if (/^s(elect)?s(et)? +/.test(value)) {
