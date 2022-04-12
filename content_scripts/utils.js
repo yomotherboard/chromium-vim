@@ -119,6 +119,8 @@ Object.compare = function(a, b, keys) {
   return true;
 };
 
+// Matches site url with site glob pattern in config.
+//  TODO:       rename this and maybe put it in a Object that fits well
 var matchLocation = function(url, pattern) { // Uses @match syntax
   // See https://code.google.com/p/chromium/codesearch#chromium/src/extensions/common/url_pattern.h&sq=package:chromium
   if (typeof pattern !== 'string' || !pattern.trim()) {
