@@ -665,8 +665,15 @@ Command.execute = function(value, repeats) {
 
 		var help_url;
 		switch ( help_name ) {
+			case 'nav':
+			case 'navigate':
+				help_url = '/doc/navigate.html';
+				break;
 			case 'select':
-				help_url = '/pages/select.html';
+				help_url = '/doc/select.html';
+				break;
+			case 'site':
+				help_url = '/doc/site.html';
 				break;
 			default:
 				help_url = '/pages/mappings.html';

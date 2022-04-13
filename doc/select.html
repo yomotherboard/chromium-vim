@@ -48,14 +48,14 @@
 <p>The select feature is highly customizable and extensible. It is similar to the quickfix list of vim/neovim. The most basic example of its use is as follows:</p>
 <h2 id="basic-usage">Basic Usage</h2>
 <ol type="1">
-<li>Populate the selection list with a set of DOM elements that match a given <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selector</a>:</li>
+<li>Populate the selection list with all DOM elements that match a given <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selector</a>:</li>
 </ol>
 <pre><code>:selectset h2
 
 &quot; this populates the selection list with all `h2` header elements from the page.</code></pre>
 <ol start="2" type="1">
 <li>Navigate back and forth through these selections with <code>&lt;C-j&gt;</code> and <code>&lt;C-k&gt;</code></li>
-<li>Use the return/enter key or <code>&lt;C-l&gt;</code> to click on the given object. By default it will search within the element for the first link (<code>&lt;a&gt; tag</code>) and navigate to that link.</li>
+<li>Use the return/enter key or <code>&lt;C-l&gt;</code> to click on the given object. By default it will search within the element for the first link (<code>&lt;a&gt;</code> tag) and navigate to that link.</li>
 </ol>
 <h2 id="commands">Commands</h2>
 <p>All commands for configuring this feature are:</p>
@@ -79,11 +79,16 @@
 <td>sset</td>
 </tr>
 <tr class="even">
-<td>:selectstyle <code>&lt;css&gt;</code></td>
-<td>set the css used to style the focused selection</td>
-<td>ssty</td>
+<td>:selectsetclick <code>&lt;query&gt;</code></td>
+<td>set query used to get element within selection to click (default ‘a’)</td>
+<td>ssclick</td>
 </tr>
 <tr class="odd">
+<td>:selectstyle <code>&lt;css&gt;</code></td>
+<td>set the CSS style for the focused selection</td>
+<td>ssty</td>
+</tr>
+<tr class="even">
 <td>:selecttag <code>&lt;index&gt;</code></td>
 <td>tag the focused selection, a specific index, or a list of indices</td>
 <td>stag</td>
@@ -91,8 +96,8 @@
 </tbody>
 </table>
 <h2 id="configuration">Configuration</h2>
-<p>Settings for this feature can automatically be loaded on web pages using your config files. This is particularly useful for site specific configurations.</p>
-<p>For example, I created a file <code>amazon.cvim</code> in <code>~/.config/cvim/sites/amazon.cvim</code> with the contents:</p>
+<p>Settings for this feature can automatically be loaded on web pages using your config files. This is particularly useful for <a href="./site.html">site specific configurations</a>.</p>
+<p>For example, here is a basic configuration for navigating amazon search results:</p>
 <pre><code>site &#39;*://*.amazon.com/s*&#39; {
     call :sset &#39;[data-component-type=&quot;s-search-result&quot;]&#39;
     call :ssty &#39;border: 4px solid darkslateblue;&#39;
@@ -100,5 +105,6 @@
     map j :selectnextCR&gt;
     map k :selectprev&lt;CR&gt;
 }</code></pre>
+<p>A useful way of organizing these site specific configurations could be to create files such as <code>amazon.cvim</code> in the directory <code>~/.config/cvim/sites/</code>.</p>
 </body>
 </html>
