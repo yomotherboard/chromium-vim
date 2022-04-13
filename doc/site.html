@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>site</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../pages/markdown.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="./markdown.css">
+  <link rel="stylesheet" href="./hljs.css">
+  <link rel="stylesheet" href="../content_scripts/main.css">
+  <script src="../content_scripts/cvimrc_parser.js"></script>
+  <script src="../content_scripts/session.js"></script>
+  <script src="../content_scripts/utils.js"></script>
+  <script src="../content_scripts/dom.js"></script>
+  <script src="../content_scripts/hints.js"></script>
+  <script src="../content_scripts/bookmarks.js"></script>
+  <script src="../content_scripts/keys.js"></script>
+  <script src="../content_scripts/clipboard.js"></script>
+  <script src="../content_scripts/complete.js"></script>
+  <script src="../content_scripts/mappings.js"></script>
+  <script src="../content_scripts/find.js"></script>
+  <script src="../content_scripts/cursor.js"></script>
+  <script src="../content_scripts/status.js"></script>
+  <script src="../content_scripts/hud.js"></script>
+  <script src="../content_scripts/visual.js"></script>
+  <script src="../content_scripts/command.js"></script>
+  <script src="../content_scripts/scroll.js"></script>
+  <script src="../content_scripts/search.js"></script>
+  <script src="../content_scripts/messenger.js"></script>
+  <script src="../content_scripts/frames.js"></script>
+  <script src="../content_scripts/messenger.js"></script>
+</head>
+<body>
+<h1 id="site-specific-configuration">Site Specific Configuration</h1>
+<p>Site specific configuration is critical to creating a mouse-free browsing experience. The design of this extension is such that you will need to configure your experience for each web site in order to permit keyboard only browsing. Here we will cover how to set up site specific configurations. Afterward, you may want to consider my <a href="./recommendations.html">recommendations</a> on how to configure cvim to provide a easy to use and consistent experience across all websites.</p>
+<h1 id="site-blocks">Site Blocks</h1>
+<p>Site specific configuration allows settings, mappings, and functions to be implemented on a site specific basis. A site block contains two parts:</p>
+<ol type="1">
+<li>A body containing configuration commands</li>
+<li>A glob pattern that a URL must match in order for these configuration commands to be applied.</li>
+</ol>
+<p>Here is a simple example for IMDB:</p>
+<pre><code>site &quot;*://www.imdb.com/title/*&quot; {
+    map gc :nav ./fullcredits&lt;CR&gt;
+    map ge :nav ./episodes&lt;CR&gt;
+    map gp :nav ./mediaindex&lt;CR&gt;
+    map gr :scroll [data-testid=&quot;MoreLikeThis&quot;]&lt;CR&gt;
+    map gs :scroll [data-testid=&quot;Storyline&quot;]&lt;CR&gt;
+    map gv :nav ./reviews&lt;CR&gt;
+}</code></pre>
+<p>More examples can be found <a href="./examples/main.html">here</a>.</p>
+</body>
+</html>

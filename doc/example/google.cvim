@@ -1,0 +1,7 @@
+
+site '*://*.google.com/search*' {
+	map fb :nav -'\&tbm=[^&]*' +'\&tbm=bks'<CR>
+	map fi :nav -'\&tbm=[^&]*' +'\&tbm=isch'<CR>
+	map fn :nav -'\&tbm=[^&]*' +'\&tbm=nws'<CR>
+}
+

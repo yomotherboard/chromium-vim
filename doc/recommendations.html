@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>recommendations</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../pages/markdown.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="./markdown.css">
+  <link rel="stylesheet" href="./hljs.css">
+  <link rel="stylesheet" href="../content_scripts/main.css">
+  <script src="../content_scripts/cvimrc_parser.js"></script>
+  <script src="../content_scripts/session.js"></script>
+  <script src="../content_scripts/utils.js"></script>
+  <script src="../content_scripts/dom.js"></script>
+  <script src="../content_scripts/hints.js"></script>
+  <script src="../content_scripts/bookmarks.js"></script>
+  <script src="../content_scripts/keys.js"></script>
+  <script src="../content_scripts/clipboard.js"></script>
+  <script src="../content_scripts/complete.js"></script>
+  <script src="../content_scripts/mappings.js"></script>
+  <script src="../content_scripts/find.js"></script>
+  <script src="../content_scripts/cursor.js"></script>
+  <script src="../content_scripts/status.js"></script>
+  <script src="../content_scripts/hud.js"></script>
+  <script src="../content_scripts/visual.js"></script>
+  <script src="../content_scripts/command.js"></script>
+  <script src="../content_scripts/scroll.js"></script>
+  <script src="../content_scripts/search.js"></script>
+  <script src="../content_scripts/messenger.js"></script>
+  <script src="../content_scripts/frames.js"></script>
+  <script src="../content_scripts/messenger.js"></script>
+</head>
+<body>
+<h1 id="useful-configuration-patterns">Useful Configuration Patterns</h1>
+<p>It can be useful to pick a first letter as a prefix for a scope of mappings you will use across all websites. For example, I use <code>g</code> as a prefix for “go” commands. These commands scroll to specific points of a web page or navigate to related pages to the current page. The example from IMDB above, taken from my configs, shows this pattern. Another example is this configuration for amazon’s home page:</p>
+<pre><code>site &#39;*://www.amazon.com/*&#39; {
+    map gc :click #nav-cart&lt;CR&gt;
+    map go :click #nav-orders&lt;CR&gt;
+}</code></pre>
+<p>Note that some <code>g</code> commands are builtin such as <code>gi</code>.</p>
+<p>The prefixes I use personally are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Prefix</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>f</code></td>
+<td>filter</td>
+</tr>
+<tr class="even">
+<td><code>g</code></td>
+<td>go to</td>
+</tr>
+<tr class="odd">
+<td><code>p</code></td>
+<td>paste</td>
+</tr>
+<tr class="even">
+<td><code>s</code></td>
+<td>search</td>
+</tr>
+<tr class="odd">
+<td><code>w</code></td>
+<td>window</td>
+</tr>
+<tr class="even">
+<td><code>y</code></td>
+<td>yank</td>
+</tr>
+<tr class="odd">
+<td><code>z</code></td>
+<td>toggle</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
