@@ -15,9 +15,6 @@
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="../pages/markdown.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
   <link rel="stylesheet" href="./markdown.css">
   <link rel="stylesheet" href="./hljs.css">
   <link rel="stylesheet" href="../content_scripts/main.css">
@@ -42,17 +39,34 @@
   <script src="../content_scripts/messenger.js"></script>
   <script src="../content_scripts/frames.js"></script>
   <script src="../content_scripts/messenger.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <h1 id="navigate-command">Navigate Command</h1>
 <h2 id="basic-use">Basic Use</h2>
-<p>Here is a basic use of the <code>navigate</code> command. I will use <code>nav</code> as this abbreviation for the command can be used instead.</p>
-<p><code>:nav '&lt;relative_path&gt;'</code> navigates to the URL given by the relative path given as an argument.</p>
-<p>For example, on an IMDB page for a movie <code>:nav './fullcredits'</code> will navigate to the full credits page for the movie. It does this by adding “fullcredits” to the URL. The path should always be quoted as in this example and the examples to follow. This makes it easier to define a flag syntax to allow other kinds of modifications of the URL.</p>
+<p>Here is a basic use of the <code>navigate</code> command. I will use
+<code>nav</code> as this abbreviation for the command can be used
+instead.</p>
+<p><code>:nav '&lt;relative_path&gt;'</code> navigates to the URL given
+by the relative path given as an argument.</p>
+<p>For example, on an IMDB page for a movie
+<code>:nav './fullcredits'</code> will navigate to the full credits page
+for the movie. It does this by adding “fullcredits” to the URL. The path
+should always be quoted as in this example and the examples to follow.
+This makes it easier to define a flag syntax to allow other kinds of
+modifications of the URL.</p>
 <h2 id="flags">Flags</h2>
-<p><code>:nav &lt;flag&gt;'&lt;argument&gt;'</code> alters the URL according to the operation specified by the flag.</p>
+<p><code>:nav &lt;flag&gt;'&lt;argument&gt;'</code> alters the URL
+according to the operation specified by the flag.</p>
 <p>The available flags and their corresponding operations are:</p>
 <table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 58%" />
+<col style="width: 26%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Flag</th>

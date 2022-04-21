@@ -685,6 +685,18 @@ Command.execute = function(value, repeats) {
 		return;
 	}
 
+    if (/^tabsleep/.test(value)) {
+        RUNTIME('getRootUrl', function(url) {
+            console.log(url);
+            console.log(chrome.extension.getURL( '/pages/sleep.html' ));
+            RUNTIME('openLink', {
+                tab: tab,
+                url: chrome.extension.getURL( `/pages/sleep.html?sleep-url=${url}` ),
+                noconvert: true
+            });
+        });
+    }
+
     if (/^bookmarks +/.test(value)) {
         if ( /^\S+\s*$/.test(value) ) {
             RUNTIME('openLink', {

@@ -108,6 +108,7 @@ Mappings.defaults = [
   ['zt',        'centerMatchT'],
   ['zb',        'centerMatchB'],
   ['zz',        'centerMatchH'],
+  ['zs',        ':tabsleep<CR>'],
   ['gs',        ':viewsource!<CR>'],
   ['gU',        'goToRootUrl'],
   ['gu',        'goUpUrl'],
