@@ -88,12 +88,26 @@ according to the operation specified by the flag.</p>
 </tbody>
 </table>
 <h2 id="advanced-usage">Advanced Usage</h2>
-<p>Beginning the argument of the function with <code>+</code> will append the argument to the current URL instead of changing the path. For example, the following command navigates to the images tab of google by appending <code>&amp;tbm=isch</code> to the URL.</p>
+<p>Beginning the argument of the function with <code>+</code> will
+append the argument to the current URL instead of changing the path. For
+example, the following command navigates to the images tab of google by
+appending <code>&amp;tbm=isch</code> to the URL.</p>
 <pre><code>nav +&#39;&amp;tbm=isch&#39;</code></pre>
-<p>However, this URL parameter may already be set in the URL if you are on a google search tab other than ‘All’. Also, if we want to navigate back to the ‘All’ tab from another tab then we will need to do this by removing the <code>tbm</code> parameter from the URL. We can remove this parameter with the <code>-</code> flag, which take a regular expression argument. So a mapping to move to the ‘All’ tab of google search would be:</p>
+<p>However, this URL parameter may already be set in the URL if you are
+on a google search tab other than ‘All’. Also, if we want to navigate
+back to the ‘All’ tab from another tab then we will need to do this by
+removing the <code>tbm</code> parameter from the URL. We can remove this
+parameter with the <code>-</code> flag, which take a regular expression
+argument. So a mapping to move to the ‘All’ tab of google search would
+be:</p>
 <pre><code>map fa :nav -&#39;\&amp;tbm=[^&amp;]*&#39;&lt;CR&gt;</code></pre>
-<p>If we want to navigate to another tab we can append the URL parameter to achieve that after we remove the old one. The <code>nav</code> command can take multiple navigation statements. This improved command to navigate to the ‘Images’ tab of google search demonstrates this:</p>
+<p>If we want to navigate to another tab we can append the URL parameter
+to achieve that after we remove the old one. The <code>nav</code>
+command can take multiple navigation statements. This improved command
+to navigate to the ‘Images’ tab of google search demonstrates this:</p>
 <pre><code>nav -&#39;\&amp;tbm=[^&amp;]*&#39; +&#39;&amp;tbm=nws&#39;</code></pre>
-<p>See <a href="./examples/sites/google.html">the example page for google</a> for more examples and a more complete set of mappings for navigating the site.</p>
+<p>See <a href="./examples/sites/google.html">the example page for
+google</a> for more examples and a more complete set of mappings for
+navigating the site.</p>
 </body>
 </html>

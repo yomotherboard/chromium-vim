@@ -6,9 +6,11 @@ function render() {
     target.innerHTML = `${q.get('sleep-url')}`;
 }
 
-function awaken() {
-    window.location.href = q.get('sleep-url');
+function awaken(key) {
+    if (key.code == 'Space') {
+        window.location.href = q.get('sleep-url');
+    }
 }
 
 window.addEventListener('load', render);
-window.addEventListener('keydown', awaken);
+document.addEventListener('keydown', awaken);

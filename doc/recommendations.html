@@ -39,15 +39,26 @@
   <script src="../content_scripts/messenger.js"></script>
   <script src="../content_scripts/frames.js"></script>
   <script src="../content_scripts/messenger.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<h1 id="useful-configuration-patterns">Useful Configuration Patterns</h1>
-<p>It can be useful to pick a first letter as a prefix for a scope of mappings you will use across all websites. For example, I use <code>g</code> as a prefix for “go” commands. These commands scroll to specific points of a web page or navigate to related pages to the current page. The example from IMDB above, taken from my configs, shows this pattern. Another example is this configuration for amazon’s home page:</p>
+<h1 id="useful-configuration-patterns">Useful Configuration
+Patterns</h1>
+<p>It can be useful to pick a first letter as a prefix for a scope of
+mappings you will use across all websites. For example, I use
+<code>g</code> as a prefix for “go” commands. These commands scroll to
+specific points of a web page or navigate to related pages to the
+current page. The example from IMDB above, taken from my configs, shows
+this pattern. Another example is this configuration for amazon’s home
+page:</p>
 <pre><code>site &#39;*://www.amazon.com/*&#39; {
     map gc :click #nav-cart&lt;CR&gt;
     map go :click #nav-orders&lt;CR&gt;
 }</code></pre>
-<p>Note that some <code>g</code> commands are builtin such as <code>gi</code>.</p>
+<p>Note that some <code>g</code> commands are builtin such as
+<code>gi</code>.</p>
 <p>The prefixes I use personally are:</p>
 <table>
 <thead>
