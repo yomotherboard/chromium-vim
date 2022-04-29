@@ -660,11 +660,15 @@ Command.execute = function(value, repeats) {
 		tab.tabbed = true;
 
 		var help_name = value.replace('help ', '');
-
-		console.log(value, help_name);
-
 		var help_url;
+
 		switch ( help_name ) {
+			case 'keys':
+			case 'keybindings':
+			case 'key-bindings':
+			case 'shortcuts':
+				help_url = 'doc/keys.html';
+				break;
 			case 'nav':
 			case 'navigate':
 				help_url = '/doc/navigate.html';
@@ -673,11 +677,13 @@ Command.execute = function(value, repeats) {
 				help_url = '/doc/select.html';
 				break;
 			case 'site':
+			case 'sites':
 				help_url = '/doc/site.html';
 				break;
 			default:
 				help_url = '/pages/mappings.html';
 		}
+
 		RUNTIME('openLink', {
 			tab: tab,
 			url: chrome.extension.getURL( help_url )
@@ -689,9 +695,30 @@ Command.execute = function(value, repeats) {
         RUNTIME('getRootUrl', function(url) {
             console.log(url);
             console.log(chrome.extension.getURL( '/pages/sleep.html' ));
+			var icon_url = '';
+			var icon_list = [];
+
+			try {
+				icon_list = [
+					document.querySelector('head > link[rel=image_src]').href,
+					`${window.location.origin}/favicon.ico`,
+					document.querySelector('head > link[rel=apple-touch-icon]').href,
+				];
+			} catch (e) {}
+			console.log(icon_list);
+
+			var i=0;
+
+			while ( ! icon_url && i < icon_list.length ) {
+				try {
+					icon_url = icon_list[i]; 
+				} catch (e) {}
+				i++;
+			}
+
             RUNTIME('openLink', {
                 tab: tab,
-                url: chrome.extension.getURL( `/pages/sleep.html?sleep-url=${url}` ),
+                url: chrome.extension.getURL( `/pages/sleep.html?sleep-url=${url}&icon-url=${icon_url}` ),
                 noconvert: true
             });
         });
