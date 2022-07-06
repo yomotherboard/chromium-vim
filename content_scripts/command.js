@@ -1064,7 +1064,7 @@ Command.execute = function(value, repeats) {
 					// case 'd' 	delete url parameter
 					// case 'r' 	replace regex match (multi argument)
 				default:
-					url = arg;
+					url = `'${arg}'`;
 			}
 
 			i++;
