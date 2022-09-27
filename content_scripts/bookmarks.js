@@ -96,7 +96,11 @@ Marks = (function() {
     bookmarks = [];
     (function recurse(marks) {
       marks.forEach((bookmark) => {
-        if (bookmark.url) {
+          //TODO: allow regex definition for hidden bookmarks
+        if ( /^\..*$/.test(bookmark.title) ) { return; }
+            // do not return hidden bookmarks (starting with .)
+
+        if ( bookmark.url ) {
           bookmarks.push([bookmark.title, bookmark.url]);
         }
         if (bookmark.children) {
