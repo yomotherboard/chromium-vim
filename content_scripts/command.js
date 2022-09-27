@@ -1013,6 +1013,7 @@ Command.execute = function(value, repeats) {
                 `
             });
         }
+        return;
 	}
 
 	if (/^scr(oll)? +/.test(value)) {
@@ -1027,6 +1028,7 @@ Command.execute = function(value, repeats) {
                 target.scrollIntoView();
             `
         });
+        return;
 	}
 
 	if (/^nav(igate)? +/.test(value)) {
@@ -1072,6 +1074,7 @@ Command.execute = function(value, repeats) {
 		cmd = `window.location.href = ${url}`;
 
 		RUNTIME('runScript', { code: cmd });
+        return;
 	}
 
 	if (/^s(elect)?s(et)? +/.test(value)) {
@@ -1082,6 +1085,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {
             code: `Select.set(${query});`
         });
+        return;
 	}
 
     if (/^s(elect)?(n(ext)?|p(rev)?|m(ove)?) */.test(value)) {
@@ -1104,6 +1108,7 @@ Command.execute = function(value, repeats) {
             code: `Select.move(${disp * repeats});`,
             repeats: repeats
         });
+        return;
     }
 
 	if (/^s(elect)?sty(le)? +/.test(value)) {
@@ -1111,6 +1116,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {
             code: `Select.style(${style});`
         });
+        return;
 	}
 
 	if (/^s(elect)?tag +/.test(value)) {
@@ -1119,6 +1125,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {
             code: `Select.tag();`
         });
+        return;
 	}
 
 	if (/^s(elect)?tagsty(le)? +/.test(value)) {
@@ -1126,6 +1133,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {
             code: `Select.tagStyle(${style});`
         });
+        return;
 	}
 
     // send click to tags if there are selected tags
@@ -1134,6 +1142,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {
             code: `Select.click(${query});`
         });
+        return;
 	}
 
 	if (/^s(elect)?s(et)?click +/.test(value)) {
@@ -1141,6 +1150,7 @@ Command.execute = function(value, repeats) {
         RUNTIME('runScript', {
             code: `Select.clickSelector(${query});`
         });
+        return;
 	}
 
     if (/^s(elect)?event +/.test(value)) {

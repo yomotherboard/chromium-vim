@@ -798,7 +798,6 @@ Actions = (function() {
             });
         });
 
-
         return true;
     };
 
