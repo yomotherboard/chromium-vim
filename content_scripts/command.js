@@ -52,6 +52,7 @@ Command.dataElements = [];
 Command.matches = [];
 Command.customCommands = {};
 Command.lastInputValue = '';
+Command.focus_id = '';
 
 Command.setupFrameElements = function() {
   this.bar = document.createElement('div');
@@ -472,6 +473,31 @@ Command.callCompletionFunction = (function() {
         self.updateCompletions();
       });
       return true;
+
+    case 'help': 
+            chrome.runtime.getPackageDirectoryEntry( function(dir) {
+                var rd = dir.createReader();
+
+                rd.readEntries( function (e) {
+                    const docdir = e.filter( (a) => { return a.name == 'doc'; } )[0];
+                    var rd = docdir.createReader();
+
+                    rd.readEntries( function (e) {
+                        const docs = e
+                            .filter( (a) => { return /^.*\.html$/.test(a.name); })
+                            .map( (a) => [ a.name.replace(/\.html$/, '') , a.name ] )
+                            .filter( (a) => { return RegExp(search, 'i').test(a[0]) });
+
+                        console.log(search);
+                        self.completions = { bookmarks: docs };
+                        self.updateCompletions();
+                    });
+                });
+            });
+
+      //Marks.parseFileCommand( chrome.runtime.getURL( '/doc/' ) );
+      //self.completions = {};
+      return true;
     }
     return false;
   };
@@ -658,6 +684,17 @@ Command.execute = function(value, repeats) {
 
 	if (/^help/.test(value)) {
 		tab.tabbed = true;
+        var open = function(url) {
+            RUNTIME('openLink', {
+                tab: tab,
+                url: chrome.extension.getURL( url )
+            });
+        }
+
+        if ( /\.html$/.test(value) ) {
+            open( '/doc/' + value.replace('help ', '') );
+            return;
+        }
 
 		var help_name = value.replace('help ', '');
 		var help_url;
@@ -683,11 +720,8 @@ Command.execute = function(value, repeats) {
 			default:
 				help_url = '/pages/mappings.html';
 		}
+        open( help_url );
 
-		RUNTIME('openLink', {
-			tab: tab,
-			url: chrome.extension.getURL( help_url )
-		});
 		return;
 	}
 
@@ -1209,9 +1243,19 @@ Command.show = function(search, value, complete) {
       this.complete(value);
     }
   }, 0);
+    this.focus_id = setInterval(_ => {
+        console.log(document.activeElement);
+        if (document.activeElement.id !== 'cVim-command-bar-input') {
+            document.activeElement.blur();
+            this.input.focus();
+        }},
+        50
+    )
 };
 
 Command.hide = function(callback) {
+    clearInterval(this.focus_id);
+    this.focus_id = '';
   if (window.isCommandFrame)
     this.input.blur();
   commandMode = false;
