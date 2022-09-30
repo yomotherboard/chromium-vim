@@ -1,113 +1,66 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>navigate</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="../pages/markdown.css" />
-  <link rel="stylesheet" href="./markdown.css">
-  <link rel="stylesheet" href="./hljs.css">
-  <link rel="stylesheet" href="../content_scripts/main.css">
-  <script src="../content_scripts/cvimrc_parser.js"></script>
-  <script src="../content_scripts/session.js"></script>
-  <script src="../content_scripts/utils.js"></script>
-  <script src="../content_scripts/dom.js"></script>
-  <script src="../content_scripts/hints.js"></script>
-  <script src="../content_scripts/bookmarks.js"></script>
-  <script src="../content_scripts/keys.js"></script>
-  <script src="../content_scripts/clipboard.js"></script>
-  <script src="../content_scripts/complete.js"></script>
-  <script src="../content_scripts/mappings.js"></script>
-  <script src="../content_scripts/find.js"></script>
-  <script src="../content_scripts/cursor.js"></script>
-  <script src="../content_scripts/status.js"></script>
-  <script src="../content_scripts/hud.js"></script>
-  <script src="../content_scripts/visual.js"></script>
-  <script src="../content_scripts/command.js"></script>
-  <script src="../content_scripts/scroll.js"></script>
-  <script src="../content_scripts/search.js"></script>
-  <script src="../content_scripts/messenger.js"></script>
-  <script src="../content_scripts/frames.js"></script>
-  <script src="../content_scripts/messenger.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<h1 id="navigate-command">Navigate Command</h1>
-<h2 id="basic-use">Basic Use</h2>
-<p>Here is a basic use of the <code>navigate</code> command. I will use
-<code>nav</code> as this abbreviation for the command can be used
-instead.</p>
-<p><code>:nav '&lt;relative_path&gt;'</code> navigates to the URL given
-by the relative path given as an argument.</p>
-<p>For example, on an IMDB page for a movie
-<code>:nav './fullcredits'</code> will navigate to the full credits page
-for the movie. It does this by adding “fullcredits” to the URL. The path
-should always be quoted as in this example and the examples to follow.
-This makes it easier to define a flag syntax to allow other kinds of
-modifications of the URL.</p>
-<h2 id="flags">Flags</h2>
-<p><code>:nav &lt;flag&gt;'&lt;argument&gt;'</code> alters the URL
-according to the operation specified by the flag.</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="./markdown.css"><link rel="stylesheet" href="./hljs.css"><link rel="stylesheet" href="../content_scripts/main.css"><script src="../content_scripts/cvimrc_parser.js"></script>
+<script src="../content_scripts/session.js"></script>
+<script src="../content_scripts/utils.js"></script>
+<script src="../content_scripts/dom.js"></script>
+<script src="../content_scripts/hints.js"></script>
+<script src="../content_scripts/bookmarks.js"></script>
+<script src="../content_scripts/keys.js"></script>
+<script src="../content_scripts/clipboard.js"></script>
+<script src="../content_scripts/complete.js"></script>
+<script src="../content_scripts/mappings.js"></script>
+<script src="../content_scripts/find.js"></script>
+<script src="../content_scripts/cursor.js"></script>
+<script src="../content_scripts/status.js"></script>
+<script src="../content_scripts/hud.js"></script>
+<script src="../content_scripts/visual.js"></script>
+<script src="../content_scripts/command.js"></script>
+<script src="../content_scripts/scroll.js"></script>
+<script src="../content_scripts/search.js"></script>
+<script src="../content_scripts/select.js"></script>
+<script src="../content_scripts/frames.js"></script>
+<script src="../content_scripts/messenger.js"></script></head><h1>Navigate Command</h1>
+<h2>Basic Use</h2>
+<p>Here is a basic use of the <code>navigate</code> command. I will use <code>nav</code> as this abbreviation for the command can be used instead.</p>
+<p><code>:nav '&lt;relative_path&gt;'</code> navigates to the URL given by the relative path given as an argument.</p>
+<p>For example, on an IMDB page for a movie <code>:nav './fullcredits'</code> will navigate to the full credits page for the movie. It does this by adding &quot;fullcredits&quot; to the URL. The path should always be quoted as in this example and the examples to follow. This makes it easier to define a flag syntax to allow other kinds of modifications of the URL.</p>
+<h2>Flags</h2>
+<p><code>:nav &lt;flag&gt;'&lt;argument&gt;'</code> alters the URL according to the operation specified by the flag.</p>
 <p>The available flags and their corresponding operations are:</p>
 <table>
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 58%" />
-<col style="width: 26%" />
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Flag</th>
 <th>Operation</th>
 <th>Argument type</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>+</code></td>
-<td>Append the argument to the URL</td>
+<td>Append the string to the URL</td>
 <td>string</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>-</code></td>
-<td>Remove the argument from the URL</td>
+<td>Remove a regular expression match</td>
 <td>regex</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Remove the argument from the URL</td>
+<td>string</td>
 </tr>
 </tbody>
 </table>
-<h2 id="advanced-usage">Advanced Usage</h2>
-<p>Beginning the argument of the function with <code>+</code> will
-append the argument to the current URL instead of changing the path. For
-example, the following command navigates to the images tab of google by
-appending <code>&amp;tbm=isch</code> to the URL.</p>
-<pre><code>nav +&#39;&amp;tbm=isch&#39;</code></pre>
-<p>However, this URL parameter may already be set in the URL if you are
-on a google search tab other than ‘All’. Also, if we want to navigate
-back to the ‘All’ tab from another tab then we will need to do this by
-removing the <code>tbm</code> parameter from the URL. We can remove this
-parameter with the <code>-</code> flag, which take a regular expression
-argument. So a mapping to move to the ‘All’ tab of google search would
-be:</p>
-<pre><code>map fa :nav -&#39;\&amp;tbm=[^&amp;]*&#39;&lt;CR&gt;</code></pre>
-<p>If we want to navigate to another tab we can append the URL parameter
-to achieve that after we remove the old one. The <code>nav</code>
-command can take multiple navigation statements. This improved command
-to navigate to the ‘Images’ tab of google search demonstrates this:</p>
-<pre><code>nav -&#39;\&amp;tbm=[^&amp;]*&#39; +&#39;&amp;tbm=nws&#39;</code></pre>
-<p>See <a href="./examples/sites/google.html">the example page for
-google</a> for more examples and a more complete set of mappings for
-navigating the site.</p>
-</body>
+<h2>Advanced Usage</h2>
+<p>Beginning the argument of the function with <code>+</code> will append the argument to the current URL instead of changing the path. For example, the following command navigates to the images tab of google by appending <code>&amp;tbm=isch</code> to the URL.</p>
+<pre class="hljs"><code>nav +<span class="hljs-string">&#x27;&amp;tbm=isch&#x27;</span>
+</code></pre>
+<p>However, this URL parameter may already be set in the URL if you are on a google search tab other than 'All'. Also, if we want to navigate back to the 'All' tab from another tab then we will need to do this by removing the <code>tbm</code> parameter from the URL. We can remove this parameter with the <code>-</code> flag, which take a regular expression argument. So a mapping to move to the 'All' tab of google search would be:</p>
+<pre class="hljs"><code><span class="hljs-keyword">map</span> fa :nav -<span class="hljs-string">&#x27;\&amp;tbm=[^&amp;]*&#x27;</span><span class="hljs-symbol">&lt;CR&gt;</span>
+</code></pre>
+<p>If we want to navigate to another tab we can append the URL parameter to achieve that after we remove the old one. The <code>nav</code> command can take multiple navigation statements. This improved command to navigate to the 'Images' tab of google search demonstrates this:</p>
+<pre class="hljs"><code>nav -<span class="hljs-string">&#x27;\&amp;tbm=[^&amp;]*&#x27;</span> +<span class="hljs-string">&#x27;&amp;tbm=nws&#x27;</span>
+</code></pre>
+<p>See <a href="./examples/sites/google.html">the example page for google</a> for more examples and a more complete set of mappings for navigating the site.</p>
 </html>

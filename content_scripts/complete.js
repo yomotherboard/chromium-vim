@@ -178,6 +178,11 @@ Complete.engines = {
         }
     },
 
+	//yacy_local: {
+		//baseUrl: `https://${settings.yacy_url}/yacysearch.html?query=hey&resource=local`,
+		//requestUrl: `https://${settings.yacy_url}/yacysearch.html?query=%s&resource=local`,
+	//},
+
 
     google: {
         baseUrl: 'https://www.google.com',

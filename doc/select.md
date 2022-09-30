@@ -5,7 +5,7 @@ The select feature is highly customizable and extensible. It is similar to the q
 ## Basic Usage
 
 1. Populate the selection list with all DOM elements that match a given [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors):
-```
+```vim
 :selectset h2
 
 " this populates the selection list with all `h2` header elements from the page.
@@ -32,7 +32,7 @@ All commands for configuring this feature are:
 Settings for this feature can automatically be loaded on web pages using your config files. This is particularly useful for [site specific configurations](./site.html).
 
 For example, here is a basic configuration for navigating amazon search results:
-```
+```vim
 site '*://*.amazon.com/s*' {
     call :sset '[data-component-type="s-search-result"]'
 	call :ssty 'border: 4px solid darkslateblue;'

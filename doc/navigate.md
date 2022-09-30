@@ -17,27 +17,28 @@ The available flags and their corresponding operations are:
 
 | Flag		| Operation 							| Argument type		|
 | --------- | ------------------------------------- | ----------------- |
-| `+`		| Append the argument to the URL		| string			|
-| `-`		| Remove the argument from the URL		| regex				|
+| `+`		| Append the string to the URL			| string			|
+| `-`		| Remove a regular expression match		| regex				|
+| `d`		| Remove the argument from the URL		| string			|
 
 
 ## Advanced Usage
 
 Beginning the argument of the function with `+` will append the argument to the current URL instead of changing the path. For example, the following command navigates to the images tab of google by appending `&tbm=isch` to the URL.
 
-```
+```vim
 nav +'&tbm=isch'
 ```
 
 However, this URL parameter may already be set in the URL if you are on a google search tab other than 'All'. Also, if we want to navigate back to the 'All' tab from another tab then we will need to do this by removing the `tbm` parameter from the URL. We can remove this parameter with the `-` flag, which take a regular expression argument. So a mapping to move to the 'All' tab of google search would be:
 
-```
+```vim
 map fa :nav -'\&tbm=[^&]*'<CR>
 ```
 
 If we want to navigate to another tab we can append the URL parameter to achieve that after we remove the old one. The `nav` command can take multiple navigation statements. This improved command to navigate to the 'Images' tab of google search demonstrates this:
 
-```
+```vim
 nav -'\&tbm=[^&]*' +'&tbm=nws'
 ```
 

@@ -84,7 +84,7 @@ port.onMessage.addListener(function(response) {
         Command.updateCompletions(true);
       }
     }
-    break;
+    break
   case 'bookmarks':
     Marks.parse(response.bookmarks);
     break;

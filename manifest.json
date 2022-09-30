@@ -110,6 +110,7 @@
         "content_scripts/command.js",
         "content_scripts/keys.js",
         "content_scripts/clipboard.js",
+        "content_scripts/messenger.js",
         "content_scripts/complete.js",
         "content_scripts/mappings.js",
         "content_scripts/find.js",
@@ -119,8 +120,7 @@
         "content_scripts/visual.js",
         "content_scripts/scroll.js",
         "content_scripts/search.js",
-        "content_scripts/frames.js",
-        "content_scripts/messenger.js"
+        "content_scripts/frames.js"
       ],
       "css": ["content_scripts/main.css"],
       "run_at": "document_start",

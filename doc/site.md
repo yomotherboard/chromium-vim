@@ -12,7 +12,7 @@ Site specific configuration allows settings, mappings, and functions to be imple
 
 Here is a simple example for IMDB:
 
-```
+```vim
 site "*://www.imdb.com/title/*" {
 	map gc :nav ./fullcredits<CR>
 	map ge :nav ./episodes<CR>

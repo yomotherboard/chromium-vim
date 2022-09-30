@@ -1,0 +1,160 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="./markdown.css"><link rel="stylesheet" href="./hljs.css"><link rel="stylesheet" href="../content_scripts/main.css"><script src="../content_scripts/cvimrc_parser.js"></script>
+<script src="../content_scripts/session.js"></script>
+<script src="../content_scripts/utils.js"></script>
+<script src="../content_scripts/dom.js"></script>
+<script src="../content_scripts/hints.js"></script>
+<script src="../content_scripts/bookmarks.js"></script>
+<script src="../content_scripts/keys.js"></script>
+<script src="../content_scripts/clipboard.js"></script>
+<script src="../content_scripts/complete.js"></script>
+<script src="../content_scripts/mappings.js"></script>
+<script src="../content_scripts/find.js"></script>
+<script src="../content_scripts/cursor.js"></script>
+<script src="../content_scripts/status.js"></script>
+<script src="../content_scripts/hud.js"></script>
+<script src="../content_scripts/visual.js"></script>
+<script src="../content_scripts/command.js"></script>
+<script src="../content_scripts/scroll.js"></script>
+<script src="../content_scripts/search.js"></script>
+<script src="../content_scripts/select.js"></script>
+<script src="../content_scripts/frames.js"></script>
+<script src="../content_scripts/messenger.js"></script></head><h1>Command Mode</h1>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:tabnew (autocomplete)</td>
+<td>open a new tab with the typed/completed search</td>
+</tr>
+<tr>
+<td>:new (autocomplete)</td>
+<td>open a new window with the typed/completed search</td>
+</tr>
+<tr>
+<td>:open (autocomplete)</td>
+<td>open the typed/completed URL/google search</td>
+</tr>
+<tr>
+<td>:history (autocomplete)</td>
+<td>search through browser history</td>
+</tr>
+<tr>
+<td>:bookmarks (autocomplete)</td>
+<td>search through bookmarks</td>
+</tr>
+<tr>
+<td>:bookmarks /&lt;folder&gt; (autocomplete)</td>
+<td>browse bookmarks by folder/open all bookmarks from folder</td>
+</tr>
+<tr>
+<td>:set (autocomplete)</td>
+<td>temporarily change a cVim setting</td>
+</tr>
+<tr>
+<td>:chrome:// (autocomplete)</td>
+<td>open a chrome:// URL</td>
+</tr>
+<tr>
+<td>:tabhistory (autocomplete)</td>
+<td>browse the different history states of the current tab</td>
+</tr>
+<tr>
+<td>:command <code>&lt;NAME&gt;</code> <code>&lt;ACTION&gt;</code></td>
+<td>aliases :<code>&lt;NAME&gt;</code> to :<code>&lt;ACTION&gt;</code></td>
+</tr>
+<tr>
+<td>:quit</td>
+<td>close the current tab</td>
+</tr>
+<tr>
+<td>:qall</td>
+<td>close the current window</td>
+</tr>
+<tr>
+<td>:restore (autocomplete)</td>
+<td>restore a previously closed tab (newer versions of Chrome only)</td>
+</tr>
+<tr>
+<td>:tabattach (autocomplete)</td>
+<td>move the current tab to another open window</td>
+</tr>
+<tr>
+<td>:tabdetach</td>
+<td>move the current tab to a new window</td>
+</tr>
+<tr>
+<td>:file (autocomplete)</td>
+<td>open a local file</td>
+</tr>
+<tr>
+<td>:source (autocomplete)</td>
+<td>load a cVimrc file into memory (this will overwrite the settings in the options page if the <code>localconfig</code> setting had been set previously</td>
+</tr>
+<tr>
+<td>:duplicate</td>
+<td>duplicate the current tab</td>
+</tr>
+<tr>
+<td>:settings</td>
+<td>open the settings page</td>
+</tr>
+<tr>
+<td>:nohlsearch</td>
+<td>clear the highlighted text from the last search</td>
+</tr>
+<tr>
+<td>:execute</td>
+<td>execute a sequence of keys (Useful for mappings. For example, &quot;map j :execute 2j&lt;CR&gt;&quot;)</td>
+</tr>
+<tr>
+<td>:buffer (autocomplete)</td>
+<td>change to a different tab</td>
+</tr>
+<tr>
+<td>:mksession</td>
+<td>create a new session from the current tabs in the active window</td>
+</tr>
+<tr>
+<td>:delsession (autocomplete)</td>
+<td>delete a saved session</td>
+</tr>
+<tr>
+<td>:session (autocomplete)</td>
+<td>open the tabs from a saved session in a new window</td>
+</tr>
+<tr>
+<td>:script</td>
+<td>run JavaScript on the current page</td>
+</tr>
+<tr>
+<td>:togglepin</td>
+<td>toggle the pin state of the current tab</td>
+</tr>
+<tr>
+<td>:pintab</td>
+<td>pin the current tab</td>
+</tr>
+<tr>
+<td>:unpintab</td>
+<td>unpin the current tab</td>
+</tr>
+<tr>
+<td>:click &lt;query&gt;</td>
+<td>click on element returned from css query</td>
+</tr>
+<tr>
+<td>:scroll &lt;query&gt;</td>
+<td>scroll to element returned from css query</td>
+</tr>
+<tr>
+<td>:selectset &lt;query&gt;</td>
+<td>set selection list to elements returned from css query</td>
+</tr>
+</tbody>
+</table>
+</html>

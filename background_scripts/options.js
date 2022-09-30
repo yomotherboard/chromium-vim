@@ -42,6 +42,7 @@ var defaultSettings = {
   mapleader: '\\',
   timeoutlen: 1000,
   defaultengine: 'google',
+	yacy_url: 'localhost:8090',
   hintcharacters: 'asdfgqwertzxcvb',
   homedirectory: '',
   langmap: '',

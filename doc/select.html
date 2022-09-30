@@ -1,125 +1,80 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>select</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="../pages/markdown.css" />
-  <link rel="stylesheet" href="./markdown.css">
-  <link rel="stylesheet" href="./hljs.css">
-  <link rel="stylesheet" href="../content_scripts/main.css">
-  <script src="../content_scripts/cvimrc_parser.js"></script>
-  <script src="../content_scripts/session.js"></script>
-  <script src="../content_scripts/utils.js"></script>
-  <script src="../content_scripts/dom.js"></script>
-  <script src="../content_scripts/hints.js"></script>
-  <script src="../content_scripts/bookmarks.js"></script>
-  <script src="../content_scripts/keys.js"></script>
-  <script src="../content_scripts/clipboard.js"></script>
-  <script src="../content_scripts/complete.js"></script>
-  <script src="../content_scripts/mappings.js"></script>
-  <script src="../content_scripts/find.js"></script>
-  <script src="../content_scripts/cursor.js"></script>
-  <script src="../content_scripts/status.js"></script>
-  <script src="../content_scripts/hud.js"></script>
-  <script src="../content_scripts/visual.js"></script>
-  <script src="../content_scripts/command.js"></script>
-  <script src="../content_scripts/scroll.js"></script>
-  <script src="../content_scripts/search.js"></script>
-  <script src="../content_scripts/messenger.js"></script>
-  <script src="../content_scripts/frames.js"></script>
-  <script src="../content_scripts/messenger.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<h1 id="select-feature">Select Feature</h1>
-<p>The select feature is highly customizable and extensible. It is
-similar to the quickfix list of vim/neovim. The most basic example of
-its use is as follows:</p>
-<h2 id="basic-usage">Basic Usage</h2>
-<ol type="1">
-<li>Populate the selection list with all DOM elements that match a given
-<a
-href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS
-selector</a>:</li>
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="./markdown.css"><link rel="stylesheet" href="./hljs.css"><link rel="stylesheet" href="../content_scripts/main.css"><script src="../content_scripts/cvimrc_parser.js"></script>
+<script src="../content_scripts/session.js"></script>
+<script src="../content_scripts/utils.js"></script>
+<script src="../content_scripts/dom.js"></script>
+<script src="../content_scripts/hints.js"></script>
+<script src="../content_scripts/bookmarks.js"></script>
+<script src="../content_scripts/keys.js"></script>
+<script src="../content_scripts/clipboard.js"></script>
+<script src="../content_scripts/complete.js"></script>
+<script src="../content_scripts/mappings.js"></script>
+<script src="../content_scripts/find.js"></script>
+<script src="../content_scripts/cursor.js"></script>
+<script src="../content_scripts/status.js"></script>
+<script src="../content_scripts/hud.js"></script>
+<script src="../content_scripts/visual.js"></script>
+<script src="../content_scripts/command.js"></script>
+<script src="../content_scripts/scroll.js"></script>
+<script src="../content_scripts/search.js"></script>
+<script src="../content_scripts/select.js"></script>
+<script src="../content_scripts/frames.js"></script>
+<script src="../content_scripts/messenger.js"></script></head><h1>Select Feature</h1>
+<p>The select feature is highly customizable and extensible. It is similar to the quickfix list of vim/neovim. The most basic example of its use is as follows:</p>
+<h2>Basic Usage</h2>
+<ol>
+<li>Populate the selection list with all DOM elements that match a given <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selector</a>:</li>
 </ol>
-<pre><code>:selectset h2
+<pre class="hljs"><code>:selectset h2
 
-&quot; this populates the selection list with all `h2` header elements from the page.</code></pre>
-<ol start="2" type="1">
-<li>Navigate back and forth through these selections with
-<code>&lt;C-j&gt;</code> and <code>&lt;C-k&gt;</code></li>
-<li>Use the return/enter key or <code>&lt;C-l&gt;</code> to click on the
-given object. By default it will search within the element for the first
-link (<code>&lt;a&gt;</code> tag) and navigate to that link.</li>
+<span class="hljs-comment">&quot; this populates the selection list with all `h2` header elements from the page.</span>
+</code></pre>
+<ol start="2">
+<li>Navigate back and forth through these selections with <code>&lt;C-j&gt;</code> and <code>&lt;C-k&gt;</code></li>
+<li>Use the return/enter key or <code>&lt;C-l&gt;</code> to click on the given object. By default it will search within the element for the first link (<code>&lt;a&gt;</code> tag) and navigate to that link.</li>
 </ol>
-<h2 id="commands">Commands</h2>
+<h2>Commands</h2>
 <p>All commands for configuring this feature are:</p>
 <table>
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 60%" />
-<col style="width: 12%" />
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>command</th>
 <th>description</th>
 <th>abbreviation</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>:selectset <code>&lt;query&gt;</code></td>
 <td>set the query used to populate the selection list</td>
 <td>sset</td>
 </tr>
-<tr class="even">
+<tr>
 <td>:selectsetclick <code>&lt;query&gt;</code></td>
-<td>set query used to get element within selection to click (default
-‘a’)</td>
+<td>set query used to get element within selection to click (default 'a')</td>
 <td>ssclick</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>:selectstyle <code>&lt;css&gt;</code></td>
 <td>set the CSS style for the focused selection</td>
 <td>ssty</td>
 </tr>
-<tr class="even">
+<tr>
 <td>:selecttag <code>&lt;index&gt;</code></td>
-<td>tag the focused selection, a specific index, or a list of
-indices</td>
+<td>tag the focused selection, a specific index, or a list of indices</td>
 <td>stag</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configuration">Configuration</h2>
-<p>Settings for this feature can automatically be loaded on web pages
-using your config files. This is particularly useful for <a
-href="./site.html">site specific configurations</a>.</p>
-<p>For example, here is a basic configuration for navigating amazon
-search results:</p>
-<pre><code>site &#39;*://*.amazon.com/s*&#39; {
-    call :sset &#39;[data-component-type=&quot;s-search-result&quot;]&#39;
-    call :ssty &#39;border: 4px solid darkslateblue;&#39;
+<h2>Configuration</h2>
+<p>Settings for this feature can automatically be loaded on web pages using your config files. This is particularly useful for <a href="./site.html">site specific configurations</a>.</p>
+<p>For example, here is a basic configuration for navigating amazon search results:</p>
+<pre class="hljs"><code>site <span class="hljs-string">&#x27;*://*.amazon.com/s*&#x27;</span> {
+    <span class="hljs-keyword">call</span> :sset <span class="hljs-string">&#x27;[data-component-type=&quot;s-search-result&quot;]&#x27;</span>
+	<span class="hljs-keyword">call</span> :ssty <span class="hljs-string">&#x27;border: 4px solid darkslateblue;&#x27;</span>
 
-    map j :selectnextCR&gt;
-    map k :selectprev&lt;CR&gt;
-}</code></pre>
-<p>A useful way of organizing these site specific configurations could
-be to create files such as <code>amazon.cvim</code> in the directory
-<code>~/.config/cvim/sites/</code>.</p>
-</body>
+	<span class="hljs-keyword">map</span> <span class="hljs-keyword">j</span> :selectnextCR&gt;
+	<span class="hljs-keyword">map</span> <span class="hljs-keyword">k</span> :selectprev<span class="hljs-symbol">&lt;CR&gt;</span>
+}
+</code></pre>
+<p>A useful way of organizing these site specific configurations could be to create files such as <code>amazon.cvim</code> in the directory <code>~/.config/cvim/sites/</code>.</p>
 </html>

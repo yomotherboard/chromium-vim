@@ -18,51 +18,15 @@
 <script src="../content_scripts/search.js"></script>
 <script src="../content_scripts/select.js"></script>
 <script src="../content_scripts/frames.js"></script>
-<script src="../content_scripts/messenger.js"></script></head><h1>Useful Configuration Patterns</h1>
-<p>It can be useful to pick a first letter as a prefix for a scope of mappings you will use across all websites. For example, I use <code>g</code> as a prefix for &quot;go&quot; commands. These commands scroll to specific points of a web page or navigate to related pages to the current page. The example from IMDB above, taken from my configs, shows this pattern. Another example is this configuration for amazon’s home page:</p>
-<pre class="hljs"><code>site '*://www.amazon.com/*' {
-	map gc :click #nav-cart&lt;CR&gt;
-	map go :click #nav-orders&lt;CR&gt;
-}
+<script src="../content_scripts/messenger.js"></script></head><h1>Source Command</h1>
+<p>The <code>source</code> commands loads a cvim configuration file. This can be used to split your configuration for cvim into multiple files or change the configuration programmatically.</p>
+<h2>Split configuration</h2>
+<p>Use the <code>source</code> command to split up configuration:</p>
+<pre class="hljs"><code><span class="hljs-keyword">source</span> /path/<span class="hljs-keyword">to</span>/additional/config.cvimrc
+<span class="hljs-keyword">source</span> /path/<span class="hljs-keyword">to</span>/additional/config2.cvimrc
 </code></pre>
-<p>Note that some <code>g</code> commands are builtin such as <code>gi</code>.</p>
-<p>The prefixes I use personally are:</p>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>f</code></td>
-<td>filter</td>
-</tr>
-<tr>
-<td><code>g</code></td>
-<td>go to</td>
-</tr>
-<tr>
-<td><code>p</code></td>
-<td>paste</td>
-</tr>
-<tr>
-<td><code>s</code></td>
-<td>search</td>
-</tr>
-<tr>
-<td><code>w</code></td>
-<td>window</td>
-</tr>
-<tr>
-<td><code>y</code></td>
-<td>yank</td>
-</tr>
-<tr>
-<td><code>z</code></td>
-<td>toggle</td>
-</tr>
-</tbody>
-</table>
+<p>This allows users to share site specific mappings and [select mode] configurations with others, e.g.:</p>
+<pre class="hljs"><code><span class="hljs-keyword">source</span> ~/.config/cvim/sites/amazon.cvimrc
+<span class="hljs-keyword">source</span> ~/.config/cvim/sites/google.cvimrc
+</code></pre>
 </html>

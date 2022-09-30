@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="./markdown.css"><link rel="stylesheet" href="./hljs.css"><link rel="stylesheet" href="../content_scripts/main.css"><script src="../content_scripts/cvimrc_parser.js"></script>
+<script src="../content_scripts/session.js"></script>
+<script src="../content_scripts/utils.js"></script>
+<script src="../content_scripts/dom.js"></script>
+<script src="../content_scripts/hints.js"></script>
+<script src="../content_scripts/bookmarks.js"></script>
+<script src="../content_scripts/keys.js"></script>
+<script src="../content_scripts/clipboard.js"></script>
+<script src="../content_scripts/complete.js"></script>
+<script src="../content_scripts/mappings.js"></script>
+<script src="../content_scripts/find.js"></script>
+<script src="../content_scripts/cursor.js"></script>
+<script src="../content_scripts/status.js"></script>
+<script src="../content_scripts/hud.js"></script>
+<script src="../content_scripts/visual.js"></script>
+<script src="../content_scripts/command.js"></script>
+<script src="../content_scripts/scroll.js"></script>
+<script src="../content_scripts/search.js"></script>
+<script src="../content_scripts/select.js"></script>
+<script src="../content_scripts/frames.js"></script>
+<script src="../content_scripts/messenger.js"></script></head><h3>Tabs</h3>
+<ul>
+<li>Commands that open links (<code>:tabnew</code> and <code>:open</code>) have three different properties</li>
+<li><code>!</code> =&gt; Open in a new tab</li>
+<li><code>$</code> =&gt; Open in a new window</li>
+<li><code>|</code> =&gt; Open in an incognito window</li>
+<li><code>&amp;</code> =&gt; Open in a new tab (inactive/unfocused)</li>
+<li><code>*</code> =&gt; Pin the tab</li>
+<li><code>?</code> =&gt; Treat the query as a search</li>
+<li><code>=</code> =&gt; Treat the query as a URL</li>
+<li>The use of these properties are best explained with examples:</li>
+</ul>
+<pre class="hljs"><code>:open! google<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; This is the same as :tabnew google&lt;CR&gt;</span>
+
+:<span class="hljs-keyword">open</span> google!<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; This is another way of writing the above</span>
+                  <span class="hljs-comment">&quot; (these flags can can be added to either</span>
+                  <span class="hljs-comment">&quot; the base command or the end of the final command)</span>
+
+:<span class="hljs-keyword">open</span>&amp; google<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; This will open Google in a new inactive tab</span>
+
+:<span class="hljs-keyword">open</span>$ google<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; This will open Google in a new window</span>
+
+:<span class="hljs-keyword">open</span>&amp;* google<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; The will open Google in a new inactive, pinned tab</span>
+
+:<span class="hljs-keyword">tabnew</span> google&amp;*<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; Once again, this will do the same thing as the above command</span>
+
+:<span class="hljs-keyword">open</span> google&amp;*<span class="hljs-symbol">&lt;CR&gt;</span> <span class="hljs-comment">&quot; Again, same as above</span>
+
+:<span class="hljs-keyword">open</span> google!&amp; <span class="hljs-comment">&quot; Here, the &amp; flag will cancel out the ! flag,</span>
+               <span class="hljs-comment">&quot; opening Google in a new inactive tab</span>
+
+<span class="hljs-comment">&quot; More examples</span>
+:bookmarks my_bookmark.<span class="hljs-keyword">com</span>&amp;  <span class="hljs-comment">&quot; inactive,new tab</span>
+:bookmarks&amp;* my_bookmark.<span class="hljs-keyword">com</span> <span class="hljs-comment">&quot; inactive,pinned,new tab</span>
+:bookmarks! my_bookmark.<span class="hljs-keyword">com</span>  <span class="hljs-comment">&quot; new tab</span>
+:bookmarks$ my_bookmark.<span class="hljs-keyword">com</span>  <span class="hljs-comment">&quot; new window</span>
+:bookmarks my_bookmark.<span class="hljs-keyword">com</span>   <span class="hljs-comment">&quot; same tab</span>
+</code></pre>
+</html>
