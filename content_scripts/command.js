@@ -488,15 +488,12 @@ Command.callCompletionFunction = (function() {
                             .map( (a) => [ a.name.replace(/\.html$/, '') , a.name ] )
                             .filter( (a) => { return RegExp(search, 'i').test(a[0]) });
 
-                        console.log(search);
                         self.completions = { bookmarks: docs };
                         self.updateCompletions();
                     });
                 });
             });
 
-      //Marks.parseFileCommand( chrome.runtime.getURL( '/doc/' ) );
-      //self.completions = {};
       return true;
     }
     return false;
@@ -683,47 +680,17 @@ Command.execute = function(value, repeats) {
   }
 
 	if (/^help/.test(value)) {
+        selected = Command.completionResults[0];
+        if ( /^help *$/.test(value) )    // if 
+            selected[2] = 'mappings.html';
+
 		tab.tabbed = true;
-        var open = function(url) {
-            RUNTIME('openLink', {
-                tab: tab,
-                url: chrome.extension.getURL( url )
-            });
-        }
-
-        if ( /\.html$/.test(value) ) {
-            open( '/doc/' + value.replace('help ', '') );
-            return;
-        }
-
-		var help_name = value.replace('help ', '');
-		var help_url;
-
-		switch ( help_name ) {
-			case 'keys':
-			case 'keybindings':
-			case 'key-bindings':
-			case 'shortcuts':
-				help_url = 'doc/keys.html';
-				break;
-			case 'nav':
-			case 'navigate':
-				help_url = '/doc/navigate.html';
-				break;
-			case 'select':
-				help_url = '/doc/select.html';
-				break;
-			case 'site':
-			case 'sites':
-				help_url = '/doc/site.html';
-				break;
-			default:
-				help_url = '/pages/mappings.html';
-		}
-        open( help_url );
-
-		return;
-	}
+        RUNTIME('openLink', {
+          tab: tab,
+          url: chrome.extension.getURL( '/doc/' + selected[2] ),
+          noconvert: true
+        });
+    }
 
     if (/^tabsleep/.test(value)) {
         RUNTIME('getRootUrl', function(url) {
