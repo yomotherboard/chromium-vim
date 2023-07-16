@@ -1244,12 +1244,11 @@ Command.show = function(search, value, complete) {
     }
   }, 0);
     this.focus_id = setInterval(_ => {
-        console.log(document.activeElement);
         if (document.activeElement.id !== 'cVim-command-bar-input') {
             document.activeElement.blur();
             this.input.focus();
         }},
-        50
+        10
     )
 };
 
